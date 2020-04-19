@@ -17,13 +17,9 @@ Efficiency in the context of neural networks deal with;
 For example, with the introduction of the Transformer architecture in the NLP domain, the field has achieved giant strides, pushing up SOTA results i almost all NLP domains. The Transformer has an interesting achitecture with parallel computations and self-attention mechanism. A major concern is its parameter size due to the multi-head attention. A recent achitecture from Google called [Reformer](https://ai.googleblog.com/2020/01/reformer-efficient-transformer.html) uses locality-sensitive-hashing (LSH) to address this.
 Similarly, in Computer vision domain, models like [ResNext](https://arxiv.org/abs/1611.05431) with repeated blocks have shown to have great performance of Image-related tasks, at the expense of speed. These models are difficult to train and experiment with on low-memory GPUs. Therefore, how can we make this models more efficient without loosing performance?   
 
-This article was written to give an introductory view on this subject, and hopefully inform Researchers and Machine Learning Engineers like me, on what to have at the back of our minds when we build models and do research.
+This article was written to give an introductory view on this subject, and hopefully inform Researchers and Machine Learning Engineers like me, on what to have at the back of our minds when we build models and do research.  
 
-<p>
-<img src='https://images.unsplash.com/photo-1547654387-a1b3c42b3d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80'/>
- <p>Source: @yogidan2012 on unsplash.com</p>
-</p>
-
+![](https://images.unsplash.com/photo-1547654387-a1b3c42b3d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80 "Source: @yogidan2012 on unsplash.com")  
 ## What we mean by efficiency
 Let me expand on the points I made earlier about efficiency. Efficiency is relative and we are talking here in terms of our current memory capacity for on-device AI, mobile applications, computation speed etc.
 - **How long will it take to train the model?**  
@@ -66,7 +62,7 @@ The goal of sparsity inducing training is to set as many weights as possible to 
 In knowledge distillation, a large, accurate network teaches a smaller network how to behave. That's cool right? The large network known as the teacher instructs the smaller network called the student. This can be done done via two training methods;    
 Case a: Student model learns to mimic the output of the teacher model, getting its loss from only the output layer    
 Case b: Student model also learn to mimic intermediate layers as well as the output. So the loss of the student is therefore the sum of all the intermediate losses and output loss. This was successfully applied in [Patient Knowledge Distillation for BERT Model Compression](https://arxiv.org/pdf/1908.09355.pdf)   
-![](./images/knowledge_distillation_bert.png "knowledge distillation in bert")    
+![](/images/knowledge_distillation_bert.png "knowledge distillation in bert")    
 The image shows the model architecture of Patient Knowledge Distillation approach to BERT model compression. In the PKD-Skip achitecture, the student network learns the teacher’s outputs in every 2 layers while the PKDLast represents where the student learns the teacher’s outputs from the last 6 layers.   
 A major advantage of the teacher-student setup is that it provides flexibility over size, as there is no restriction on size of teacher and student. A consequence of this smaller model is its fast inference time, with similar performance as the teacher. One thing to put in mind is that a pretrained teacher model is required in this setup and the student network inherits the biases of the teacher model.  
 Knowledge distillation has been successfully applied to production models such as the  HuggingFace [DistilBERT](https://arxiv.org/pdf/1910.01108v4.pdf) with a smaller, faster, cheaper and lighter BERT model.  It has also been applied in Generative Adversarial Networks, [KDGAN](https://papers.nips.cc/paper/7358-kdgan-knowledge-distillation-with-generative-adversarial-networks.pdf) for student training. In another area of application, knowldege distillation can be used to train a surrogate model without having knowledge of model internals or training data. The paper titled ["Practical Black-Box Attacks against Machine Learning"](https://arxiv.org/abs/1602.02697) highliights the fact that this can aid adversarial attack of a machine learning model as the surrogate model just has to learn to mimick the decision boundaries of the original model.  
@@ -76,7 +72,7 @@ Pruning involves training a large network at training time, but then eliminating
 A recent work by Angela Fan on [LayerDrop](https://arxiv.org/abs/1909.11556) showed promising results. The layer drop is so simple that it is surprising that it works at all.    
 **How LayerDrop works**  
 LayerDrop is implemented by randomly dropping layers during training using a drop rate. Possible drop rates are 10%, 20%, 25%. Its implementation is similar to dropout but does not even require that weights are upscaled after dropping layers.    
-![](./images/layerdrop.png "layer drop")   
+![](/images/layerdrop.png "layer drop")   
 Also, LayerDrop increases training speed as we do not perform forward propagation on the entire number of layers, ensuring that the model is robust to perturbations and regularized.  
 At inference time, you can prune to any depth of your choice without affecting performance. This means that you can adopt any pruning strategy e.g. prune all odd layers, or prune all even layers, or prune every 3 layers. Pruning strategy that may not work well are aggressive pruning e.g pruning all the early layers or pruning all the late layers or pruning more than 50% of the model.  
 LayerDrop has not seen wide success in computer vision as it has in NLP though, but more research can be done in this area.
