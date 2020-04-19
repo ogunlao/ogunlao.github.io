@@ -1,4 +1,4 @@
-# Making Efficient Neural Networks.
+# Making Efficient Neural Networks
 {:.no_toc}
 This article was inspired by Angela Fan's Talks on Efficient Transformers at AMMI Deep NLP class, 2020. [Angela Fan](https://scholar.google.com/citations?user=TLZR9zgAAAAJ&hl=en) is a PhD candidate with Facebook AI in France.
 
@@ -60,57 +60,41 @@ What a great discovery!!!
 This looks obvious at first. If you want a model with smaller size, why not train yours with smaller weight sizes, less number of layers etc. Well, it turns out that this has the advantage of training faster, with smaller model size but with great performance drops. If you consider, most big models, they increase the model sizes to get better performance on the benchmark datasets. Also, intuitively, smaller models have lower capacity and may not be able to learn all the intricacies of the task to perform. As such, these smaller models are only used as proof-of-concept. Can we do better than this? Well, that's why we are researchers and engineers right? We have to know that any proposed methods of inncreasing efficiency has to perform better than just this to be so cool.
 
 1. **Sparsity Inducing Training**  
-The goal of sparsity inducing training is to set as many weights as possible to zero during training. This brings about faster computations especially for on-device AI where we are watchful of number of computations as we have efficient methods - such as the Compressed Sparse Row Format (CSRF) or Yale format and the Compressed Sparse Column Format (CSCF) - for storing sparse matrices. Sparsity can be induced in various forms. For example, through the model loss (as in L1 and L0 regularization), removing small magnitude
-weights, and some other bayesian methods. For a more concrete review of these methods, check the paper titled ["The State of Sparsity in Deep Neural Networks"](https://arxiv.org/pdf/1902.09574.pdf) by Trevor Gale et al.
+The goal of sparsity inducing training is to set as many weights as possible to zero during training. This brings about faster computations especially for on-device AI where we are watchful of number of computations as we have efficient methods - such as the Compressed Sparse Row Format (CSRF) or Yale format and the Compressed Sparse Column Format (CSCF) - for storing sparse matrices. Sparsity can be induced in various forms. For example, through the model loss (as in L1 and L0 regularization), removing small magnitude weights, and some other bayesian methods. For a more concrete review of these methods, check the paper titled ["The State of Sparsity in Deep Neural Networks"](https://arxiv.org/pdf/1902.09574.pdf) by Trevor Gale et al.
 
-1. **Knowledge Distillation**
+1. **Knowledge Distillation**  
 In knowledge distillation, a large, accurate network teaches a smaller network how to behave. That's cool right? The large network known as the teacher instructs the smaller network called the student. This can be done done via two training methods;    
 Case a: Student model learns to mimic the output of the teacher model, getting its loss from only the output layer    
-Case b: Student model also learn to mimic intermediate layers as well as the output. So the loss of the student is therefore the sum of all the intermediate losses and output loss. This was successfully applied in [Patient Knowledge Distillation for BERT Model Compression](https://arxiv.org/pdf/1908.09355.pdf)
-<p>
-<img src=/images/knowledge_distillation_bert.png width=400px/>
-  <p> Model architecture of Patient Knowledge Distillation approach to BERT model compression. (Left) PKD-Skip: the student network learns the teacher’s outputs in every 2 layers. (Right) PKDLast: the student learns the teacher’s outputs from the
-last 6 layers. Trm: Transformer.</p>
-</p> 
-
-A major advantage of the teacher-student setup is that it provides flexibility over size, as there is no restriction on size of teacher and student. A consequence of this smaller model is its fast inference time, with similar performance as the teacher. One thing to put in mind is that a pretrained teacher model is required in this setup and the student network inherits the biases of the teacher model.
-
-Knowledge distillation has been successfully applied to production models such as the  HuggingFace [DistilBERT](https://arxiv.org/pdf/1910.01108v4.pdf) with a smaller, faster, cheaper and lighter BERT model.  It has also been applied in Generative Adversarial Networks, [KDGAN](https://papers.nips.cc/paper/7358-kdgan-knowledge-distillation-with-generative-adversarial-networks.pdf) for student training. In another area of application, knowldege distillation can be used to train a surrogate model without having knowledge of model internals or training data. The paper titled ["Practical Black-Box Attacks against Machine Learning"](https://arxiv.org/abs/1602.02697) highliights the fact that this can aid adversarial attack of a machine learning model as the surrogate model just has to learn to mimick the decision boundaries of the original model.
+Case b: Student model also learn to mimic intermediate layers as well as the output. So the loss of the student is therefore the sum of all the intermediate losses and output loss. This was successfully applied in [Patient Knowledge Distillation for BERT Model Compression](https://arxiv.org/pdf/1908.09355.pdf)   
+![](/images/knowledge_distillation_bert.png "knowledge distillation in bert")    
+Model architecture of Patient Knowledge Distillation approach to BERT model compression. (Left) PKD-Skip: the student network learns the teacher’s outputs in every 2 layers. (Right) PKDLast: the student learns the teacher’s outputs from the
+last 6 layers. Trm: Transformer.   
+A major advantage of the teacher-student setup is that it provides flexibility over size, as there is no restriction on size of teacher and student. A consequence of this smaller model is its fast inference time, with similar performance as the teacher. One thing to put in mind is that a pretrained teacher model is required in this setup and the student network inherits the biases of the teacher model.  Knowledge distillation has been successfully applied to production models such as the  HuggingFace [DistilBERT](https://arxiv.org/pdf/1910.01108v4.pdf) with a smaller, faster, cheaper and lighter BERT model.  It has also been applied in Generative Adversarial Networks, [KDGAN](https://papers.nips.cc/paper/7358-kdgan-knowledge-distillation-with-generative-adversarial-networks.pdf) for student training. In another area of application, knowldege distillation can be used to train a surrogate model without having knowledge of model internals or training data. The paper titled ["Practical Black-Box Attacks against Machine Learning"](https://arxiv.org/abs/1602.02697) highliights the fact that this can aid adversarial attack of a machine learning model as the surrogate model just has to learn to mimick the decision boundaries of the original model.  
 
 1. **Pruning**
-Pruning involves training a large network at training time, but then eliminating some parts of the network at inference time. This might include heuristics such as  dropping convolution layers, dropping attention layers, or convolution filters, removing portion of weights etc. at inference time. The method above usually require some for of retraining or finetuning. Can we have a method that does not necessarily need retraining at inference time?  
-
-A recent work by Angela Fan on [LayerDrop](https://arxiv.org/abs/1909.11556) showed promising results. The layer drop is so simple that it is surprising that it works at all.  
+Pruning involves training a large network at training time, but then eliminating some parts of the network at inference time. This might include heuristics such as  dropping convolution layers, dropping attention layers, or convolution filters, removing portion of weights etc. at inference time. The method above usually require some for of retraining or finetuning. Can we have a method that does not necessarily need retraining at inference time?     
+A recent work by Angela Fan on [LayerDrop](https://arxiv.org/abs/1909.11556) showed promising results. The layer drop is so simple that it is surprising that it works at all.    
 **How LayerDrop works**  
-LayerDrop is implemented by randomly dropping layers during training using a drop rate. Possible drop rates are 10%, 20%, 25%. Its implementation is similar to dropout but does not even require that weights are upscaled after dropping layers.
-<img src='/images/layerdrop.png' width=400px/>
-
+LayerDrop is implemented by randomly dropping layers during training using a drop rate. Possible drop rates are 10%, 20%, 25%. Its implementation is similar to dropout but does not even require that weights are upscaled after dropping layers.    
+![](/images/layerdrop.png "layer drop")   
 Also, LayerDrop increases training speed as we do not perform forward propagation on the entire number of layers, ensuring that the model is robust to perturbations and regularized.  
-At inference time, you can prune to any depth of your choice without affecting performance. This means that you can adopt any pruning strategy e.g. prune all odd layers, or prune all even layers, or prune every 3 layers. Pruning strategy that may not work well are aggressive pruning e.g pruning all the early layers or pruning all the late layers or pruning more than 50% of the model.
-
+At inference time, you can prune to any depth of your choice without affecting performance. This means that you can adopt any pruning strategy e.g. prune all odd layers, or prune all even layers, or prune every 3 layers. Pruning strategy that may not work well are aggressive pruning e.g pruning all the early layers or pruning all the late layers or pruning more than 50% of the model.  
 LayerDrop has not seen wide success in computer vision as it has in NLP though, but more research can be done in this area.
 
 1. **Weight Sharing**  
-The idea of weight sharing is that different layers can reuse weights. This just requires that some or all sub-networks share the same weights. The [ALBERT](https://ai.googleblog.com/2019/12/albert-lite-bert-for-self-supervised.html) model utilizes this idea of tying chunks of layers to the same weights.
-As quoted from the blog post;  
+The idea of weight sharing is that different layers can reuse weights. This just requires that some or all sub-networks share the same weights. The [ALBERT](https://ai.googleblog.com/2019/12/albert-lite-bert-for-self-supervised.html) model utilizes this idea of tying chunks of layers to the same weights. As quoted from the blog post;  
+> "Another critical design decision for ALBERT stems from a different observation that examines redundancy. Transformer-based neural network architectures (such as BERT, XLNet, and RoBERTa) rely on independent layers stacked on top of each other. However, we observed that the network often learned to perform similar operations at various layers, using different parameters of the network. This possible redundancy is eliminated in ALBERT by parameter-sharing across the layers, i.e., the same layer is applied on top of each other. This approach slightly diminishes the accuracy, but the more compact size is well worth the tradeoff."   
 
-> Another critical design decision for ALBERT stems from a different observation that examines redundancy. Transformer-based neural network architectures (such as BERT, XLNet, and RoBERTa) rely on independent layers stacked on top of each other. However, we observed that the network often learned to perform similar operations at various layers, using different parameters of the network. This possible redundancy is eliminated in ALBERT by parameter-sharing across the layers, i.e., the same layer is applied on top of each other. This approach slightly diminishes the accuracy, but the more compact size is well worth the tradeoff.  
+A major drawback of weight sharing is that the amount of transformations that can be learned is reduced, casing a decrease in performance. In practice, the model capacity is usually increased to cater for this.   
+6. **Quantization**   
+Quantization refers to techniques for performing computations and storing tensors at lower bitwidths than floating point precision. This process compresses the model size after training and a go-to approach for model compression, especially for on-device AI applications.   
+In quantization, the goal is to efficiently store the weight floating point numbers using other number types such as int8, int4 or even bits(1 and 0). This is usually more memory efficient. The popular deep learning libraries provide quantization methods out of the box and have tutorials on how to perform quantization. See [Tensorflow](https://www.tensorflow.org/lite/performance/post_training_quantization) and [PyTorch](https://pytorch.org/docs/stable/quantization.html) libraries for their apis.  
+Quantization can drastically reduce model size by up to 80% and can easily be combined with other existing techniques for even lower model sizes. The quantization method and compression size has to be considered because drastic compression can reduce model performance and accuracy.  
 
-A major drawback of weight sharing is that the amount of transformations that can be learned is reduced, casing a decrease in performance. In practice, the model capacity is usually increased to cater for this.
-
-1. **Quantization**
-Quantization refers to techniques for performing computations and storing tensors at lower bitwidths than floating point precision. This process compresses the model size after training and a go-to approach for model compression, especially for on-device AI applications.
-
-In quantization, the goal is to efficiently store the weight floating point numbers using other number types such as int8, int4 or even bits(1 and 0). This is usually more memory efficient. The popular deep learning libraries provide quantization methods out of the box and have tutorials on how to perform quantization. See [Tensorflow](https://www.tensorflow.org/lite/performance/post_training_quantization) and [PyTorch](https://pytorch.org/docs/stable/quantization.html) libraries for their apis.
-
-Quantization can drastically reduce model size by up to 80% and can easily be combined with other existing techniques for even lower model sizes. The quantization method and compression size has to be considered because drastic compression can reduce model performance and accuracy.
-
-1. **More Efficient Achitectures**
+7. **More Efficient Achitectures**
 As at this time, we have been exploring methods that involve starting with a bigger model, then compresing it. Can we do better by consciously building achitectures made out of the goal for efficiency?  
-
-For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](Pay Less Attention with Lightweight and Dynamic Convolutions) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.  
-
-Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.
+For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](Pay Less Attention with Lightweight and Dynamic Convolutions) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.    
+Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.  
 
 ## Conclusion
 In summary, we discussed what it means for models to be efficient, looked closely at neural networks to garner intuition about their behavior, described current methods for making models more efficient and took a step forward to provide a glimpse of building more efficient achitectures from the get-go.
