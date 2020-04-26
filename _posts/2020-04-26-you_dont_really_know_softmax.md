@@ -45,7 +45,12 @@ These are pointers to what we will be discussing in the next sessions?
 
 ## Numerical Stability of Softmax
 From the softmax probabilities above, we can deduce that softmax can become numerically unstable for values with a very large range. Consider changing the 3rd value in the input vector to $10000$ and re-evaluate the softmax.  
-The output becomes $[ 0.0,  0.0, nan,  0.0]$. 'nan' stands for not-a-number and occurs when there is an overflow or underflow.   
+```
+>> x = np.array([10, 2, 10000, 4])
+>> print(softmax(x))
+output: [0.0,  0.0, nan,  0.0]
+```
+'nan' stands for not-a-number and occurs when there is an overflow or underflow. But, why the $0$s and $nan$? Are we implying we cannot get a probability distribution from the vector? 
 - Question: Can you find out what caused the overflow?
 
 Exponentiating a large number like $10000$ leads to a very, very large number. This is approximately $2^{10000}$. This causes overflow.
