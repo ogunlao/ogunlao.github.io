@@ -37,16 +37,16 @@ output: [9.35762297e-14 3.13913279e-17 1.00000000e+00 2.31952283e-16]
   
 ```
 
-Questions
-- What do you observe about the output?
-- Will the output sum to 1?
+- Questions
+  - What do you observe about the output?
+  - Will the output sum to 1?
 
 These are pointers to what we will be discussing in the next sessions?
 
 ## Numerical Stability of Softmax
 From the softmax probabilities above, we can deduce that softmax can become numerically unstable for values with a very large range. Consider changing the 3rd value in the input vector to $10000$ and re-evaluate the softmax.  
 The output becomes $[ 0.0,  0.0, nan,  0.0]$. 'nan' stands for not-a-number and occurs when there is an overflow or underflow.   
-Question: Can you find out what caused the overflow?
+- Question: Can you find out what caused the overflow?
 
 Exponentiating a large number like $10000$ leads to a very, very large number. This is approximately $2^{10000}$. This causes overflow.
 
@@ -117,7 +117,7 @@ x = np.array([10, 2, 10000, 4])
 output: [-inf, -inf,   0., -inf]
 ```
 We are back to numerical instability, in particular, numerical underflow.  
-Question: Why is this so?   
+- Question: Why is this so?   
 The answer lies in taking the logarithm of individual elements. The $log(0)$ is underfined. Can we do better? oh yes.
 
 ## Log-Softmax Derivation
