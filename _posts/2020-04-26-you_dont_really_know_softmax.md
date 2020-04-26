@@ -168,9 +168,12 @@ For example, if we have a statement;
 The boy ___ to the market.
 
 with possible answers, $[goes, go, went, comes]$. Assume we get logits of $[38, 20, 40, 39]$ from our classifier to be fed to a softmax function.  
-\begin{equation}
-softmax([38, 20, 40, 39]) = [0.09, 0.00, 0.6, 0.24]  
-\end{equation}
+```
+>> x = [38, 20, 40, 39]
+>> softmax(x)
+output: [0.09, 0.00, 0.6, 0.24]
+```
+
 If we were to sample from this distribution, $60\%$ of the time, our prediction will be "went" but we are also aware that the answer could also be any of "goes" or "comes" depending on context. The initial logits also show close values of the words but the softmax pushes them away.  
 A temperature hyperparameter, $\tau$ is added to the softmax to dampen this extremism. The softmax then becomes
 \begin{equation}
@@ -183,14 +186,14 @@ A temperature hyperparameter, $\tau$ is added to the softmax to dampen this extr
 where $\tau$ is in $(0, \inf]$.
 The temperture parameter increases the sensitivity to low probability candidates and has to be tuned for optimal results. Let's examine different cases of $\tau$
 
-case a: $\tau -> 0$ say $\tau = 0.001$
+case a: $\tau \to 0$ say $\tau = 0.001$
 ```
 >> softmax(x/100)
 output: [0., 0., 1., 0.]
 ```
 This creates a more confident prediction and less likely to sample from unlikely candidates.
 
-case b: $\tau -> \inf$ say $\tau = 100$
+case b: $\tau \to \inf$ say $\tau = 100$
 ```
 >> softmax(x/100)
 output: [0.25869729, 0.21608214, 0.26392332, 0.26129724]
