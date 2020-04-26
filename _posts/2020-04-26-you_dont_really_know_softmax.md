@@ -51,21 +51,29 @@ Question: Can you find out what caused the overflow?
 Exponentiating a large number like $10000$ leads to a very, very large number. This is approximately $2^{10000}$. This causes overflow.
 
 - Can we do better? Well, we can.
-Taking our original equation,  
-$$sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}$$  
+Taking our original equation, 
+\begin{equation} 
+sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}
+\end{equation} 
 Let's subtract a constant $c$ from the $x_i$s  
-$$sm(x_i) = \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{{x_j -c}}}$$
-We are just shifting the $x_i$ by a constant. If this shift is the maximum of the vector, $max(x)$, then we can stabilize our softmax computation.
+\begin{equation} 
+sm(x_i) = \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{{x_j -c}}}
+\end{equation} 
+We just shift the $x_i$ by a constant. If this shifting constant, $c$ is the maximum of the vector, $max(x)$, then we can stabilize our softmax computation.
 
 - Question: Do we get the same answer as the original softmax?    
 This can be shown to be equivalent to the original softmax function:  
 Consider  
 
-\begin{eqnarray}  
-sm(x_i) &=& \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{x_j -c}}  
-        &=& \dfrac{e^{x_i}e^{-c}}{\sum_{j=1}^{d} e^{{x_j}}e^{-c}}  
-        &=& \dfrac{e^{x_i}e^{-c}}{e^{{-c}}\sum_{j=1}^{d} e^{x_j}}   
-\end{eqnarray}  
+\begin{equation}  
+sm(x_i) = \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{x_j -c}}
+\end{equation}
+\begin{equation}
+sm(x_i) = \dfrac{e^{x_i}e^{-c}}{\sum_{j=1}^{d} e^{{x_j}}e^{-c}}
+\end{equation} 
+\begin{equation}
+sm(x_i) = \dfrac{e^{x_i}e^{-c}}{e^{{-c}}\sum_{j=1}^{d} e^{x_j}}   
+\end{equation}  
 
 which produces the same initial softmax  
 
@@ -160,7 +168,9 @@ For example, if we have a statement;
 The boy ___ to the market.
 
 with possible answers, $[goes, go, went, comes]$. Assume we get logits of $[38, 20, 40, 39]$ from our classifier to be fed to a softmax function.  
-$$sm([38, 20, 40, 39]) = [0.09, 0.00, 0.6, 0.24]$$ 
+\begin{equation}
+softmax([38, 20, 40, 39]) = [0.09, 0.00, 0.6, 0.24]  
+\end{equation}
 If we were to sample from this distribution, $60\%$ of the time, our prediction will be "went" but we are also aware that the answer could also be any of "goes" or "comes" depending on context. The initial logits also show close values of the words but the softmax pushes them away.  
 A temperature hyperparameter, $\tau$ is added to the softmax to dampen this extremism. The softmax then becomes
 \begin{equation}
