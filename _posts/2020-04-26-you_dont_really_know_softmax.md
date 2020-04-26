@@ -120,7 +120,7 @@ We are back to numerical instability, in particular, numerical underflow.
 Question: Why is this so?   
 The answer lies in taking the logarithm of individual elements. The $log(0)$ is underfined. Can we do better? oh yes.
 
-## Log-softmax derivation
+## Log-Softmax Derivation
 \begin{equation}
 sm(x_i) = \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{x_j -c}}
 \end{equation}
@@ -161,7 +161,7 @@ def logsoftmax(x, recover_probs=True):
 output: [0., 0., 1., 0.]
 ```
 
-## Softmax temperature
+## Softmax Temperature
 In the NLP domain, where the softmax is applied at the output of a classifier to get a probability distribution over tokens. The softmax can be too sure of its predictions and can make other words less likely to pre sampled.    
 For example, if we have a statement;
 
