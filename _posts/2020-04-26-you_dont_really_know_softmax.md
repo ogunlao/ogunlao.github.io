@@ -1,5 +1,5 @@
 # You Don't Really Know Softmax
-Softmax function is one of the major functions used in classification models. It is usually intoduced early in a machine learning class. It takes as input a real-valued vector of length, d and normalizes it into a probability distribution. It is easy to understand and interprete but at its core are some gotchas than one needs to be aware of. This includes its implementation in practice, numerical stability and applications. The article is an exposé of the topic.
+Softmax function is one of the major functions used in classification models. It is usually introduced early in a machine learning class. It takes as input a real-valued vector of length, d and normalizes it into a probability distribution. It is easy to understand and interprete but at its core are some gotchas than one needs to be aware of. This includes its implementation in practice, numerical stability and applications. The article is an exposé on the topic.
 
 Here's what we will cover:
 1. TOC
@@ -117,13 +117,15 @@ When used for classifiers the log-softmax has the effect of heavily penalizing t
 
 If we naively apply the logarithm function to the probability distribution, we get
 ```
-x = np.array([10, 2, 10000, 4])
+>> x = np.array([10, 2, 10000, 4])
+>> softmax(x)
+output: [0., 0., 1., 0.]
 >> np.log(softmax(x))
 output: [-inf, -inf,   0., -inf]
 ```
 We are back to numerical instability, in particular, numerical underflow.  
 - Question: Why is this so?   
-The answer lies in taking the logarithm of individual elements. The $log(0)$ is underfined. Can we do better? oh yes.
+The answer lies in taking the logarithm of individual elements. The $log(0)$ is underfined. Can we do better? oh yes!
 
 ## Log-Softmax Derivation
 \begin{equation}
@@ -206,4 +208,4 @@ output: [0.25869729, 0.21608214, 0.26392332, 0.26129724]
 This produces a softer probability distribution over the tokens and results in more diversity in sampling.
 
 ## Conclusion
-The softmax is an interesting function that needs an indepth look. We introduced the softmax function and how it can be computed. We then looked at the problems with the naive implementation and how it can lead to numerical instability and proposed a solution. Also, we introduced the log-softmax which makes numerical computation and gradient compution easier. Finally, we discussed the temperature constant used with softmax.
+The softmax is an interesting function that requires an indepth look. We introduced the softmax function and how it can be computed. We then looked at the problems with the naive implementation and how it can lead to numerical instability and proposed a solution. Also, we introduced the log-softmax which makes numerical computation and gradient compution easier. Finally, we discussed the temperature constant used with softmax.
