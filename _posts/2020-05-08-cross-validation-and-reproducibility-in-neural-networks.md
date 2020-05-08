@@ -7,13 +7,13 @@ Here's what we will cover:
 
 ## Introduction
 Cross-validation is a resampling algorithm which is used to evaluate machine learning models on limited data sample. It is a validation technique that assesses how the results of a statistical analysis will generalize to an independent data set. There are common used types names; K-fold cross validation, a variant called Stratified K-fold cross validation and the leave-one-out cross validation.   
-Given data samples $\{\textbf{x}_i, y_i\}_{i=1}^n$ where n is the total number of examples, $\textbf{x}_i$ is a d-dimensional vector or a tensor (as in images), and $y_i$ is the class or label of example, $\textbf{x}_i$
+Given data samples $\{\textbf{x}_i, y_i\}^n_{i=1}$  where n is the total number of examples, $\textbf{x}_i$ is a d-dimensional vector or a tensor (as in images), and $y_i$ is the class or label of example, $\textbf{x}_i$
 
 - The k-fold cross validation is the standard type where the data is split into k different parts where k is an integer (usually between 5-10, and depends on the data size) and k < total number of examples.
 - If k = total number of examples, the the k-fold becomes leave-one-out cross validation, as only one example is used as validation set in each validation run.
 - The stratified k-fold cross validation is suitable for instances where there is inbalance in the frequency of the classes. If we use a random sampling, as is the case in the case of k-fold, some examples might not have enough contribution to some folds.
 
-I also believed I has talked about cross validation on a high-level. For a full review of cross validation, you might need to check other sources.
+I think I have only talked about cross validation on a high level, and i assume you are already familiar with the concept in machine learning. You might need to check out other sources if your require more details.
 
 ## Why Reproducibility in Training?
 How would you feel if you run the same experiment multiple times and at those different times, you get different results, without being able to account . You might not know where you are going wrong, or what to improve upon. Reproducibility ensures that you can recreate experiments. Deep learning models has been notorious known to have many parameters and hyperparameters. For reproducibility sake, we have to follow a standard process to ensure things are in order.
@@ -147,10 +147,8 @@ Just reinitialize your model on each fold. Since, we have set a seed, we are mor
 Similar to 2 above. Just make sure you reinitialize your model on each fold.
 > In any case, do not use the trained model of a previous fold to intialize a new fold. This is very*5 disastrous!!
 
-### Train on the entire dataset
+### Training on the entire dataset
 Now that you have performed cross validation with your hyperparameters, you can also use the best hyperparameters (such as learning rate, number of epochs, batch size, optimizer, image size etc) to retrain the model on the whole dataset. This might bring about some significan improvement as the dataset can now see more examples in a single run.
 
 ## Conclusion
 Cross validation is one main topics less talked about in deep learning due to the enormous amount of data. In cases where the sample size is not massive, we still require some classical ideas to get the best results. Reproducibility ensures that on each fold of cross validation, we can reinitialize our model to the original state.
-
-
