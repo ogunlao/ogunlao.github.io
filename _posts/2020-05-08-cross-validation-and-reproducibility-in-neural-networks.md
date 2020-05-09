@@ -26,12 +26,12 @@ The setup is simple and looks like this
 >> from argparse import Namespace
 
 >> args = Namespace(
-      size = 448,
+      size = 224,
 
       # Model Hyperparameters
       learning_rate = 1e-4,
-      batch_size = 8,
-      num_epochs = 10,
+      batch_size = 32,
+      num_epochs = 20,
       early_stopping_criteria=10,
       momentum=0.9,
 
