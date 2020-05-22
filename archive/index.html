@@ -1,0 +1,89 @@
+---
+layout: default
+title: Blogs
+use_math: true
+lang: zh
+---
+<!-- {% include JB/setup %}
+
+
+<div class="page-header">
+  <div class="pull-right">
+    {% include contact_icons %}
+  </div>
+  <h1>
+    {% if site.tagline %}<br/><small>{{ site.tagline }}</small>{% endif %}
+  </h1>
+</div> -->
+
+{% include JB/setup %}
+<div class="page-header">
+  <div class="pull-right">
+    {% include contact_icons %}
+  </div>
+  <h1>
+    Blogs
+    {% if site.tagline %}<br/><small>{{ site.tagline }}</small>{% endif %}
+  </h1>
+</div>
+
+<!-- Blogs -->
+<div id="recent-posts" class="recent-posts">
+  {% for this_post in paginator.posts %}
+  {% unless this_post.categories contains "hidden" %}
+  <div class="post">
+      <a href="{{ this_post.url }}">
+        <p class="post-title" style="font-size:20px; font-family:Helvetica Neue; font-weight: 400;">{{ this_post.title }}
+        </p>
+      </a>
+      {% include category_info %}
+      {% include source_info %}
+  </div>
+  {% endunless %}
+  {% endfor %}
+</div>
+<script type="text/javascript">
+  var el = document.getElementById("recent-posts");
+  fix_cjk_linebreak(el);
+  fix_table_style(el);
+</script>
+
+<!-- pagination links -->
+<!--<div class="pagination align-center">
+  <ul class="pagination">
+    {% if paginator.next_page %}
+    <li class="prev">
+      <a href="{{ paginator.next_page_path }}">&laquo; Older</a>
+    </li>
+    {% else %}
+    <li class="prev disabled">
+      <a>&laquo; Older</a>
+    </li>
+    {% endif %}
+    <li>
+      <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a>
+    </li>
+    {% if paginator.previous_page %}
+    <li class="next">
+      {% if paginator.previous_page == 1 %}
+      <a href="/">Newer &raquo;</a>
+      {% else %}
+      <a href="{{ paginator.previous_page_path }}">Newer &raquo;</a>
+      {% endif %}
+    </li>
+    {% else %}
+    <li class="next disabled">
+      <a>Newer &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>-->
+<!-- <div class="pagination align-center">
+{% include post_pagination %}
+</div>
+
+<div>
+<a href="/archive/notes/index.html">
+<img align="right" border="0" alt="W3Schools" src="http://wangchuan.github.io/img/favicon.ico" width="10" height="10">
+</a>
+</div> -->
