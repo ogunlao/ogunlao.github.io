@@ -7,7 +7,7 @@ Here's what we will cover:
 
 ## Introduction  
 Cross-validation is a resampling technique that assesses how the results of a statistical analysis will generalize to an independent data set. Three commonly used types are; i) K-fold cross validation, ii) a variant called Stratified K-fold cross validation and iii) the leave-one-out cross validation.   
-Given data samples $(x_1, y_1), (x_2, y_2), ... (x_n, y_n)$  where n is the total number of examples, $\textbf{x}_i$ is a d-dimensional vector or a tensor (as in images), and $y_i$ is the class or label of example, $i$
+Given data samples $\{(x_1, y_1), (x_2, y_2), ... (x_n, y_n)\}$  where n is the total number of examples, $\textbf{x}_i$ is a d-dimensional vector or a tensor (as in images), and $y_i$ is the class or label of example, $i$
 
 - The k-fold cross validation is the standard type. The training data is split into k different parts. k is an integer (usually between 5-10), and depends on the size of data). k < total number of examples.
 - If k = total number of examples, then, the k-fold becomes leave-one-out cross validation, as only one example is placed in the validation set in each validation run.
@@ -19,7 +19,7 @@ I think I have only talked about cross validation on a high level, and I assume 
 Reproducibility ensures that we can recreate experiments. Deep learning models have been notoriously known to have many parameters and hyperparameters, with randomness in initializations and sampling. For reproducibility sake, we have to put things in order to validate our experiments. Two main places to ensure this are; i) hyperparameter initializations and ii) random seed settings
 
 ### Structuring Hyperparameters
-Firstly, we will define our hyperparameters and other settings in a structured way, so that hyperparameter changes can only be applied only at one single point. We can use a dictionary for this purpose or the argparse library. The argparse library is more prefered as it is an argument parsing tool which helps to easily translate from hyperparameters in notebooks to arguments on the command line. For an in-depth tutorial on this check out this [argparse tutorial](https://towardsdatascience.com/learn-enough-python-to-be-useful-argparse-e482e1764e05) by Jeff Hale on Medium.
+Firstly, we will define our hyperparameters and other settings in a structured way, so that hyperparameter changes can only be applied only at one single point. We can use a dictionary for this purpose or the argparse library. The argparse library is more preferred as it is an argument parsing tool which helps to easily translate from hyperparameters in notebooks to arguments on the command line. For an in-depth tutorial on this check out this [argparse tutorial](https://towardsdatascience.com/learn-enough-python-to-be-useful-argparse-e482e1764e05) by Jeff Hale on Medium.
 
 The setup is simple and looks like this
 ```
@@ -146,7 +146,7 @@ One subtle problem that has not yet been considered thus far is how to initializ
 This is pretty straight forward. Just redownload the weights or reload the weight from the stored cache at the beginning of each fold.
 2. Using a custom model built from scratch.
 Just reinitialize your model on each fold. Since we have set a seed, we are more likely to have the same set of weights and biases during reinitialization. You can also initialize once, store the weights in a cache and retrieve the stored weights for each fold.
-3. Using a base model architecture such as ResNet without pretrained weights
+3. Using a base model architecture such as ResNet without pretrained weights.
 Similar to 2 above. Just make sure you reinitialize your model on each fold.  
 > In any case, do not use the trained model of a previous fold to initialize a new fold. The training outcome can be very*5 disastrous and deceptive!!
 

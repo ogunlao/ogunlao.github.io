@@ -23,7 +23,7 @@ Softmax is a non-linear function, used majorly at the output of classifiers for 
 sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}
 \end{equation}
 
-where d is the number of classses.  
+where d is the number of classes.  
 The sum of all the exponentiated values, $\sum_{j=1}^{d} e^{x_j}$ is a normalizing constant which helps to ensure that it maintains the properties of a probability distribution i.e. a) the values must sum to 1 b) they must be between 0 and 1 inclusive $[0, 1]$.   
 
 ![Softmax classifier](/images/softmax.png "source: ljvmiranda921.github.io")  
@@ -34,7 +34,7 @@ For example, given a vector $x = [10, 2, 40, 4]$, to calculate the softmax of ea
 - calculate the sum $\sum{e^x} = e^{10} + e^2 + e^{40} + e^4 = 2.353...e^{17}$
 - then, divide each $x_i$ by the sum to give $sm(x) = [9.35762297e^{-14}, 3.13913279e^{-17}, 1.00000000e^{+00}, 2.31952283e^{-16}]$
 
-This can be easily inplemented in a numerical library like numpy,
+This can be easily implemented in a numerical library like numpy,
 ```
 >> import numpy as np
 def softmax(x):
@@ -118,7 +118,8 @@ Great, problem solved !!!
 - Question: Why are all other values in the softmax 0. Does it mean they have no probability of occuring?
 
 ## Log Softmax
-A critical evluation of the softmax computation shows a pattern of exponentiations and divisions. Can we reduce these computations? We can instead optimize the log softmax. This gives us nice characteristics such as;  
+
+A critical evaluation of the softmax computation shows a pattern of exponentiations and divisions. Can we reduce these computations? We can instead optimize the log softmax. This gives us nice characteristics such as;  
 1. numerical stability.
 1. gradient of log softmax becomes additive since $log(a/b) = log(a) - log(b)$
 1. lesser computations of divisions and multiplications as addition is less computationally expensive.
@@ -138,9 +139,10 @@ output: [-inf, -inf,   0., -inf]
 ```
 We are back to numerical instability, in particular, numerical underflow.  
 - Question: Why is this so?   
-The answer lies in taking the logarithm of individual elements. The $log(0)$ is underfined. Can we do better? oh yes!
+The answer lies in taking the logarithm of individual elements. The $log(0)$ is undefined. Can we do better? oh yes!
 
 ## Log-Softmax Derivation
+
 \begin{equation}
 sm(x_i) = \dfrac{e^{x_i - c}}{\sum_{j=1}^{d} e^{x_j -c}}
 \end{equation}
@@ -182,6 +184,7 @@ output: [0., 0., 1., 0.]
 ```
 
 ## Softmax Temperature
+
 In the NLP domain, where the softmax is applied at the output of a classifier to get a probability distribution over tokens. The softmax can be too sure of its predictions and can make other words less likely to pre sampled.    
 For example, if we have a statement;
 
@@ -204,7 +207,7 @@ A temperature hyperparameter, $\tau$ is added to the softmax to dampen this extr
    }
 \end{equation}
 where $\tau$ is in $(0, \inf]$.
-The temperture parameter increases the sensitivity to low probability candidates and has to be tuned for optimal results. Let's examine different cases of $\tau$
+The temperature parameter increases the sensitivity to low probability candidates and has to be tuned for optimal results. Let's examine different cases of $\tau$
 
 case a: $\tau \to 0$ say $\tau = 0.001$
 ```
@@ -221,4 +224,5 @@ output: [0.25869729, 0.21608214, 0.26392332, 0.26129724]
 This produces a softer probability distribution over the tokens and results in more diversity in sampling.
 
 ## Conclusion
-The softmax is an interesting function that requires an indepth look. We introduced the softmax function and how it can be computed. We then looked at the problems with the naive implementation and how it can lead to numerical instability and proposed a solution. Also, we introduced the log-softmax which makes numerical computation and gradient compution easier. Finally, we discussed the temperature constant used with softmax.
+
+The softmax is an interesting function that requires an in-depth look. We introduced the softmax function and how it can be computed. We then looked at the problems with the naive implementation and how it can lead to numerical instability and proposed a solution. Also, we introduced the log-softmax which makes numerical computation and gradient computation easier. Finally, we discussed the temperature constant used with softmax.
