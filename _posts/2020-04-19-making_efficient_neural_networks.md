@@ -1,4 +1,14 @@
-# Making Efficient Neural Networks
+---
+layout: post
+title:  "Making Efficient Neural Networks"
+categories: article
+tags: [neural networks, layerdrop, quantization, sparsity]
+comments: true
+# categories: coding
+# tags: linux
+
+---
+
 {:.no_toc}
 This article was inspired by Angela Fan's Talk on Efficient Transformers at AMMI Deep NLP class, 2020. [Angela Fan](https://scholar.google.com/citations?user=TLZR9zgAAAAJ&hl=en) is a PhD candidate with Facebook AI in France.
 

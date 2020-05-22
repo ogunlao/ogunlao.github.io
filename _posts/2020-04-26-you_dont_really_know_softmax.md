@@ -1,4 +1,14 @@
-# You Don't Really Know Softmax
+---
+layout: post
+title:  "You Don't Really Know Softmax"
+categories: article
+tags: [softmax, numerical stability]
+comments: true
+# categories: coding
+# tags: linux
+
+---
+
 Softmax function is one of the major functions used in classification models. It is usually introduced early in a machine learning class. It takes as input a real-valued vector of length, d and normalizes it into a probability distribution. It is easy to understand and interprete but at its core are some gotchas than one needs to be aware of. This includes its implementation in practice, numerical stability and applications. The article is an exposé on the topic.
 
 Here's what we will cover:
@@ -6,6 +16,7 @@ Here's what we will cover:
 {:toc}
 
 ## Introduction
+
 Softmax is a non-linear function, used majorly at the output of classifiers for multi-class classification. Given a vector $[x_1, x_2, x_3, ... x_d]$ for $i = 1,2, ...d$, the softmax function has the form
 
 \begin{equation}
@@ -18,6 +29,7 @@ The sum of all the exponentiated values, $\sum_{j=1}^{d} e^{x_j}$ is a normalizi
 ![Softmax classifier](/images/softmax.png "source: ljvmiranda921.github.io")  
 
 For example, given a vector $x = [10, 2, 40, 4]$, to calculate the softmax of each element;   
+
 - exponentiate each value in the vector $e^x = [e^{10}, e^2, e^{40}, e^4]$,  
 - calculate the sum $\sum{e^x} = e^{10} + e^2 + e^{40} + e^4 = 2.353...e^{17}$
 - then, divide each $x_i$ by the sum to give $sm(x) = [9.35762297e^{-14}, 3.13913279e^{-17}, 1.00000000e^{+00}, 2.31952283e^{-16}]$
@@ -45,6 +57,7 @@ These are pointers to what we will be discussing in the next sessions?
 
 ## Numerical Stability of Softmax
 From the softmax probabilities above, we can deduce that softmax can become numerically unstable for values with a very large range. Consider changing the 3rd value in the input vector to $10000$ and re-evaluate the softmax.  
+
 ```
 >> x = np.array([10, 2, 10000, 4])
 >> print(softmax(x))
