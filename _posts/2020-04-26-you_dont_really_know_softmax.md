@@ -3,7 +3,7 @@ layout: post
 title:  "You Don't Really Know Softmax"
 # categories: article
 tags: [softmax, numerical_stability]
-# comments: true
+comments: true
 # categories: coding
 # tags: linux
 

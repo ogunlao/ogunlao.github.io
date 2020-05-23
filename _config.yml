@@ -23,10 +23,10 @@ author :
 description: > # this means to ignore newlines until "baseurl:"
   This is an example
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://ogunlao.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ogunlao.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
-# disqus:
-#   shortname: salomons-website
+disqus:
+  shortname: ogunlaos-website
 
 # google_analytics: UA-158544608-1
 
@@ -53,8 +53,8 @@ menuitems:
         url:      /index.html }
     - { title:    Projects,
         url:      /projects.html }
-    - { title:    Publications,
-        url:      /publications.html }
+    # - { title:    Publications,
+    #     url:      /publications.html }
     - { title:    Curriculum Vitae,
         url:      /cv.html}
     - { title:    Blogs,
