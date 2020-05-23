@@ -29,13 +29,13 @@ CV in [PDF](/archive/SewadeOgunCV.pdf) version.
 
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![aims-ghana-logo](/img/main/aims_ghana.png)
+![aims-ghana-logo](/img/main/aims-ghana.png)
 </td>
 <td></td>
 <td markdown="1">
 [**African Institute for Mathematical Science, (AIMS)**](https://www.aims.edu.gh/), 10/2019 - Present 
-- **MSc In Machine Intelligence**
-- *Full Scholarship from Facebook and Google, [AMMI](https://aimsammi.org/)*
+- **MSc In Machine Intelligence, [AMMI](https://aimsammi.org/)**
+- *Full Scholarship from Facebook and Google*
 </td> 
 </tr>
 
@@ -53,7 +53,7 @@ CV in [PDF](/archive/SewadeOgunCV.pdf) version.
 <tr height="10"/>
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![ustclogo](/img/main/unilu.jpeg)
+![lautech-logo](/img/main/lautech-logo.png)
 </td>
 <td></td>
 <td markdown="1">
