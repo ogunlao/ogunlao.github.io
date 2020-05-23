@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a neural network, using the datapoints. If you will like to jump directly into the accompanying code, just [follow this link]([via this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb)) to the notebook.
+A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a neural network, using the datapoints. If you will like to jump directly into the accompanying code, just [follow this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb) to the notebook.
 
 Here's what we will cover:
 1. TOC
@@ -48,15 +48,17 @@ d = \sqrt{\sum_{j=1}^{d} (X^2_j - x^t_j)^2}
 \end{equation}
 
 ## Expressing KNN as a Neural Network
+
 With the understanding of the distance function, we can break it apart to derive the parameters of our neural network.
 
-From the distance function, 
+From the distance function,
 \begin{equation}
 d^2 = \sum_{j=1}^{d} (x_{ij} - x_j)^2 = d'
 \end{equation}
 Since optimizing $d^2$ is equivalent to optimizing for $d$, we work with $d^2$ instead, which we will call $d'$
 
 ### Layer 1: Computing the distance function
+
 Expanding the equation, we get:
 
 \begin{equation}
