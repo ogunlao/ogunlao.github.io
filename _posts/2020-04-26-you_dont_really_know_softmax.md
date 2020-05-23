@@ -115,7 +115,7 @@ def softmax(x):
 
 if we apply it to our old problem:
 
-```  
+```python
 x = np.array([10, 2, 10000, 4])
 print(softmax(x))
 ```
@@ -156,6 +156,7 @@ np.log(softmax(x))
 ```
 output: [-inf, -inf,   0., -inf]
 ```
+
 We are back to numerical instability, in particular, numerical underflow.
 
 - Question: Why is this so?

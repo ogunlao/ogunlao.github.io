@@ -16,7 +16,7 @@ lang: zh
 {% assign posts_collate = site.categories.projects %}
 {% include JB/posts_collate %}
 
-CV in [PDF](/archive/CV_Salomon.pdf) version.
+CV in [PDF](/archive/SewadeOgunCV.pdf) version.
 
 ---
 
@@ -29,39 +29,24 @@ CV in [PDF](/archive/CV_Salomon.pdf) version.
 
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![hkulogo](/img/main/univ_ghana.jpg)
+![aims-ghana-logo](/img/main/aims_ghana.png)
 </td>
 <td></td>
 <td markdown="1">
-[**The University of Ghana, (African Master In Machine Intelligence (AMMI, Ghana)**](https://www.ug.edu.gh/), 10/2019 - 10/2020 
-- **Msc in Machine Intelligence**
-- Supervisor: [Dr. Vukosi Marivate](https://cs.up.ac.za/users/view/vmarivate)
-- *Full scolarship by Facebook and Google, [AMMI](https://aimsammi.org/)*
+[**African Institute for Mathematical Science, (AIMS)**](https://www.aims.edu.gh/), 10/2019 - Present 
+- **MSc In Machine Intelligence**
+- *Full Scholarship from Facebook and Google, [AMMI](https://aimsammi.org/)*
 </td> 
 </tr>
 
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![hkulogo](/img/main/udacity.png)
+![unilag-logo](/img/main/unilag-logo.jpg)
 </td>
 <td></td>
 <td markdown="1">
-[**Udacity**](https://www.udacity.com/course/deep-learning-nanodegree--nd101), 04/2019 - 12/2019
-- **Deeplearnig Nanodegree**
-- *Full scolarship by [Facebook AI, and Udacity](https://www.udacity.com/facebook-AI-scholarship)*
-</td> 
-</tr>
-
-<tr style="border-bottom:1pt solid #eee">
-<td markdown="1">
-![hkulogo](/img/main/UWC_logo.png)
-</td>
-<td></td>
-<td markdown="1">
-[**The University of Western Cape, (AIMS South Africa)**](https://www.uwc.ac.za/), 08/2018 - 06/2019 
-- **Msc in Mathematical Sciences**
-- Supervisor: Prof. [Etienne Barnard](http://news.nwu.ac.za/experts/etienne-barnard)
-- *Full scolarship by MasterCard Foundation, [AIMS South Africa](https://aims.ac.za/)*
+[**The University of Lagos**](https://www.uwc.ac.za/), 08/2018 - 06/2019 
+- **MSc in Electrical Engineering**
 </td> 
 </tr>
 
@@ -72,22 +57,8 @@ CV in [PDF](/archive/CV_Salomon.pdf) version.
 </td>
 <td></td>
 <td markdown="1">
-[**Université de Lubumbashi**](http://www.unilu.ac.cd/), 2011 - 2017
-- **Licence en Mathématiques et informatiques**
-- Supervisor: Prof. [Franck Kalala](https://scholar.google.com/citations?user=fQnrWTgAAAAJ&hl=en)
-</td> 
-</tr>
-
-<tr height="10"/>
-<tr style="border-bottom:1pt solid #eee">
-<td markdown="1">
-![ustclogo](/img/main/unilu.jpeg)
-</td>
-<td></td>
-<td markdown="1">
-[**Université de Lubumbashi**](http://www.unilu.ac.cd/), 2011 - 2017
-- **Graduat en Mathématiques**
-- Supervisor: Prof. [Franck Kalala](https://scholar.google.com/citations?user=fQnrWTgAAAAJ&hl=en)
+[**Ladoke Akintola University of Technology**](https://www.lautech.edu.ng/), 2007 - 2012
+- **Bachelors of Technology (Honors)**
 </td> 
 </tr>
 
@@ -101,8 +72,8 @@ CV in [PDF](/archive/CV_Salomon.pdf) version.
 <div class="leftpane1" markdown="1">
 #### Programming
 - Python
-- Julia
-- C/C++
+- JavaScript
+- Matlab
 - Java
 </div>
   
@@ -110,23 +81,21 @@ CV in [PDF](/archive/CV_Salomon.pdf) version.
 #### Libraries
 - PyTorch
 - TensorFlow
-- Nltk
+- Django
 </div>
   
 <div class="leftpane1" markdown="1">
 #### Tools
 - Git 
 - LaTeX
+- Google Cloud
 </div>
 
 <div class="leftpane1" markdown="1">
 #### Language
 - English
-- French
-- Tshiluba
-- Lingala 
-- Kikongo 
-- Swahili
+- Yoruba
+- Pidgin
 </div>
 </div>
 
@@ -143,25 +112,13 @@ CV in [PDF](/archive/CV_Salomon.pdf) version.
 
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![hlf](/img/main/hlf.svg)
+![indabax](/img/main/indabax.jpg)
 </td>
 <td></td>
 <td markdown="1">
-[Heidelberg Laureate Forum (HLF)](https://www.heidelberg-laureate-forum.org/)
+[Deep Learning IndabaX, Nigeria](http://www.deeplearningindaba.com/)
 
-The HLF is a networking conference where 200 carefully selected young researchers in mathematics and computer science spend a week interacting with the laureates of the disciplines: recipients of the Abel Prize, ACM A.M. Turing Award, ACM Prize in Computing, Fields Medal and Nevanlinna Prize. Established in 2013, the HLF is annually organized by the Heidelberg Laureate Forum Foundation (HLFF)
-</td> 
-</tr>
-
-<tr style="border-bottom:1pt solid #eee">
-<td markdown="1">
-![indaba](/img/main/indaba.png)
-</td>
-<td></td>
-<td markdown="1">
-[Deep Learning Indaba](http://www.deeplearningindaba.com/)
-
-The **Deep Learning Indaba** is an initiative to strengthen African Machine Learning community by increasing African participation and contribution to the advances in artificial intelligence and machine learning, I was privilege to attend the Indaba 2019 that was held in Kenya (Nairobi).
+The **Deep Learning IndabaX** is an initiative to strengthen Nigerian Machine Learning community by increasing participation and contribution to the advances in artificial intelligence and machine learning, I attended attend the IndabaX 2019 that was held at the University of Lagos, Nigeria.
 </td> 
 </tr>
 </table>
@@ -181,24 +138,24 @@ The **Deep Learning Indaba** is an initiative to strengthen African Machine Lear
 <col >
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![lenovologo](/img/main/snel.png)
+![proto-logo](/img/main/proto.gif)
 </td>
 <td></td>
 <td markdown="1">
-[**Société Nationale d'Électricité, Lubumbashi (DRC)**](http://www.snel.cd/), 2016 - 2017 
-- IT Intern
+[**Proto**](https://proto.cx/), 2020 
+- NLP Engineer, (Remote)
 </td> 
 </tr>
 
 <tr height="10"/>
 <tr style="border-bottom:1pt solid #eee">
 <td markdown="1">
-![cadcg](/img/main/ikamva.png)
+![cadcg](/img/main/ng-flourm-logo.png)
 </td>
 <td></td>
 <td markdown="1">
-[**IkamvaYouth**](http://ikamvayouth.org/), 2019.2 - 2019.6 
-- Mathematics Tutor
+[**Flour Mills of Nigeria Plc**](https://fmnplc.com/), 2017.4 - 2019.9 
+- Predictive Engineer
 </td> 
 </tr>
 
