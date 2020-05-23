@@ -103,7 +103,7 @@ Before now, we have not really talked out the labels of the training examples. I
 For a classification task, where $Z_3 = W_3x_3 + b$, firstly, we perform one-hot encoding on the train labels. $y_{onehot} \in \mathcal{R}^{nxd}$
 
 \begin{equation}
-$Z_3 = Z_2^Ty_{onehot}$ 
+Z_3 = Z_2^Ty_{onehot}
 \end{equation}
 
 where $W_3 = X^T$, $x_3 = z_2$, $b = 0$
