@@ -40,12 +40,12 @@ The setup is simple and looks like this:
 from argparse import Namespace
 
 args = Namespace(
-        size = 448,
+        size=448,
 
         # Model Hyperparameters
-        learning_rate = 1e-4,
-        batch_size = 8,
-        num_epochs = 10,
+        learning_rate=1e-4,
+        batch_size=8,
+        num_epochs=10,
         early_stopping_criteria=10,
         momentum=0.9,
 
@@ -64,7 +64,7 @@ Then, you can easily call or modify the parameters, like a normal python diction
 ```python
 # Check CUDA
 if not torch.cuda.is_available():
-    args.cuda = False
+    args.cuda=False
     
 # Add device for training
 args.device = torch.device("cuda" if args.cuda else "cpu")
@@ -84,13 +84,13 @@ def setup_seed(seed, cuda):
     if cuda:
         torch.cuda.manual_seed_all(seed)
     random.seed(seed)
-    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.deterministic=True
 ```
 
 Then, we can easily call the function to set up the seeding across all libraries.
 
 ```python
->> setup_seed(args.seed, args.cuda)
+setup_seed(args.seed, args.cuda)
 ```
 
 That's it!! Now that you understand reproducibility, let me walk you through a cross validation process in neural networks. I will be applying it to a classification task.

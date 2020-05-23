@@ -144,10 +144,16 @@ When used for classifiers the log-softmax has the effect of heavily penalizing t
 If we naively apply the logarithm function to the probability distribution, we get:
 
 ```python
->> x = np.array([10, 2, 10000, 4])
->> softmax(x)
+x = np.array([10, 2, 10000, 4])
+softmax(x)
+```
+```
 output: [0., 0., 1., 0.]
->> np.log(softmax(x))
+```
+```python
+np.log(softmax(x))
+```
+```
 output: [-inf, -inf,   0., -inf]
 ```
 We are back to numerical instability, in particular, numerical underflow.
