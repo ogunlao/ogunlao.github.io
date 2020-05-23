@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a neural network, using the datapoints.
+A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a neural network, using the datapoints. If you will like to jump directly into the accompanying code, just [follow this link]([via this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb)) to the notebook.
 
 Here's what we will cover:
 1. TOC
@@ -38,9 +38,9 @@ To classify a new test point into its correct label, we perform the following st
 \begin{equation}
 d = \sqrt{\sum_{j=1}^{d} (x_{ij} - x^t_j)^2}
 \end{equation}
-Using the matrix notation, 
+Using the matrix notation,
 \begin{equation}
-d = \sqrt{\sum_{j=1}^{d} (X^2_j - 1_n.(x^t)^T_j)^2}
+d = \sqrt{\sum_{j=1}^{d} (X^2_j - 1_n(x^t)^T_j)^2}
 \end{equation}
 where $X = (x_1, x_2, ..., x_n)^T \in \mathcal{R}^{nxd}$ and $(x^t)^T \in \mathcal{R}^d$. To simplify notation, I will assume that $x^t$ will be broadcasted along the matrix, which becomes simply:
 \begin{equation}
@@ -96,7 +96,7 @@ $Z_3 = Z_2^Ty_{onehot} + b$ where $W_3 = X^T$, $x_3 = z_2$, $b = 0$
 
 ## Implementation
 
-I created a jupyter notebook to show predictions on the iris dataset. You can access the notebook [via this link](\notebooks\knn_as_neural_network.ipynb). Feel free to drop comments, and possibly give area for clarification or improvement. Let me try to explain the major parts of the implementation.
+I created a jupyter notebook to show predictions on the iris dataset. You can access the notebook [via this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb). Feel free to drop comments, and possibly give area for clarification or improvement. Let me try to explain the major parts of the implementation.
 
 - Data: Loaded the iris dataset via the sklearn load dataset api.
 - Preprocessing: Normalized the dataset (often a good thing to normalize) and converted each label into one-hot encoded vectors.
