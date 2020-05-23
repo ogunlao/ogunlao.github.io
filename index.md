@@ -45,7 +45,8 @@ My research interests include but not limited to:
 ---
 
 ### Talks and Presentations
-- [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana. 
+- [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana.
+- [Chance Constrained Optimization](https://drive.google.com/file/d/1Z9-7nmAwEFTz7bUu_I3oRpGWdZA3wYTE/view?usp=sharing), Convex Optimization Course, AIMS
 
 <!-- ---
 
