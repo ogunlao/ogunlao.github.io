@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "You Don't Really Know Softmax"
-categories: article
+# categories: article
 tags: [softmax, numerical_stability]
 # comments: true
 # categories: coding
