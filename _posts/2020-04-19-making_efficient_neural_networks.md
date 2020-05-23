@@ -17,6 +17,7 @@ Here's what we will cover:
 {:toc}
 
 ## Introduction
+
 Most research directions in AI are geared towards beating the State-of-the-art on various benchmarks. As such, researchers tend to put in all their compute power and complexity to achieve this goal. This leads to trends of building bigger models with more complex architecture, for a little gain in accuracy. We need to start thinking more in terms of efficiency of the models we build and how it impacts on further research. A model that is very big and complex will loose interest from low-resource researchers and students who want to quickly experiment.  
 Efficiency in the context of neural networks deal with;
 
@@ -30,9 +31,12 @@ Similarly, in Computer vision domain, models like [ResNext](https://arxiv.org/ab
 
 This article was written to give an introductory view on this subject, and hopefully inform Researchers and Machine Learning Engineers like me, on what to have at the back of our minds when we build models and do research.  
 
-![](https://images.unsplash.com/photo-1547654387-a1b3c42b3d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80 "Source: @yogidan2012 on unsplash.com")  
+![](https://images.unsplash.com/photo-1547654387-a1b3c42b3d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80 "Source: @yogidan2012 on unsplash.com")
+
 ## What we mean by efficiency
+
 Let me expand on the points I made earlier about efficiency. Efficiency is relative and we are talking here in terms of our current memory capacity for on-device AI, mobile applications, computation speed etc.
+
 - **How long will it take to train the model?**  
 One thing I like to scan for in AI research papers these days is the total training time of the model. Many SOTA models take like 1 week to 2 months to train. With that in mind, I know where to focus my reading as it will be difficult to replicate the same results. I entered into a NeurIPS paper implementation challenge last year but got really discouraged by the number of days it will take to verify experiments. I understand that I can track my loss values and accuracy as I train, but the final pre-trained model still takes that long.
 For example, the [Google Meena Chatbot](https://arxiv.org/pdf/2001.09977.pdf) was trained for 30 days using cloud TPU Pods (2,048 TPU cores). 30 days of pre-training is a long-time for experimentation and reproducing results.
@@ -93,14 +97,14 @@ LayerDrop has not seen wide success in computer vision as it has in NLP though, 
 
 1. **Weight Sharing**  
 The idea of weight sharing is that different layers can reuse weights. This just requires that some or all sub-networks share the same weights. A major drawback of weight sharing is that the amount of transformations that can be learned is reduced, casing a decrease in performance. In practice, the model capacity is usually increased to cater for this. The [ALBERT](https://ai.googleblog.com/2019/12/albert-lite-bert-for-self-supervised.html) model utilizes this idea of tying chunks of layers to the same weights. As quoted from the blog post;  
-> "Another critical design decision for ALBERT stems from a different observation that examines redundancy. Transformer-based neural network architectures (such as BERT, XLNet, and RoBERTa) rely on independent layers stacked on top of each other. However, we observed that the network often learned to perform similar operations at various layers, using different parameters of the network. This possible redundancy is eliminated in ALBERT by parameter-sharing across the layers, i.e., the same layer is applied on top of each other. This approach slightly diminishes the accuracy, but the more compact size is well worth the tradeoff."        
+    > "Another critical design decision for ALBERT stems from a different observation that examines redundancy. Transformer-based neural network architectures (such as BERT, XLNet, and RoBERTa) rely on independent layers stacked on top of each other. However, we observed that the network often learned to perform similar operations at various layers, using different parameters of the network. This possible redundancy is eliminated in ALBERT by parameter-sharing across the layers, i.e., the same layer is applied on top of each other. This approach slightly diminishes the accuracy, but the more compact size is well worth the tradeoff."        
   
 6. **Quantization**   
 Quantization refers to techniques for performing computations and storing tensors at lower bitwidths than floating point precision. This process compresses the model size after training and a go-to approach for model compression, especially for on-device AI applications.   
 In quantization, the goal is to efficiently store the weight floating point numbers using other number types such as int8, int4 or even bits(1 and 0). This is usually more memory efficient. The popular deep learning libraries provide quantization methods out of the box and have tutorials on how to perform quantization. See [Tensorflow](https://www.tensorflow.org/lite/performance/post_training_quantization) and [PyTorch](https://pytorch.org/docs/stable/quantization.html) libraries for their apis.  
 Quantization can drastically reduce model size by up to 80% and can easily be combined with other existing techniques for even lower model sizes. The quantization method and compression size has to be considered because drastic compression can reduce model performance and accuracy.  
 
-7. **More Efficient Achitectures**  
+7. **More Efficient Architectures**  
 As at this time, we have been exploring methods that involve starting with a bigger model, then compressing it. Can we do better by consciously building architectures made out of the goal for efficiency?  
 For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](Pay Less Attention with Lightweight and Dynamic Convolutions) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.    
 Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.  

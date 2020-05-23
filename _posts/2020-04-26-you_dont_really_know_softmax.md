@@ -35,18 +35,19 @@ For example, given a vector $x = [10, 2, 40, 4]$, to calculate the softmax of ea
 - then, divide each $x_i$ by the sum to give $sm(x) = [9.35762297e^{-14}, 3.13913279e^{-17}, 1.00000000e^{+00}, 2.31952283e^{-16}]$
 
 This can be easily implemented in a numerical library like numpy,
-```
->> import numpy as np
+```python
+import numpy as np
 def softmax(x):
-  exp_x = np.exp(x)
-  sum_exp_x = np.sum(exp_x)
-  sm_x = exp_x/sum_exp_x
-  return sm_x
+    exp_x = np.exp(x)
+    sum_exp_x = np.sum(exp_x)
+    sm_x = exp_x/sum_exp_x
+    return sm_x
    
->> x = np.array([10, 2, 40, 4])
->> print(softmax(x))
+x = np.array([10, 2, 40, 4])
+print(softmax(x))
+```
+```
 output: [9.35762297e-14 3.13913279e-17 1.00000000e+00 2.31952283e-16]
-  
 ```
 
 - Questions
@@ -58,9 +59,11 @@ These are pointers to what we will be discussing in the next sessions?
 ## Numerical Stability of Softmax
 From the softmax probabilities above, we can deduce that softmax can become numerically unstable for values with a very large range. Consider changing the 3rd value in the input vector to $10000$ and re-evaluate the softmax.  
 
+```python
+x = np.array([10, 2, 10000, 4])
+print(softmax(x))
 ```
->> x = np.array([10, 2, 10000, 4])
->> print(softmax(x))
+```
 output: [0.0,  0.0, nan,  0.0]
 ```
 'nan' stands for not-a-number and occurs when there is an overflow or underflow. But, why the $0$s and $nan$? Are we implying we cannot get a probability distribution from the vector? 
@@ -100,7 +103,8 @@ sm(x_i) = \dfrac{e^{x_i}}{\sum_{j=1}^{d} e^{x_j}}
 \end{equation}  
 
 A numpy implementation of this stable softmax will look like this:
-```
+
+```python
 def softmax(x):
     max_x = np.max(x)
     exp_x = np.exp(x - max_x)
@@ -108,18 +112,26 @@ def softmax(x):
     sm_x = exp_x/sum_exp_x
     return sm_x
 ```
-if we apply it to our old problem
+
+if we apply it to our old problem:
+
 ```  
->> x = np.array([10, 2, 10000, 4])
->> print(softmax(x))
+x = np.array([10, 2, 10000, 4])
+print(softmax(x))
+```
+
+```
 output: [0., 0., 1., 0.]
 ```
+
 Great, problem solved !!!
-- Question: Why are all other values in the softmax 0. Does it mean they have no probability of occuring?
+
+- Question: Why are all other values in the softmax 0. Does it mean they have no probability of occurring?
 
 ## Log Softmax
 
-A critical evaluation of the softmax computation shows a pattern of exponentiations and divisions. Can we reduce these computations? We can instead optimize the log softmax. This gives us nice characteristics such as;  
+A critical evaluation of the softmax computation shows a pattern of exponentiations and divisions. Can we reduce these computations? We can instead optimize the log softmax. This gives us nice characteristics such as;
+
 1. numerical stability.
 1. gradient of log softmax becomes additive since $log(a/b) = log(a) - log(b)$
 1. lesser computations of divisions and multiplications as addition is less computationally expensive.
@@ -129,16 +141,19 @@ To quote a  [stackoverflow answer](https://datascience.stackexchange.com/a/40719
 > There are a number of advantages of using log softmax over softmax including practical reasons like improved numerical performance and gradient optimization. These advantages can be extremely important for implementation especially when training a model can be computationally challenging and expensive. At the heart of using log-softmax over softmax is the use of log probabilities over probabilities, which has nice information theoretic interpretations.
 When used for classifiers the log-softmax has the effect of heavily penalizing the model when it fails to predict a correct class. Whether or not that penalization works well for solving your problem is open to your testing, so both log-softmax and softmax are worth using.
 
-If we naively apply the logarithm function to the probability distribution, we get
-```
+If we naively apply the logarithm function to the probability distribution, we get:
+
+```python
 >> x = np.array([10, 2, 10000, 4])
 >> softmax(x)
 output: [0., 0., 1., 0.]
 >> np.log(softmax(x))
 output: [-inf, -inf,   0., -inf]
 ```
-We are back to numerical instability, in particular, numerical underflow.  
-- Question: Why is this so?   
+We are back to numerical instability, in particular, numerical underflow.
+
+- Question: Why is this so?
+
 The answer lies in taking the logarithm of individual elements. The $log(0)$ is undefined. Can we do better? oh yes!
 
 ## Log-Softmax Derivation
@@ -159,7 +174,7 @@ Well, we can exponentiate and normalize the log softmax or log probability value
 \end{equation}
 Let's make this concrete via code.
 
-```
+```python
 def logsoftmax(x, recover_probs=True):
     # LogSoftMax Implementation 
     max_x = np.max(x)
@@ -178,8 +193,10 @@ def logsoftmax(x, recover_probs=True):
 
     return log_probs
   
->> x = np.array([10, 2, 10000, 4])
->> print(logsoftmax(x, recover_probs=True))
+x = np.array([10, 2, 10000, 4])
+print(logsoftmax(x, recover_probs=True))
+```
+```
 output: [0., 0., 1., 0.]
 ```
 
@@ -190,10 +207,13 @@ For example, if we have a statement;
 
 The boy ___ to the market.
 
-with possible answers, $[goes, go, went, comes]$. Assume we get logits of $[38, 20, 40, 39]$ from our classifier to be fed to a softmax function.  
+with possible answers, $[goes, go, went, comes]$. Assume we get logits of $[38, 20, 40, 39]$ from our classifier to be fed to a softmax function.
+
+```python
+x = [38, 20, 40, 39]
+softmax(x)
 ```
->> x = [38, 20, 40, 39]
->> softmax(x)
+```
 output: [0.09, 0.00, 0.6, 0.24]
 ```
 
@@ -210,15 +230,19 @@ where $\tau$ is in $(0, \inf]$.
 The temperature parameter increases the sensitivity to low probability candidates and has to be tuned for optimal results. Let's examine different cases of $\tau$
 
 case a: $\tau \to 0$ say $\tau = 0.001$
+```python
+softmax(x/100)
 ```
->> softmax(x/100)
+```
 output: [0., 0., 1., 0.]
 ```
 This creates a more confident prediction and less likely to sample from unlikely candidates.
 
 case b: $\tau \to \inf$ say $\tau = 100$
+```python
+softmax(x/100)
 ```
->> softmax(x/100)
+```
 output: [0.25869729, 0.21608214, 0.26392332, 0.26129724]
 ```
 This produces a softer probability distribution over the tokens and results in more diversity in sampling.
