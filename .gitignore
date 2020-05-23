@@ -8,3 +8,4 @@ _site
 vendor
 _notebooks/.ipynb_checkpoints
 .vscode
+.ipynb_checkpoints/

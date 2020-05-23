@@ -2,7 +2,7 @@
 layout: default
 title: Homepage
 use_math: true
-lang: zh
+lang: en-GB
 comments: true
 ---
 {% include JB/setup %}

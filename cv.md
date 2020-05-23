@@ -16,7 +16,7 @@ lang: zh
 {% assign posts_collate = site.categories.projects %}
 {% include JB/posts_collate %}
 
-CV in [PDF](/archive/SewadeOgunCV.pdf) version.
+CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://www.linkedin.com/in/sewade-ogun/).
 
 ---
 
@@ -58,7 +58,7 @@ CV in [PDF](/archive/SewadeOgunCV.pdf) version.
 <td></td>
 <td markdown="1">
 [**Ladoke Akintola University of Technology**](https://www.lautech.edu.ng/), 2007 - 2012
-- **Bachelors of Technology (Honors)**
+- **Bachelors of Technology (Honors), Electronic and Electrical Engineering**
 </td> 
 </tr>
 

@@ -1,5 +1,5 @@
 {% comment %}<!--
-The `contact_icons` generate the icons about the contat information of the
+The `contact_icons` generate the icons about the contact information of the
 author of the site.
 
 Usage:
@@ -37,7 +37,7 @@ Example:
   {% if site.author.twitter %}
   <li>
     <a target="_blank"
-       title="follow me at Twitter"
+       title="follow me on Twitter"
        href="https://twitter.com/{{site.author.twitter}}">
       <img src="/img/twitter.png"/>
     </a>
