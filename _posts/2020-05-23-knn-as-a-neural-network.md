@@ -19,14 +19,12 @@ Here's what we will cover:
 
 k-Nearest Neighbor uses a distance function to evaluate the label of a new test point. The method of evaluation involves taking the average of predictions of k nearest points to the given test point. It often serves a base model for many predictions tasks and often difficult to beat.
 
-Given a set of train data-points 
+Given a set of train data-points,
 \begin{equation}
 \{(x_1, y_1), (x_2, y_2), ... ,(x_n, y_n)\}
 \end{equation}
 
-with $x_i \in \mathcal{R}^d$, $y_i \in \mathcal{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x_t$, how can we classify the point using k-nearest neighbor into its correct class?   
-
-![Softmax classifier](/images/softmax.png "source: ljvmiranda921.github.io")  
+with $x_i \in \mathcal{R}^d$, $y_i \in \mathcal{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x_t$, how can we classify the point using k-nearest neighbor into its correct class?
 
 ## K Nearest Neighbor
 
@@ -77,13 +75,15 @@ since the $-2X_jx^t$ does not depend on j.
 At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2$
 
 ### Layer 2: Softmax Layer
+
 As we are looking for the class with minimum distance from the test datapoint, we have to negate the vector, so the datapoint with minimum distance, then have the maximum value. We then pass this through a softmax layer to normalize.
 
 \begin{equation}
 Z_2 = softmax(-Z_1)
 \end{equation}
 
-### Layer 3: Prediction Layer.
+### Layer 3: Prediction Layer
+
 Before now, we have not really talked out the labels of the training examples. It comes in at this layer to support in prediction. 
 
 - For a regression task, this computation is almost done. We take the vector of distances and find the prediction of the class, with the minimum distance (or maximum value in this case, as we have performed inversion).
@@ -104,4 +104,4 @@ I created a jupyter notebook to show predictions on the iris dataset. You can ac
 
 ## Conclusion
 
-In this article, We showed how a k-nearest eighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increases as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
+In this article, We showed how a k-nearest neighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increases as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
