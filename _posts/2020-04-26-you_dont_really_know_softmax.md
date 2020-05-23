@@ -2,8 +2,8 @@
 layout: post
 title:  "You Don't Really Know Softmax"
 categories: article
-tags: [softmax, numerical stability]
-comments: true
+tags: [softmax, numerical_stability]
+# comments: true
 # categories: coding
 # tags: linux
 

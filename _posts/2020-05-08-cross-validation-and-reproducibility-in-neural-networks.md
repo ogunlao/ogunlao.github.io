@@ -1,3 +1,14 @@
+---
+layout: post
+title:  "Cross Validation and Reproducibility in Neural Network Training"
+categories: article
+tags: [cross_validation, model_fitting, random_seed]
+# comments: true
+# categories: coding
+# tags: linux
+
+---
+
 # Cross Validation and Reproducibility in Neural Network Training
 Neural networks have a high tendency to overfit on training data, especially when the examples are few and the network has a large capacity. There is even a famous quote which says, A popular deep learning adage is that "If your neural network is not overfitting, then it is not learning enough. It just matters how much you want it to." But with this comes its own problem; the ability to generalize to unseen data. Cross validation is a great tool to mimic generalization accuracy, and it is especially important for experiments with very few training examples. Reproducibility, on the other hand, ensures that we can repeat our experiments several times, without much randomness in the results (as is the case in cross validation).  
 
