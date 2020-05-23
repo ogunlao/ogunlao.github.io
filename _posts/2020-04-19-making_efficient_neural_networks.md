@@ -64,7 +64,7 @@ The Lottery Ticket Hypothesis states that
 
 What a great discovery!!!
 
-## Techniques for making efficient models.
+## Techniques for making efficient models
 
 1. **Train a smaller model from scratch.**  
 This looks obvious at first. If you want a model with smaller size, why not train yours with smaller weight sizes, less number of layers etc. Well, it turns out that this has the advantage of training faster, with smaller model size but with great performance drops. If you consider, most big models, they increase the model sizes to get better performance on the benchmark datasets. Also, intuitively, smaller models have lower capacity and may not be able to learn all the intricacies of the task to perform. As such, these smaller models are only used as proof-of-concept. Can we do better than this? Well, that's why we are researchers and engineers right? We have to know that any proposed methods of increasing efficiency has to perform better than just this to be so cool.
