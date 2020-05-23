@@ -26,7 +26,7 @@ img {
 }
 </style>
 
-<img src="/img/main/sewade.jpg" class="center" style="width:150px, height:150px">
+<img src="/img/main/sewade.jpg" class="center" style="width:100px">
 
 ### About Me
 My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer for Proto where we create AI Customer Experience (AICX) chatbots for multilingual contact centers, focusing on African Languages. I will be finishing my [African Masters in Machine Intelligence](https://aimsammi.org/) (AMMI) by July at African Institute for Mathematical Sciences, sponsored by Facebook and Google. Before joining AMMI, I worked as a Predictive Engineer and also have a Bachelors degree in Electronics and Electrical Engineering.
