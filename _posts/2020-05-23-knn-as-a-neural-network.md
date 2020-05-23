@@ -38,13 +38,17 @@ To classify a new test point into its correct label, we perform the following st
 \begin{equation}
 d = \sqrt{\sum_{j=1}^{d} (x_{ij} - x^t_j)^2}
 \end{equation}
+
 Using the matrix notation,
+
 \begin{equation}
-d = \sqrt{\sum_{j=1}^{d} (X^2_j - 1_n(x^t)^T_j)^2}
+d = \sqrt{\sum_{j=1}^{d} (X_j^2 - 1_n(x^t)_j^T)^2}
 \end{equation}
+
 where $X = (x_1, x_2, ..., x_n)^T \in \mathcal{R}^{nxd}$ and $(x^t)^T \in \mathcal{R}^d$. To simplify notation, I will assume that $x^t$ will be broadcasted along the matrix, which becomes simply:
+
 \begin{equation}
-d = \sqrt{\sum_{j=1}^{d} (X^2_j - x^t_j)^2}
+d = \sqrt{\sum_{j=1}^{d} (X_j^2 - x_j^t)^2}
 \end{equation}
 
 ## Expressing KNN as a Neural Network
@@ -52,9 +56,11 @@ d = \sqrt{\sum_{j=1}^{d} (X^2_j - x^t_j)^2}
 With the understanding of the distance function, we can break it apart to derive the parameters of our neural network.
 
 From the distance function,
+
 \begin{equation}
 d^2 = \sum_{j=1}^{d} (x_{ij} - x_j)^2 = d'
 \end{equation}
+
 Since optimizing $d^2$ is equivalent to optimizing for $d$, we work with $d^2$ instead, which we will call $d'$
 
 ### Layer 1: Computing the distance function
@@ -64,7 +70,9 @@ Expanding the equation, we get:
 \begin{equation}
 d' = \sum_{j=1}^{d} (X^2_j - x^t_j) \odot (X^2_j - x^t_j)
 \end{equation}
+
 Note that: $\odot$ is a hadamard product, i.e. element-wise product between the two matrices.
+
 \begin{equation}
 d' = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2 - 2X_j.x^t
 \end{equation}
@@ -72,6 +80,7 @@ d' = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2 - 2X_j.x^t
 \begin{equation}
 d' = -2X_jx^t + \sum_{j=1}^{d} (X^2_j + (x^t_j)^2
 \end{equation}
+
 since the $-2X_jx^t$ does not depend on j.
 
 At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2$
@@ -93,8 +102,11 @@ Before now, we have not really talked out the labels of the training examples. I
 
 For a classification task, where $Z_3 = W_3x_3 + b$, firstly, we perform one-hot encoding on the train labels. $y_{onehot} \in \mathcal{R}^{nxd}$
 
-z_3 = z_2.T@y_train_onehot
-$Z_3 = Z_2^Ty_{onehot} + b$ where $W_3 = X^T$, $x_3 = z_2$, $b = 0$
+\begin{equation}
+$Z_3 = Z_2^Ty_{onehot}$ 
+\end{equation}
+
+where $W_3 = X^T$, $x_3 = z_2$, $b = 0$
 
 ## Implementation
 
