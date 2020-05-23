@@ -26,11 +26,9 @@ img {
 }
 </style>
 
-<img src="/img/main/sewade.jpg" class="center" style="width:200px">
-
+<img src="/img/main/sewade.jpg" class="center" style="width:100px">
 
 ### About Me
-
 My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer for Proto where we create AI Customer Experience (AICX) chatbots for multilingual contact centers, focusing on African Languages. I will be finishing my [African Master in Machine Intelligence](https://aimsammi.org/) (AMMI) by July at African Institute for Mathematical Sciences, sponsored by Facebook and Google. Before joining AMMI, I worked as a Predictive Engineer and also have a Bachelors degree in Electronics and Electrical Engineering.
 ---
 
@@ -46,18 +44,17 @@ My research interests include but not limited to:
 
 ---
 
-<!-- ### Talks and Presentations
-- [Introduction to Natural Language Processing](/archive/Talk_1.pdf), African Institute for Mathematical Sciences, Cape Town, South Africa. 
-- [The Transformer, From RNN to Attention](https://youtu.be/rC_DDhMhVc8), [Data Science for Social Impact](https://dsfsi.github.io/) Research Group, Lab meeting 17 April 2020, Pretoria, South Africa, [Youtube recording](https://youtu.be/rC_DDhMhVc8), [slides](/archive/Talk_2.pdf).
+### Talks and Presentations
+- [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana. 
 
----
+<!-- ---
 
 ### News
 - I Recently participate in the *Google hash code 2020*, our [team](/archive/hash_code.png) was ranked [1747/10724](https://hashcodejudge.withgoogle.com/scoreboard) on the online competition. 
 
-- [Member of the Association for Computing Machinery, ACM FCA](https://www.acm.org/fca). I was among the 36 new members *(October 2019)* selected from hundreds of very competitive applications, from academic institutions, research labs, and companies all over the world invited to participate in the ACM Future of Computing Academy (FCA) for a duration of 3 years.
+- [Member of the Association for Computing Machinery, ACM FCA](https://www.acm.org/fca). I was among the 36 new members *(October 2019)* selected from hundreds of very competitive applications, from academic institutions, research labs, and companies all over the world invited to participate in the ACM Future of Computing Academy (FCA) for a duration of 3 years. -->
 
---- -->
+---
 
 ### Contacts
 <!-- - Phone: (+233) 20 075 1986 (Ghana) / (+254) 79 583 5461 (Kenya) -->
