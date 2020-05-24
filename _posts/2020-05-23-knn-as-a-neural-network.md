@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a neural network, using the datapoints. If you will like to jump directly into the accompanying code, just [follow this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb) to the notebook.
+A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a 3 layer neural network, using the given datapoints. If you will like to jump directly into the accompanying code, just [follow this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb) to the notebook.
 
 Here's what we will cover:
 1. TOC
@@ -17,7 +17,7 @@ Here's what we will cover:
 
 ## Introduction
 
-k-Nearest Neighbor uses a distance function to evaluate the label of a new test point. The method of evaluation involves taking the average of predictions of k nearest points to the given test point. It often serves a base model for many predictions tasks and often difficult to beat.
+k-Nearest Neighbor is a non-parametric model that uses a distance function to evaluate the label of a new test point. It involves taking the average of predictions of k nearest points to the given test point. It often serves a base model for many predictions tasks and often difficult to beat.
 
 Given a set of train data-points,
 \begin{equation}
@@ -87,11 +87,16 @@ At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W
 
 ### Layer 2: Softmax Layer
 
-As we are looking for the class with minimum distance from the test datapoint, we have to negate the vector, so the datapoint with minimum distance, then have the maximum value. We then pass this through a softmax layer to normalize.
+After the previous step, we then need to find the datapoint with the closest distance to the test datapoint. This can be performed in two steps using the softmax layer:
+
+- Negate the vector, so the datapoint with minimum distance, then have the maximum value. 
+- Multiply the vector by a large positive constant $\lambda \rightarrow \inf$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $Z_1$. This is equivalent to applying the softmax temperature on the vector. $\lambda is an hyperparameter$. 
 
 \begin{equation}
-Z_2 = softmax(-Z_1)
+Z_2 = softmax(-\lambda * Z_1)
 \end{equation}
+
+> For a refresher on the softmax temperature, check my previous post on [Softmax temperature](https://ogunlao.github.io/2020/04/26/you_dont_really_know_softmax.html#softmax-temperature)
 
 ### Layer 3: Prediction Layer
 
@@ -114,8 +119,18 @@ I created a jupyter notebook to show predictions on the iris dataset. You can ac
 
 - Data: Loaded the iris dataset via the sklearn load dataset api.
 - Preprocessing: Normalized the dataset (often a good thing to normalize) and converted each label into one-hot encoded vectors.
-- Built 3 layer neural network using the datapoints as parameters.
+- Built a 3 layer neural network using the datapoints as parameters.
+
+## Future Work
+
+A 1-Nearest Neighbor implementation was discussed here. This can be extended to k- nearest neighbors. How will you go about it?
 
 ## Conclusion
 
 In this article, We showed how a k-nearest neighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increases as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
+
+--
+## Reference
+
+1. Yan Qiu Chen, R. I. Damper and M. S. Nixon, "On neural-network implementations of k-nearest neighbor pattern classifiers," in IEEE Transactions on Circuits and Systems I: Fundamental Theory and Applications, vol. 44, no. 7, pp. 622-629, July 1997, doi: 10.1109/81.596943.
+1. O. J. Murphy, "Nearest neighbor pattern classification perceptrons," in Proceedings of the IEEE, vol. 78, no. 10, pp. 1595-1598, Oct. 1990, doi: 10.1109/5.58344.
