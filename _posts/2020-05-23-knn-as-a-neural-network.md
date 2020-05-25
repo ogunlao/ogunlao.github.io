@@ -36,7 +36,7 @@ To classify a new test point into its correct label, we perform the following st
 - The distance function takes in each $x_i$ and $x^t$ and outputs a scalar. The distance function to use may depend on the task but a popular and common distance is the l2-distance. The l2-distance can be expressed as:
 
 \begin{equation}
-d = \sqrt{\sum_{j=1}^{d} (x_{ij} - x^t_j)^2}
+d_i = \sqrt{\sum_{j=1}^{d} (x_{ij} - x^t_j)^2}
 \end{equation}
 
 Using the matrix notation,
@@ -130,6 +130,7 @@ A 1-Nearest Neighbor implementation was discussed here. This can be extended to 
 In this article, We showed how a k-nearest neighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increases as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
 
 ---
+
 ## Reference
 
 1. Yan Qiu Chen, R. I. Damper and M. S. Nixon, "On neural-network implementations of k-nearest neighbor pattern classifiers," in IEEE Transactions on Circuits and Systems I: Fundamental Theory and Applications, vol. 44, no. 7, pp. 622-629, July 1997, doi: 10.1109/81.596943.
