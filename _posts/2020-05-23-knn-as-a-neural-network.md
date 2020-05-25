@@ -24,7 +24,7 @@ Given a set of train data-points,
 \{(x_1, y_1), (x_2, y_2), ... ,(x_n, y_n)\}
 \end{equation}
 
-with $x_i \in \mathcal{R}^d$, $y_i \in \mathcal{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x_t$, how can we classify the point using k-nearest neighbor into its correct class?
+with $x_i \in \mathcal{R}^d$, $y_i \in \mathcal{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x^t$, how can we classify the point using k-nearest neighbor into its correct class?
 
 ## K Nearest Neighbor
 
@@ -58,7 +58,7 @@ With the understanding of the distance function, we can break it apart to derive
 From the distance function,
 
 \begin{equation}
-d^2 = \sum_{j=1}^{d} (x_{ij} - x_j)^2 = d'
+d_i^2 = \sum_{j=1}^{d} (x_{ij} - x_j)^2 = d'
 \end{equation}
 
 Since optimizing $d^2$ is equivalent to optimizing for $d$, we work with $d^2$ instead, which we will call $d'$
@@ -83,7 +83,7 @@ d' = -2X_jx^t + \sum_{j=1}^{d} (X^2_j + (x^t_j)^2
 
 since the $-2X_jx^t$ does not depend on j.
 
-At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2$
+At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X_j$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2$
 
 ### Layer 2: Softmax Layer
 
