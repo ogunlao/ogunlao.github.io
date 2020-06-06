@@ -68,13 +68,13 @@ Since optimizing $d^2$ is equivalent to optimizing for $d$, we work with $d^2$ i
 Expanding the equation, we get:
 
 \begin{equation}
-d' = \sum_{j=1}^{d} (X^2_j - x^t_j) \odot (X^2_j - x^t_j)
+d' = \sum_{j=1}^{d} \left(X^2_j - x^t_j) \odot (X^2_j - x^t_j)\right)
 \end{equation}
 
 Note that: $\odot$ is a hadamard product, i.e. element-wise product between the two matrices.
 
 \begin{equation}
-d' = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2 - 2X_j.x^t
+d' = \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2 - 2X_j.x^t\right)
 \end{equation}
 
 \begin{equation}
@@ -90,7 +90,7 @@ At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W
 After the previous step, we then need to find the datapoint with the closest distance to the test datapoint. This can be performed in two steps using the softmax layer:
 
 - Negate the vector, so the datapoint with minimum distance, then have the maximum value. 
-- Multiply the vector by a large positive constant $\lambda \rightarrow \inf$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $Z_1$. This is equivalent to applying the softmax temperature on the vector. $\lambda is an hyperparameter$. 
+- Multiply the vector by a large positive constant $\lambda \rightarrow \inf$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $Z_1$. This is equivalent to applying the softmax temperature on the vector. $\lambda$ is an hyperparameter.
 
 \begin{equation}
 Z_2 = softmax(-\lambda * Z_1)
@@ -100,7 +100,7 @@ Z_2 = softmax(-\lambda * Z_1)
 
 ### Layer 3: Prediction Layer
 
-Before now, we have not really talked out the labels of the training examples. It comes in at this layer to support in prediction. 
+Before now, we have not really talked out the labels of the training examples. It comes in at this layer to support in prediction.
 
 - For a regression task, this computation is almost done. We take the vector of distances and find the prediction of the class, with the minimum distance (or maximum value in this case, as we have performed inversion).
 - For a classification task, we can also take the label of the datapoint with the minimum distance or go a step further.
