@@ -68,7 +68,7 @@ Since optimizing $d^2$ is equivalent to optimizing for $d$, we work with $d^2$ i
 Expanding the equation, we get:
 
 \begin{equation}
-d' = \sum_{j=1}^{d} \left(X^2_j - x^t_j) \odot (X^2_j - x^t_j)\right)
+d' = \sum_{j=1}^{d} \left((X^2_j - x^t_j) \odot (X^2_j - x^t_j)\right)
 \end{equation}
 
 Note that: $\odot$ is a hadamard product, i.e. element-wise product between the two matrices.
