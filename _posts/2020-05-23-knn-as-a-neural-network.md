@@ -78,12 +78,12 @@ d' = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2 - 2X_j.x^t
 \end{equation}
 
 \begin{equation}
-d' = -2X_jx^t + \sum_{j=1}^{d} (X^2_j + (x^t_j)^2
+d' = -2X_jx^t + \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2\right)
 \end{equation}
 
 since the $-2X_jx^t$ does not depend on j.
 
-At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X_j$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} (X^2_j + (x^t_j)^2$
+At this point we can easily extract our first layer, $Z_1 = W_1x_1 + b$ where $W_1 = -2X_j$, $x_1 = x^t$ and $b = \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2\right)$
 
 ### Layer 2: Softmax Layer
 
