@@ -29,7 +29,7 @@ img {
 <img src="/img/main/sewade.jpg" class="center" style="width:100px">
 
 ### About Me
-My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer for Proto where we create AI Customer Experience (AICX) chatbots for multilingual contact centers, focusing on African Languages. I will be finishing my [African Masters in Machine Intelligence](https://aimsammi.org/) (AMMI) by July at African Institute for Mathematical Sciences, sponsored by Facebook and Google. Before joining AMMI, I worked as a Predictive Engineer and also have a Bachelors degree in Electronics and Electrical Engineering.
+My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer with [Proto](https://www.proto.cx/) where I create AI Customer Experience (AICX) chatbots for multilingual contact centers, focusing on African Languages. I will be finishing my [African Masters in Machine Intelligence](https://aimsammi.org/) (AMMI) by July at African Institute for Mathematical Sciences, sponsored by Facebook and Google. Before joining AMMI, I worked as a Predictive Engineer and also have a Bachelors degree in Electronics and Electrical Engineering.
 ---
 
 ### Research Interests
@@ -38,13 +38,22 @@ My research interests include but not limited to:
 
 - Low Resource Language Understanding
 - Multimodal Learning
-  - Visual Question Answering 
+  - Visual Question Answering
 - Semi-supervised learning
 - Deep learning
 
 ---
 
+### Latest Articles
+- [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
+- [Making Efficient Neural Networks](https://ogunlao.github.io/2020/04/19/making_efficient_neural_networks.html)
+
+For more articles, [click here to visit my blog](https://ogunlao.github.io/archive/index.html).
+
+---
+
 ### Talks and Presentations
+
 - [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana.
 - [Chance Constrained Optimization](https://drive.google.com/file/d/1Z9-7nmAwEFTz7bUu_I3oRpGWdZA3wYTE/view?usp=sharing), Convex Optimization Course, AIMS
 
