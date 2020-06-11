@@ -238,7 +238,7 @@ The temperature parameter increases the sensitivity to low probability candidate
 
 case a: $\tau \to 0$ say $\tau = 0.001$
 ```python
-softmax(x/100)
+softmax(x/0.001)
 ```
 ```
 output: [0., 0., 1., 0.]
