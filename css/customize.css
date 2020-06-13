@@ -1,5 +1,5 @@
-body {
-  font-size: 16px;
+.page-header {
+  margin: 20px 0.8em 30px;
 }
 
 /* Custom container */
@@ -34,6 +34,11 @@ body {
   font-weight: bold;
 }
 
+div#post-content {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
+}
+
 /* tag_box */
 .tag_box {
   list-style: none;
@@ -47,6 +52,7 @@ body {
 
 .tag_box li i {
   opacity: 0.9;
+  margin-left: 0.8em;
 }
 
 .tag_box.inline li {
@@ -108,6 +114,7 @@ img.cc-logo {
 }
 .source-info {
   color: #999;
+  margin-left: 0.8em;
 }
 h1 code, pre {
   font-size: inherit;
