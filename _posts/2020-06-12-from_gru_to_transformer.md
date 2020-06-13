@@ -32,39 +32,39 @@ Given a set of sequential input tokens, $(x_1, x_2, ..., x_T)$, where T is the t
 A key idea behind LSTM and GRU is the additive update of the hidden vector, $h_t \in \mathbb{R}^d$ with dimension, d
 
 \begin{equation}
-  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h}_t
+  h_t = u_t \odot h_{t-1} + (1 - u_t) \odot \tilde{h}_t
 \end{equation}
 
-where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ which is gated and added to the previous context vector in a linear way. This allows information to be propagated from previous time-steps to the current time step. As observed, the Update gate, $U_t \in \mathbb{R}^d$
+where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ which is gated and added to the previous context vector in a linear way. This allows information to be propagated from previous time-steps to the current time step. As observed, the update gate, $u_t \in \mathbb{R}^d$
 
-- With $U_t = 0$ (zero vector), $h_t = \tilde{h}_t$ implying the candidate vector represents the new context vector, $h_t$, ignoring information from previous time-step.
-- With $U_t = 1$, (vector of 1s), $h_t = h_{t-1}$ implying the previous context vector is copied to the new time-step, discarding the candidate vector information
-- In  most cases, $U_t$ will take values between $0$ and $1$, allowing some information depending on their values.
+- With $u_t = 0$ (zero vector), $h_t = \tilde{h}_t$ implying the candidate vector represents the new context vector, $h_t$, ignoring information from previous time-step.
+- With $u_t = 1$, (vector of 1s), $h_t = h_{t-1}$ implying the previous context vector is copied to the new time-step, discarding the candidate vector information
+- In  most cases, $u_t$ will take values between $0$ and $1$, allowing some information depending on their values.
 - $\tilde{h_t}$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
 
-$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(\textbf{W}x_t + \textbf{U}h_{t-1} + b)$
+$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(\textbf{W} x_t + \textbf{U}h_{t-1} + b)$
 where $\textbf{W}$, $\textbf{U}$ are weight matrices, and $b$ is a vector.
 
 Note that we have simplified the GRU update equations ignoring the reset gate.
 
 An interpretation of the additive updates is that they help to create linear shortcut connections between the hidden vectors of the current state and previous states (similar to residual connections found in popular neural network architectures such as ResNet).
 
--- TODO: Shortcut connections between context hidden vectors
+![](../images/short-cut_gru.png "Shortcut connections between hidden vectors in GRU")
 
 ### What are these shortcut connections
 
 If we begin to unroll the hidden vector equation, moving step by step backwards, to extract the computations done to arrive there, we notice that it forms a weighted combination of all previous hidden vectors.
 
 \begin{equation}
-  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h}_t
+  h_t = u_t \odot h_{t-1} + (1 - u_t) \odot \tilde{h}_t
 \end{equation}
 
 \begin{equation}
-  h_t = U_t \odot \left(U_{t-1} \odot h_{t-2}+(1-U_{t-1})\odot \tilde{h}_{t-1}\right) + (1-U_t)\odot\tilde{h}_t
+  h_t = u_t \odot \left(u_{t-1} \odot h_{t-2}+(1-u_{t-1})\odot \tilde{h}_{t-1}\right) + (1-u_t)\odot\tilde{h}_t
 \end{equation}
 
 \begin{equation}
-  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h_{t-2}} \right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
+  h_t = u_t \odot \left(u_{t-2} \odot h_{t-3}+(1-u_{t-2})\odot \tilde{h_{t-2}} \right) + (1-u_{t-1})\odot \tilde{h}_{t-1})+(1-u_t)\odot\tilde{h}_t
 \end{equation}
 
 \begin{equation}
@@ -72,7 +72,7 @@ If we begin to unroll the hidden vector equation, moving step by step backwards,
 \end{equation}
 
 \begin{equation}
-h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1} (1-U_k) \right) \tilde{h}_i
+h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} u_j \right) \left(\prod_{k=1}^{i-1} (1-u_k) \right) \tilde{h}_i
 \end{equation}
 for $t$ steps of GRU update. The breakdown of $h_t$ shows the computation involving weighted combination of all GRU's previous states.
 
@@ -83,22 +83,22 @@ In causal attention as in GRUS, we will only have access or look at previous hid
 Looking at the expanded version of the GRU update, we see dependencies between a lot of parameters and components. We will attempt to free these dependencies one-by-one given rise to a disentangled unit.
 
 \begin{equation}
-h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1} (1-U_k) \right) \tilde{h}_i
+h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} u_j \right) \left(\prod_{k=1}^{i-1} (1-u_k) \right) \tilde{h}_i
 \end{equation}
 
 ### Let's free the  dependent weights
 
-Recall that the update gate, $U_t$ is calculated thus in GRUs;
+Recall that the update gate, $u_t$ is calculated thus in GRUs;
 
 \begin{equation}
-U_t = \sigma(W_u x_{t-1} + U_u h_{t-1} + b_u)
+u_t = \sigma(W_x x_{t-1} + U_h h_{t-1} + b_u)
 \end{equation}
 \begin{equation}
-h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h_t} + (1-U_t)\odot h_{t-1}
+h_t = f(h_{t-1}, x_{t-1}) = u_t \odot \tilde{h_t} + (1-u_t)\odot h_{t-1}
 \end{equation}
-where $\textbf{W}_u$, $\textbf{U}_u$ are weight matrices of the Update gate computation, $b_u is a bias vector$ and  $h_t$, $x_t$ are hidden and input vectors respectively.
+where $W_x$, $U_h$ are weight matrices of the Update gate computation, $b_u is a bias vector$ and  $h_t$, $x_t$ are hidden and input vectors respectively.
 
-From both equations, we can observe that $U_t$, the current update gate is dependent on $h_{t-1}$, the previous hidden vector and vice-versa. To disentangle $U_t$ from $h_{t-1}$, we can learn the current hidden context, $h_t$ as a weighted combination of candidate vectors, $h_i$.
+From both equations, we can observe that $u_t$, the current update gate is dependent on $h_{t-1}$, the previous hidden vector and vice-versa. To disentangle $u_t$ from $h_{t-1}$, we can learn the current hidden context, $h_t$ as a weighted combination of candidate vectors, $h_i$.
 
 \begin{equation}
 h_t = \sum_{i=1}^t \alpha_i \tilde{h}_i
