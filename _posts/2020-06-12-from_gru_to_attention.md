@@ -40,7 +40,7 @@ where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ w
 - With $U_t = 0$ (zero vector), $h_t = \tilde{h}_t$ implying the candidate vector represents the new context vector, $h_t$, ignoring information from previous time-step.
 - With $U_t = 1$, (vector of 1s), $h_t = h_{t-1}$ implying the previous context vector is copied to the new time-step, discarding the candidate vector information
 - In  most cases, $U_t$ will take values between $0$ and $1$, allowing some information depending on their values.
-- $\tilde{h}_t$ is a function of the current input, $x_t$ and the previous context vector, $h_{t-1}$.
+- $\tilde{h}_t$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
 
 $ \tilde{h}_t = f(x_t, h_{t-1}) = tanh(Wx_t + Uh_{t-1} + b)$
 
@@ -55,14 +55,17 @@ Also, notice that the additive updates help to create linear shortcut connection
 When unrolled, it forms a weighted combination of all previous hidden vectors.
 
 \begin{equation}
-  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h}_t
+  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h_t}
 \end{equation}
+
 \begin{equation}
   h_t = U_t \odot \left(U_{t-1} \odot h_{t-2}+(1-U_{t-1})\odot \tilde{h}_{t-1}\right) + (1-U_t)\odot\tilde{h}_t
 \end{equation}
+
 \begin{equation}
   h_t = U_t \odot (U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h}_{t-2}) + (1-U_{t-1})\odot\tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
 \end{equation}
+
 \begin{equation}
 ...
 \end{equation}
