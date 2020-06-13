@@ -153,7 +153,7 @@ Instead of using a single linear function, let's apply independent but similar l
 
 Putting it another way, we compute the attention weights, $\alpha_i$ by comparing the query vector of the current position, $Q(f(x_t))$ against all the key vectors of the previous inputs, $K(f(x_i))$, then compute the weighted sum of the Value vectors of all the previous inputs, $V(.)$ to get the hidden vector, $h_t$ at time-step $t$.
 
-At this stage, we have pretty much built a disentangled model but ehrmm, we have only a single attention mechanism. Will this be enough, to to model all the dependencies in context/hidden vectors? Maybe, it will be a good idea to have multiple attention heads. What do you think?
+At this stage, we have pretty much built a disentangled model but ehrmm, we have only a single attention mechanism. Will this be enough to model all the dependencies in context/hidden vectors? Maybe, it will be a good idea to have multiple attention heads. What do you think?
 
 ### Let's have multiple attention heads
 

@@ -34,7 +34,7 @@ My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer with [Proto](https:
 
 ### Research Interests
 
-My research interests include but not limited to:
+My research interests include:
 
 - Low Resource Language Understanding
 - Multimodal Learning
@@ -45,6 +45,7 @@ My research interests include but not limited to:
 ---
 
 ### Latest Articles
+- [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
 - [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
 - [Making Efficient Neural Networks](https://ogunlao.github.io/2020/04/19/making_efficient_neural_networks.html)
 
