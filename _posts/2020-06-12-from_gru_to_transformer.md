@@ -91,7 +91,7 @@ h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1}
 Recall that the update gate, $U_t$ is calculated thus in GRUs;
 
 \begin{equation}
-U_t = \sigma(\textbf{W_u} x_{t-1} + \textbf{U_u} h_{t-1} + b_u)
+U_t = \sigma(W_u x_{t-1} + U_u h_{t-1} + b_u)
 \end{equation}
 \begin{equation}
 h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h_t} + (1-U_t)\odot h_{t-1}
