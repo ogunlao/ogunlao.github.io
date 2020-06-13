@@ -49,7 +49,7 @@ Note that we have simplified the GRU update equations ignoring the reset gate.
 
 An interpretation of the additive updates is that they help to create linear shortcut connections between the hidden vectors of the current state and previous states (similar to residual connections found in popular neural network architectures such as ResNet).
 
-![](/images/short-cut_gru.png "Shortcut connections between hidden vectors in GRU")
+![Shortcut connections between hidden vectors in GRU](/images/short-cut_gru.png "Shortcut connections between hidden vectors in GRU")
 
 ### What are these shortcut connections
 
