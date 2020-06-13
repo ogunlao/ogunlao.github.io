@@ -25,7 +25,7 @@ This article is based on a lecture given by [Kyunghyun Cho](https://kyunghyuncho
 
 Recurrent neural networks with gates such as Long-Short Term Memory (LSTM) and Gated Recurrent Units (GRU) have long been used for sequence modelling with the advantage that they help to significantly solve the vanishing problem and long-term dependency problems popularly found in Vanilla RNNs. Attention mechanisms have also been used together with these gated recurrent networks to improve their modelling capacity. However, recurrent computations still persists.
 
-Given a set of sequential input tokens, $(x_1, x_2, ..., x_T)$, where T is the total number of tokens. At time step $t$, we can calculate an hidden vector $h_t$ which is a representation of information gotten from tokens from time step $1$ to $t$. 
+Given a set of sequential input tokens, $(x_1, x_2, ..., x_T)$, where T is the total number of tokens. At time step $t$, we can calculate an hidden vector $h_t$ which is a representation of information gotten from tokens from time step $1$ to $t$.
 
 ## Gated Recurrent Neural Networks
 
@@ -96,7 +96,7 @@ u_t = \sigma(W_x x_{t-1} + U_h h_{t-1} + b_u)
 \begin{equation}
 h_t = f(h_{t-1}, x_{t-1}) = u_t \odot \tilde{h_t} + (1-u_t)\odot h_{t-1}
 \end{equation}
-where $W_x$, $U_h$ are weight matrices of the Update gate computation, $b_u is a bias vector$ and  $h_t$, $x_t$ are hidden and input vectors respectively.
+where $W_x$, $U_h$ are weight matrices of the Update gate computation, $b_u$ is a bias vector and $h_t$, $x_t$ are hidden and input vectors respectively.
 
 From both equations, we can observe that $u_t$, the current update gate is dependent on $h_{t-1}$, the previous hidden vector and vice-versa. To disentangle $u_t$ from $h_{t-1}$, we can learn the current hidden context, $h_t$ as a weighted combination of candidate vectors, $h_i$.
 
