@@ -101,11 +101,13 @@ h_t = \sum_{i=1}^t \alpha_i \tilde{h}_i
 \end{equation}
 where $\alpha_i \propto exp\left(ATT\left(\tilde{h}_i, x_t\right)\right)$ and $i$ ranges from time-step $1$ to the current time-step, $t$, implying that it uses the candidate vectors of all previous and current state to evaluate the hidden vector.
 
-<!-- The weighting function is a Neural Network, $f(\tilde{h}_i, x_t)$ which is only dependent on the hidden state at position $i$ amd $x_t$, current input. So $\alpha_i$ does not depend on $\alpha_{i-1}$, $\alpha_{i-2}$ through these $\alpha$ values, although there are still dependencies from the candidate vectors, $\tilde{h}$ -->
-
 ### Let's free up candidate vectors
 
-Recall that $\tilde{h} = f(x_t, h_{t-1})$ where $\tilde{h}_t$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h}_{t-1}$ \& $ h_{t-2}$ and so on. Check above unrolled $h_t$. This implies that $\tilde{h}_t$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
+Recall that $\tilde{h} = f(x_t, h_{t-1})$ 
+
+where $\tilde{h}_t$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h}_{t-1}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$. 
+
+This implies that $\tilde{h}_t$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
 
 To break these dependencies in candidate vectors, $h$,
 Recall that;
@@ -150,6 +152,7 @@ Putting it another way, we compute the attention weights, $\alpha_i$ by comparin
 At this stage, we have pretty much built a disentangled model but ehrmm, we have only a single attention mechanism. Will this be enough, to to model all the dependencies in context/hidden vectors? Maybe, it will be a good idea to have multiple attention heads. What do you think?
 
 ### Let's have multiple attention heads
+
 We can create N multiple possible $Q$, $K$ and $V$ functions/neural networks. Since each of them takes in same $x_i$ or $x_t$, we can have parallel computation preformed by each $Q$, $K$ and $V$ functions.
 
 For each attention head, $n \in 1, 2 , 3,..., N$, we calculate $h_t^n$. Each $h_t^n$ is concatenated together to form the new $h_t$ i.e. 
@@ -163,6 +166,7 @@ where
 $h_t^n = \sum_{i=1}^t \alpha_i^n V^n(f(x_i))$ and $\alpha_i^k \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t))))$
 
 Questions?
+
 - Why concatenate the multiple attention heads instead of adding them, or use some other methods?
   Well, the concatenation gives a vector with a representation that provides information about different aspects of the inputs, and allows each head to specialize in attending. I don't have an answer for that, if you do, please leave it in the comment section.
   
@@ -252,7 +256,9 @@ In summary,
   h_t = \left[g_1(h_t^1);~ g_2(h_t^2);~ ...,~ g_t(h_t^N) \right]
   \end{equation}
 - then, the attention weight are calculated using the Key and Query vectors as well as positional encoding for the input
-  $\alpha_i^n \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t) + p(i))))$
+  \begin{equation}
+  \alpha_i^n \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t) + p(i))))
+  \end{equation}
 
 ## Conclusion
 
