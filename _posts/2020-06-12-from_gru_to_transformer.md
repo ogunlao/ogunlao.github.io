@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "From GRUs to Self-Attention"
+title:  "From GRU to Transformer"
 categories: blog
 tags: [GRU, attention, neural_network]
 comments: true
@@ -29,7 +29,7 @@ Given a set of sequential input tokens, $(x_1, x_2, ..., x_T)$, where T is the t
 
 ## Gated Recurrent Neural Networks
 
-A key idea behind LSTMs and GRUs is the additive update of the hidden vector, $h_t \in \mathbb{R}^d$ wit dimension, d
+A key idea behind LSTM and GRU is the additive update of the hidden vector, $h_t \in \mathbb{R}^d$ with dimension, d
 
 \begin{equation}
   h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h}_t
@@ -40,22 +40,22 @@ where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ w
 - With $U_t = 0$ (zero vector), $h_t = \tilde{h}_t$ implying the candidate vector represents the new context vector, $h_t$, ignoring information from previous time-step.
 - With $U_t = 1$, (vector of 1s), $h_t = h_{t-1}$ implying the previous context vector is copied to the new time-step, discarding the candidate vector information
 - In  most cases, $U_t$ will take values between $0$ and $1$, allowing some information depending on their values.
-- $\tilde{h}_t$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
+- $\tilde{h_t}$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
 
-$ \tilde{h}_t = f(x_t, h_{t-1}) = tanh(Wx_t + Uh_{t-1} + b)$
+$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(Wx_t + Uh_{t-1} + b)$
 
 Note that we have simplified the GRU update equations ignoring the reset gate.
 
-Also, notice that the additive updates help to create linear shortcut connections between the hidden vectors of the current state and previous states. It is autoregressive in nature.
+An interpretation of the additive updates is that they help to create linear shortcut connections between the hidden vectors of the current state and previous states (similar to residual connections found in popular neural network architectures such as ResNet).
 
 -- TODO: Shortcut connections between context hidden vectors
 
 ### What are these shortcut connections
 
-When unrolled, it forms a weighted combination of all previous hidden vectors.
+If we begin to unroll the hidden vector equation, moving step by step backwards, to extract the computations done to arrive there, we notice that it forms a weighted combination of all previous hidden vectors.
 
 \begin{equation}
-  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h_t}
+  h_t = U_t \odot h_{t-1} + (1 - U_t) \odot \tilde{h}_t
 \end{equation}
 
 \begin{equation}
@@ -63,7 +63,7 @@ When unrolled, it forms a weighted combination of all previous hidden vectors.
 \end{equation}
 
 \begin{equation}
-  h_t = U_t \odot (U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h}_{t-2}) + (1-U_{t-1})\odot\tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
+  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h}_{t-2}\right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
 \end{equation}
 
 \begin{equation}
@@ -93,7 +93,7 @@ Recall that the update gate, $U_t$ is calculated thus in GRUs;
 U_t = \sigma(W_ux_{t-1} + U_uh_{t-1} + b_u)
 \end{equation}
 \begin{equation}
-h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h}_t + (1-U_t)\odot h_{t-1}
+h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h_t} + (1-U_t)\odot h_{t-1}
 \end{equation}
 where $W_t$, $U_t$ are weight matrices and  $h_t$, $x_t$ are vectors.
 
@@ -108,9 +108,9 @@ where $\alpha_i \propto exp\left(ATT\left(\tilde{h}_i, x_t\right)\right)$ and $i
 
 Recall that $\tilde{h} = f(x_t, h_{t-1})$ 
 
-where $\tilde{h}_t$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h}_{t-1}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$. 
+where $\tilde{h_t}$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h}_{t-1}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$. 
 
-This implies that $\tilde{h}_t$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
+This implies that $\tilde{h_t}$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
 
 To break these dependencies in candidate vectors, $h$,
 Recall that;
@@ -265,5 +265,4 @@ In summary,
 
 ## Conclusion
 
-In this article, we showed how we can move from a recurrent-based neural network with gates such as GRU to a self-attention based model such as Transformer with disentangled hidden states and weights, enabling parallelization.
-
+In this article, we showed how we can move from a recurrent-based neural network with gates such as GRU to a self-attention based model such as Transformer with disentangled hidden states and weights, enabling parallel computations.
