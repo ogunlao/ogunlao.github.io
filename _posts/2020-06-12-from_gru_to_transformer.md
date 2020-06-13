@@ -42,7 +42,8 @@ where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ w
 - In  most cases, $U_t$ will take values between $0$ and $1$, allowing some information depending on their values.
 - $\tilde{h_t}$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
 
-$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(Wx_t + Uh_{t-1} + b)$
+$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(\textbf{W}Wx_t + \textbf{U}h_{t-1} + b)$
+where $\textbf{W}$, $\textbf{U}$ are weight matrices, and $b$ is a vector.
 
 Note that we have simplified the GRU update equations ignoring the reset gate.
 
@@ -63,7 +64,7 @@ If we begin to unroll the hidden vector equation, moving step by step backwards,
 \end{equation}
 
 \begin{equation}
-  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h}_{t-2}\right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
+  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \widetilde{h}_{t-2}\right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
 \end{equation}
 
 \begin{equation}
@@ -90,12 +91,12 @@ h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1}
 Recall that the update gate, $U_t$ is calculated thus in GRUs;
 
 \begin{equation}
-U_t = \sigma(W_ux_{t-1} + U_uh_{t-1} + b_u)
+U_t = \sigma(\textbf{W}_u x_{t-1} + \textbf{U}_u h_{t-1} + b_u)
 \end{equation}
 \begin{equation}
 h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h_t} + (1-U_t)\odot h_{t-1}
 \end{equation}
-where $W_t$, $U_t$ are weight matrices and  $h_t$, $x_t$ are vectors.
+where $\textbf{W}_u$, $\textbf{U}_u$ are weight matrices of the Update gate computation, $b_u is a bias vector$ and  $h_t$, $x_t$ are hidden and input vectors respectively.
 
 From both equations, we can observe that $U_t$, the current update gate is dependent on $h_{t-1}$, the previous hidden vector and vice-versa. To disentangle $U_t$ from $h_{t-1}$, we can learn the current hidden context, $h_t$ as a weighted combination of candidate vectors, $h_i$.
 
