@@ -1,5 +1,5 @@
-.page-header {
-  margin: 20px 0.8em 30px;
+body {
+  margin-left: 1em;
 }
 
 /* Custom container */
@@ -34,11 +34,6 @@
   font-weight: bold;
 }
 
-div#post-content {
-  margin-left: 0.8em;
-  margin-right: 0.8em;
-}
-
 /* tag_box */
 .tag_box {
   list-style: none;
@@ -52,7 +47,6 @@ div#post-content {
 
 .tag_box li i {
   opacity: 0.9;
-  margin-left: 0.8em;
 }
 
 .tag_box.inline li {
