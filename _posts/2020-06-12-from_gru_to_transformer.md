@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer [\[Vaswani et. al., 2017\]](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf) is a model, at the fore-from of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
+Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer [\[Vaswani et. al., 2017\]](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf) is a model, at the fore-front of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
 
 To understand how the self-attention mechanism is applied in Transformers, it might be intuitive from a mathematical perspective to build-up step-by-step from what is known, i.e. Recurrent Neural Networks such as LSTMs or GRUs to a self-attention network such as Transformers. Blog posts such as [Jalammar](https://jalammar.github.io/illustrated-transformer/), [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html), [Vandergoten](http://vandergoten.ai/2018-09-18-attention-is-all-you-need/) have attacked the explanation of Transformers from different perspectives but I believe this article will give another perspective and help engineers and researchers understand Self-Attention better, as I did.
 
