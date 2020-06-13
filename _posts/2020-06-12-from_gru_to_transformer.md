@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer [Vaswani et. al.](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf) is a model, at the fore-from of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
+Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer [\[Vaswani et. al., 2017\]](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf) is a model, at the fore-from of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
 
 To understand how the self-attention mechanism is applied in Transformers, it might be intuitive from a mathematical perspective to build-up step-by-step from what is known, i.e. Recurrent Neural Networks such as LSTMs or GRUs to a self-attention network such as Transformers. Blog posts such as [Jalammar](https://jalammar.github.io/illustrated-transformer/), [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html), [Vandergoten](http://vandergoten.ai/2018-09-18-attention-is-all-you-need/) have attacked the explanation of Transformers from different perspectives but I believe this article will give another perspective and help engineers and researchers understand Self-Attention better, as I did.
 
@@ -42,7 +42,7 @@ where $\tilde{h}_t$ is the candidate context vector for current time-step, $t$ w
 - In  most cases, $U_t$ will take values between $0$ and $1$, allowing some information depending on their values.
 - $\tilde{h_t}$ is a function of the current input, $x_t$ and the previous hidden vector, $h_{t-1}$.
 
-$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(\textbf{W}Wx_t + \textbf{U}h_{t-1} + b)$
+$ \tilde{h_t} = f(x_t, h_{t-1}) = tanh(\textbf{W}x_t + \textbf{U}h_{t-1} + b)$
 where $\textbf{W}$, $\textbf{U}$ are weight matrices, and $b$ is a vector.
 
 Note that we have simplified the GRU update equations ignoring the reset gate.
@@ -211,7 +211,9 @@ where $p(i)$ is the positional vector from positional embedding $p$.
 
 Learned positional embedding and function-based positional embedding (such as sinusoidal positional embedding) are the common positional embeddings. The Transformer uses the sinusoidal positional embedding due to the property that it can generalize to lengths not seen during training.
 
-### Non-Linear Attention
+To this point, we have only been using linear projections as our functions. Do you think a sprinkle of non-linearity will help our model?
+
+### Let's use Non-Linear Attention
 
 As seen from our discussion, we can extract the following about the linearity of our Attention.
 With
@@ -227,7 +229,7 @@ h_t^n = \sum_{i=1}^T \alpha_i^n V^n(f(x_i) + p(i))
 
 With the following observations, it will be difficult for the attention to manipulate the attention weights to find a complicated combination. The solution will be to apply a post-attention non-linear function.
 
-Let's define $g(.)$ as the post-attention non-linear function, which is a feedforward neural network in our case, applied to each time-step independently.
+Let's define $g(.)$ as the post-attention non-linear function, which is a feed-forward neural network in our case, applied to each time-step independently.
 
 \begin{equation}
 h_t = g\left(\left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]\right)
