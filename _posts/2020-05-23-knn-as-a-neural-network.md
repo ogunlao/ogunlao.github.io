@@ -24,7 +24,7 @@ Given a set of train data-points,
 \{(x_1, y_1), (x_2, y_2), ... ,(x_n, y_n)\}
 \end{equation}
 
-with $x_i \in \mathcal{R}^d$, $y_i \in \mathcal{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x^t$, how can we classify the point using k-nearest neighbor into its correct class?
+with $x_i \in \mathbb{R}^d$, $y_i \in \mathbb{R}$ and i = 1, 2, ..., n. There are $n$ training examples each with d number of features. Given a new datapoint $x^t$, how can we classify the point using k-nearest neighbor into its correct class?
 
 ## K Nearest Neighbor
 
@@ -45,7 +45,7 @@ Using the matrix notation,
 d = \sqrt{\sum_{j=1}^{d} (X_j^2 - 1_n(x^t)_j^T)^2}
 \end{equation}
 
-where $X = (x_1, x_2, ..., x_n)^T \in \mathcal{R}^{nxd}$ and $(x^t)^T \in \mathcal{R}^d$. To simplify notation, I will assume that $x^t$ will be broadcasted along the matrix, which becomes simply:
+where $X = (x_1, x_2, ..., x_n)^T \in \mathbb{R}^{nxd}$ and $(x^t)^T \in \mathbb{R}^d$. To simplify notation, I will assume that $x^t$ will be broadcasted along the matrix, which becomes simply:
 
 \begin{equation}
 d = \sqrt{\sum_{j=1}^{d} (X_j^2 - x_j^t)^2}
@@ -105,7 +105,7 @@ Before now, we have not really talked out the labels of the training examples. I
 - For a regression task, this computation is almost done. We take the vector of distances and find the prediction of the class, with the minimum distance (or maximum value in this case, as we have performed inversion).
 - For a classification task, we can also take the label of the datapoint with the minimum distance or go a step further.
 
-For a classification task, where $Z_3 = W_3x_3 + b$, firstly, we perform one-hot encoding on the train labels. $y_{onehot} \in \mathcal{R}^{nxd}$
+For a classification task, where $Z_3 = W_3x_3 + b$, firstly, we perform one-hot encoding on the train labels. $y_{onehot} \in \mathbb{R}^{nxd}$
 
 \begin{equation}
 Z_3 = Z_2^Ty_{onehot}
