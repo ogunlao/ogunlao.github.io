@@ -64,7 +64,7 @@ If we begin to unroll the hidden vector equation, moving step by step backwards,
 \end{equation}
 
 \begin{equation}
-  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \widetilde{h}_{t-2}\right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
+  h_t = U_t \odot \left(U_{t-2} \odot h_{t-3}+(1-U_{t-2})\odot \tilde{h_{t-2}} \right) + (1-U_{t-1})\odot \tilde{h}_{t-1})+(1-U_t)\odot\tilde{h}_t
 \end{equation}
 
 \begin{equation}
@@ -74,7 +74,7 @@ If we begin to unroll the hidden vector equation, moving step by step backwards,
 \begin{equation}
 h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1} (1-U_k) \right) \tilde{h}_i
 \end{equation}
-for $t$ steps of GRU update. The breakdown of $h_t$ shows the computation of weighted combination of all GRU's previous states.
+for $t$ steps of GRU update. The breakdown of $h_t$ shows the computation involving weighted combination of all GRU's previous states.
 
 ## Gated Recurrent Units to Causal Attention
 
@@ -91,7 +91,7 @@ h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} U_j \right) \left(\prod_{k=1}^{i-1}
 Recall that the update gate, $U_t$ is calculated thus in GRUs;
 
 \begin{equation}
-U_t = \sigma(\textbf{W}_u x_{t-1} + \textbf{U}_u h_{t-1} + b_u)
+U_t = \sigma(\textbf{W_u} x_{t-1} + \textbf{U_u} h_{t-1} + b_u)
 \end{equation}
 \begin{equation}
 h_t = f(h_{t-1}, x_{t-1}) = U_t \odot \tilde{h_t} + (1-U_t)\odot h_{t-1}
@@ -107,9 +107,9 @@ where $\alpha_i \propto exp\left(ATT\left(\tilde{h}_i, x_t\right)\right)$ and $i
 
 ### Let's free up candidate vectors
 
-Recall that $\tilde{h} = f(x_t, h_{t-1})$ 
+Recall that $\tilde{h} = f(x_t, h_{t-1})$
 
-where $\tilde{h_t}$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h}_{t-1}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$. 
+where $\tilde{h_t}$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h_{t-1}}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$.
 
 This implies that $\tilde{h_t}$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
 
@@ -159,13 +159,13 @@ At this stage, we have pretty much built a disentangled model but ehrmm, we have
 
 We can create N multiple possible $Q$, $K$ and $V$ functions/neural networks. Since each of them takes in same $x_i$ or $x_t$, we can have parallel computation preformed by each $Q$, $K$ and $V$ functions.
 
-For each attention head, $n \in 1, 2 , 3,..., N$, we calculate $h_t^n$. Each $h_t^n$ is concatenated together to form the new $h_t$ i.e. 
+For each attention head, $n \in 1, 2 , 3,..., N$, we calculate $h_t^n$. Each $h_t^n$ is concatenated together to form the new $h_t$ i.e.
 
 \begin{equation}
 h_t = \left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]
 \end{equation}
 
-where 
+where
 
 $h_t^n = \sum_{i=1}^t \alpha_i^n V^n(f(x_i))$ and $\alpha_i^k \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t))))$
 
@@ -203,7 +203,7 @@ So $h_t$ becomes;
 h_t = \left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]
 \end{equation}
 
-where 
+where
 
 $h_t^n = \sum_{i=1}^T \alpha_i^n V^n(f(x_i) + p(i))$ and $\alpha_i^k \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t) + p(i))))$
 
