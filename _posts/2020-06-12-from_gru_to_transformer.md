@@ -131,7 +131,7 @@ The input function $f(x_i)$ which have been used to disentangle the candidate ve
 
     $h_t = \sum_{i=1}^t \alpha_i f(x_i)$
 
-    where f(x_i) serves as the Value vector here.
+    where $f(x_i)$ serves as the Value vector here.
 
     In summary, pass in a vector of input $x_i$ or $x_t$ to function $f(.)$ depending on what is required to calculate Query, Key and Value.
 
