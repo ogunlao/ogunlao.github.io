@@ -129,7 +129,7 @@ The input function $f(x_i)$ which have been used to disentangle the candidate ve
    where $i$ ranges from $1$ to $t$, $f(x_i)$ represents the Key vector and $x_t$, the Query vector of the attention function, $ATT(., .)$. This attention function provides relatively high $\alpha_i$ values for $f(x_i)$ values associated with current time-step $x_t$.
 2. As seen, it is also used to calculate the candidate vectors for the content update i.e.
 
-    $h_t = \sum_{i=1}^t \alpha_i \tilde{h}_i$
+    $h_t = \sum_{i=1}^t \alpha_i f(x_i)$
 
     In summary, pass in a vector of input $x_i$ or $x_t$ to function $f(.)$ depending on what is required to calculate Query, Key and Value.
 
