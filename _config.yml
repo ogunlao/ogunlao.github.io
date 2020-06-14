@@ -28,7 +28,7 @@ url: "https://ogunlao.github.io/" # the base hostname & protocol for your site, 
 disqus:
   shortname: ogunlao
 
-# google_analytics: UA-158544608-1
+google_analytics: UA-169302931-1
 
 # Build settings
 markdown: kramdown
@@ -127,10 +127,10 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   
-  # analytics :
-  #   provider : google
-  #   google :
-  #       tracking_id : 'UA-44085641-1'
+  analytics :
+    provider : google
+    google :
+        tracking_id : 'UA-169302931-1'
     # getclicky :
     #   site_id :
     # mixpanel :
