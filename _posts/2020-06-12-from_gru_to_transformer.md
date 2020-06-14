@@ -109,7 +109,7 @@ where $\alpha_i \propto exp\left(ATT\left(\tilde{h}_i, x_t\right)\right)$ and $i
 
 Recall that $\tilde{h} = f(x_t, h_{t-1})$
 
-where $\tilde{h_t}$ depends on $h_{t-1}$ and $h_{t-1}$ depends on $\tilde{h_{t-1}}$ \& $ h_{t-2}$ and so on - check above unrolled $h_t$.
+where $\tilde{h_t}$ depends on $h_{t-1}$; $h_{t-1}$ depends on $\tilde{h_{t-1}}$ and $h_{t-2}$ and so on - check unrolled $h_t$ above.
 
 This implies that $\tilde{h_t}$ still depends on all the previous $\tilde{h}_{t-N}$ candidate vectors.
 
@@ -124,7 +124,7 @@ The input function $f(x_i)$ which have been used to disentangle the candidate ve
 
 1. It is sometimes used to query which of the previous hidden states are important, i.e.
 
-   $\alpha_i \propto exp\left(ATT\left(f(x_i), x_t\right)\right)$ 
+   $\alpha_i \propto exp\left(ATT\left(f(x_i), f(x_t)\right)\right)$ 
    
    where $i$ ranges from $1$ to $t$, $f(x_i)$ represents the Key vector and $x_t$, the Query vector of the attention function, $ATT(., .)$. This attention function provides relatively high $\alpha_i$ values for $f(x_i)$ values associated with current time-step $x_t$.
 2. As seen, it is also used to calculate the candidate vectors for the content update i.e.
