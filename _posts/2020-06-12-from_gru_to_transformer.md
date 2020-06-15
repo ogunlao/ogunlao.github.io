@@ -170,7 +170,7 @@ h_t = \left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right]
 
 where
 
-$h_t^n = \sum_{i=1}^t \alpha_i^n V^n(f(x_i))$ and $\alpha_i^k \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t))))$
+$h_t^n = \sum_{i=1}^t \alpha_i^n V^n(f(x_i))$ and $\alpha_i^n \propto exp(ATT(K^n(f(x_i)), Q^n(f(x_t))))$
 
 Questions?
 
