@@ -165,7 +165,7 @@ We can create N multiple possible $Q$, $K$ and $V$ functions/neural networks. Si
 For each attention head, $n \in 1, 2 , 3,..., N$, we calculate $h_t^n$. Each $h_t^n$ is concatenated together to form the new $h_t$ i.e.
 
 \begin{equation}
-h_t = \left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]
+h_t = \left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right]
 \end{equation}
 
 where
@@ -187,7 +187,7 @@ Since we have broken all the dependencies of candidate vectors and attention wei
 
 $h_t$ then becomes;
 \begin{equation}
-h_t = \left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right] 
+h_t = \left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right] 
 \end{equation}
 
 where $h_t^n = \sum_{i=1}^T \alpha_i^n V^n(f(x_i))$ 
@@ -203,7 +203,7 @@ We can do this by adding a position encoded vector, $p(i)$ (usually of same dime
 So $h_t$ becomes;
 
 \begin{equation}
-h_t = \left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]
+h_t = \left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right]
 \end{equation}
 
 where
@@ -237,13 +237,13 @@ With the following observations, it will be difficult for the attention to manip
 Let's define $g(.)$ as the post-attention non-linear function, which is a feed-forward neural network in our case, applied to each time-step independently.
 
 \begin{equation}
-h_t = g\left(\left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]\right)
+h_t = g\left(\left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right]\right)
 \end{equation}
 
 For higher efficiency, $g$ may be applied to each head independently. $h_t$ becomes;
 
 \begin{equation}
-h_t = \left[g(h_t^1);~ g(h_t^2);~ ...,~ g(h_t^N) \right]
+h_t = \left[g(h_t^1);~ g(h_t^2);~ ...;~ g(h_t^N) \right]
 \end{equation}
 
 This gives us the **Non-Linear, Non-Causal, Positional Attention** used by Transformer.
@@ -260,11 +260,11 @@ In summary,
   \end{equation}
 - which are then concatenated together, either before or after applying a nonlinear function
   \begin{equation}
-  h_t = g\left(\left[h_t^1;~ h_t^2;~ ...,~ h_t^N \right]\right)
+  h_t = g\left(\left[h_t^1;~ h_t^2;~ ...;~ h_t^N \right]\right)
   \end{equation}
   or
   \begin{equation}
-  h_t = \left[g(h_t^1);~ g(h_t^2);~ ...,~ g(h_t^N) \right]
+  h_t = \left[g(h_t^1);~ g(h_t^2);~ ...;~ g(h_t^N) \right]
   \end{equation}
 - then, the attention weight are calculated using the Key and Query vectors as well as positional encoding for the input
   \begin{equation}
