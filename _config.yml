@@ -51,8 +51,8 @@ kramdown:
 menuitems:
     - { title:    Home,
         url:      /index.html }
-    - { title:    Projects,
-        url:      /projects.html }
+    # - { title:    Projects,
+    #     url:      /projects.html }
     # - { title:    Publications,
     #     url:      /publications.html }
     - { title:    Curriculum Vitae,
