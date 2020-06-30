@@ -148,3 +148,8 @@ img.align-center {
 h2, h3 {
   margin-top: 1.2em;
 }
+
+blockquote p {
+  font-size: inherit;
+  font-weight: 700;
+}
