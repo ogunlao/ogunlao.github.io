@@ -144,3 +144,7 @@ img.align-center {
 .table th {
   text-align: center;
 }
+
+h2, h3 {
+  margin-top: 1.2em;
+}
