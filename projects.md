@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Main Projects"
+title: "Projects"
 tagline : ""
 use_math: true
 lang: zh
@@ -10,7 +10,6 @@ lang: zh
 {% assign posts_collate = site.categories.projects %}
 {% include JB/posts_collate %}
 
---- 
 
 <link rel="stylesheet" href="/glyphicons/css/glyphicons.css" />
 
@@ -134,11 +133,11 @@ lang: zh
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
-<!-- ![dog cat](/images/project/){:class="img-shadow"} -->
+![dog cat](/images/project/dog_cat.webp){:class="img-shadow"}
 </td>
 <td></td>
 <td markdown="1">
-**Dog Cat CLassifier**
+**Dog Cat Classifier**
 - A simple ml pipeline for discriminating between dogs and cats
 - Experiment can be found on my [github repo](https://github.com/ogunlao/dog-cat-classifier)
 
