@@ -54,13 +54,9 @@ lang: zh
 - Pretrained CPC model from Facebook CPC_audio library is then finetuned on 1hr of data.
 - Details of the project can be found on my [github repo](https://github.com/ogunlao/yoruba_speech_project/tree/master/project)
 
-|| <em class="icon-film"/> || [video demo](https://youtu.be/XUTCowMHSQs) ||
-
 </td> 
 </tr>
 </table>
-
----
 
 <table style="width:100%">
 <col width="20%">
@@ -86,13 +82,10 @@ lang: zh
 </tr>
 </table>
 
----
-
 <table style="width:100%">
 <col width="20%">
 <col width="10">
 <col >
-
 
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
@@ -112,8 +105,66 @@ lang: zh
 </table>
 
 
+<table style="width:100%">
+<col width="20%">
+<col width="10">
+<col >
 
+<tr height="25"/>
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+![dna sequence](/images/project/dna_sequence.jpeg){:class="img-shadow"}
+</td>
+<td></td>
+<td markdown="1">
+**DNA Sequence Classification using Kernel Methods**
+- Predict whether DNA sequence region is binding site using Kernel methods
+- Experimented with different kernels such as mismatch kernel, gaussian kernel, weighted-degree kernel
+- Details of the project can be found on my [github repo](https://github.com/ogunlao/dna-sequence-kernels)
 
+</td> 
+</tr>
+</table>
+
+<table style="width:100%">
+<col width="20%">
+<col width="10">
+<col >
+
+<tr height="25"/>
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<!-- ![dog cat](/images/project/){:class="img-shadow"} -->
+</td>
+<td></td>
+<td markdown="1">
+**Dog Cat CLassifier**
+- A simple ml pipeline for discriminating between dogs and cats
+- Experiment can be found on my [github repo](https://github.com/ogunlao/dog-cat-classifier)
+
+</td> 
+</tr>
+</table>
+
+<table style="width:100%">
+<col width="20%">
+<col width="10">
+<col >
+
+<tr height="25"/>
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+![dog cat](/images/project/matching_game.png){:class="img-shadow"}
+</td>
+<td></td>
+<td markdown="1">
+**The Matching Game**
+- A game written in React/Javascript to test attention and retention
+- Game hosted on netlify. You can play using the [game link](https://the-matching-game.netlify.com/)
+
+</td> 
+</tr>
+</table>
 
 <!-- <table style="width:100%">
 <col width="20%">
