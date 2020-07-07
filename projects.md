@@ -165,6 +165,8 @@ lang: zh
 </tr>
 </table>
 
+Explore other experiments and projects in [my github repository](https://github.com/ogunlao/)
+
 <!-- <table style="width:100%">
 <col width="20%">
 <col width="10">
