@@ -20,7 +20,6 @@ Coming soon...
 <col >
 
 
-<!-- 
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
@@ -28,15 +27,15 @@ Coming soon...
 </td>
 <td></td>
 <td markdown="1">
-**AR Camera: An Augmented Reality Prototype for Mobile Devices of Lenovo.**
-- Prototyped an application with an AR effect for QR code or a dish of food, to improve user experience.
-- Developed detection, tracking and stereo algorithms to obtain a real-time and smooth effect.
+**Yoruba Speech Dataset: A dataset for low-resource speech tasks.**
+- 3 hours of audio recordings from a native yoruba speaker.
+- Can be used for low-resource speech tasks
+- Details of the project can be found on my [github repo](https://github.com/ogunlao/yoruba_speech_project)
 
 || <em class="icon-film"/> || [video demo](https://youtu.be/XUTCowMHSQs) ||
 
 </td> 
-</tr> -->
-
+</tr>
 
 </table>
 
