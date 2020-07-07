@@ -36,8 +36,6 @@ lang: zh
 
 </table>
 
----
-
 <table style="width:100%">
 <col width="20%">
 <col width="10">
@@ -73,7 +71,7 @@ lang: zh
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
-![exploring detectron2](/images/project/object_tracking.jpeg){:class="img-shadow"}
+![exploring detectron2](/images/project/object_tracking.jpg){:class="img-shadow"}
 </td>
 <td></td>
 <td markdown="1">
@@ -87,6 +85,34 @@ lang: zh
 </td> 
 </tr>
 </table>
+
+---
+
+<table style="width:100%">
+<col width="20%">
+<col width="10">
+<col >
+
+
+<tr height="25"/>
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+![exploring detectron2](/images/project/cassava_disease.png32){:class="img-shadow"}
+</td>
+<td></td>
+<td markdown="1">
+**Cassava Disease Classification**
+- Classify cassava plants as belonging to one of 4 various disease classes or healthy
+- Experimented with various CNN architectures for this task
+- Explore different methods of dealing with imbalanced datasets. I wrote a [blog post of what worked for me](https://ogunlao.github.io/2020/05/08/cross-validation-and-reproducibility-in-neural-networks.html)
+- Details of the project can be found on my [github repo](https://github.com/ogunlao/cassava_disease_classification)
+
+</td> 
+</tr>
+</table>
+
+
+
 
 
 <!-- <table style="width:100%">
