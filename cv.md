@@ -94,7 +94,7 @@ CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://ww
 <div class="leftpane1" markdown="1">
 #### Language
 - English
-- Yoruba
+- Yorùbá
 - Pidgin
 </div>
 </div>
@@ -103,8 +103,27 @@ CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://ww
 
 ---
 
-# Conferences and Workshops 
+# Conferences, Trainings and Workshops 
 ---
+
+<table style="width:100%">
+<col width="17%">
+<col width="20">
+<col >
+
+<tr style="border-bottom:1pt solid #eee">
+<td markdown="1">
+![mlss](/img/main/mlss20tu10.jpg)
+</td>
+<td></td>
+<td markdown="1">
+[Machine Learning Summer School, Tübingen, Germany](http://mlss.tuebingen.mpg.de/)
+
+The **Machine Learning Summer School, 2020** was a virtual machane learning even exploring various machine learning topics taught by top researchers in their fields.
+</td> 
+</tr>
+</table>
+
 <table style="width:100%">
 <col width="17%">
 <col width="20">
