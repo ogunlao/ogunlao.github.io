@@ -17,7 +17,7 @@ comments: true
 </div>
 
 
-<!-- <style>
+<style>
 img {
   display: block;
   margin-left: auto;
@@ -30,51 +30,18 @@ img {
 <img src="/img/main/sewade.jpg" class="center" style="width:100px">
 
 ### About Me
-My name is Sewade Olaolu Ogun. I'm currently an NLP Engineer with [Proto](https://www.proto.cx/) where I create AI Customer Experience (AICX) chatbots for multilingual contact centers, focusing on African Languages. I will be finishing my [African Masters in Machine Intelligence](https://aimsammi.org/) (AMMI) by July at African Institute for Mathematical Sciences, sponsored by Facebook and Google. Before joining AMMI, I worked as a Predictive Engineer and also have a Bachelors degree in Electronics and Electrical Engineering.
+
+Welcome to my page. I write on this site to solidify my learning. I also hope to explain concepts to others as clearly as possible, majorly by intuition and mathematics. Major writing themes are Machine Learning, Natural Language Processing, Deep Learning.
+
 ---
 
-### Research Interests
-
-My research interests include:
-
-- Low Resource Language Understanding
-- Multimodal Learning
-  - Visual Question Answering
-- Semi-supervised learning
-- Deep learning
-
---- -->
-<!-- Blogs -->
-### Latest Posts
-
-<div id="recent-posts" class="recent-posts">
-  {% for this_post in paginator.posts %}
-  {% unless this_post.categories contains "hidden" %}
-  <div class="post">
-      <a href="{{ this_post.url }}">
-        <p class="post-title" style="font-size:20px; font-family:Helvetica Neue; font-weight: 400;">{{ this_post.title }}
-        </p>
-      </a>
-      {% include category_info %}
-      {% include source_info %}
-  </div>
-  {% endunless %}
-  {% endfor %}
-</div>
-
-<script type="text/javascript">
-  var el = document.getElementById("recent-posts");
-  fix_cjk_linebreak(el);
-  fix_table_style(el);
-</script>
-
-<!-- ### Latest Articles
+### Latest Articles
 
 - [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
 - [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
 - [Making Efficient Neural Networks](https://ogunlao.github.io/2020/04/19/making_efficient_neural_networks.html)
 
-For more articles, [click here to visit my blog](https://ogunlao.github.io/archive/index.html). -->
+For more articles, [visit my blog](https://ogunlao.github.io/archive/index.html).
 
 ---
 
