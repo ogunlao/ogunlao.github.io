@@ -33,6 +33,10 @@ Welcome to my page. I write on this site to solidify my learning. I also hope to
 
 ---
 
+CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://www.linkedin.com/in/sewade-ogun/)
+
+---
+
 ### Latest Articles
 
 - [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)

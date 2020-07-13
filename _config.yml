@@ -55,8 +55,8 @@ menuitems:
         url:      /projects.html }
     # - { title:    Publications,
     #     url:      /publications.html }
-    - { title:    Curriculum Vitae,
-        url:      /cv.html}
+    # - { title:    Curriculum Vitae,
+    #     url:      /cv.html}
     - { title:    Blogs,
         url:      /archive/index.html}
     # - { title:    Notes,
