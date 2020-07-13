@@ -29,8 +29,6 @@ img {
 
 <img src="/img/main/sewade.jpg" class="center" style="width:100px">
 
-### About Me
-
 Welcome to my page. I write on this site to solidify my learning. I also hope to explain concepts to others as clearly as possible, majorly by intuition and mathematics. Major writing themes are Machine Learning, Natural Language Processing, Deep Learning.
 
 ---
