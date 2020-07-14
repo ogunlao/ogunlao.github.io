@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Sewade Olaolu Ogun"
+title: homepage
 use_math: true
 lang: en-GB
 comments: true
