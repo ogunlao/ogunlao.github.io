@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Sewade Olaolu Ogun
+title: "Sewade Olaolu Ogun"
 use_math: true
 lang: en-GB
 comments: true
