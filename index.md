@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Homepage
+title: Sewade Olaolu Ogun
 use_math: true
 lang: en-GB
 comments: true
@@ -27,13 +27,15 @@ img {
 }
 </style>
 
-<img src="/img/main/sewade.jpg" class="center" style="width:100px">
+<!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 
-Welcome to my page. I write on this site to solidify my learning. I also hope to explain concepts to others as clearly as possible, majorly by intuition and mathematics. Major writing themes are Machine Learning, Natural Language Processing, Deep Learning.
+Masters Student, [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/)
+
+NLP Engineer, [Proto](https://www.proto.cx/)
 
 ---
 
-CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://www.linkedin.com/in/sewade-ogun/)
+View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://www.linkedin.com/in/sewade-ogun/)
 
 ---
 
