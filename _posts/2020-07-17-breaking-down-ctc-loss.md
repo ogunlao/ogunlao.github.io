@@ -148,7 +148,7 @@ Iterate backward:
 
 ![computations of beta probabilities](/images/ctc_loss/beta_prob.png)
 
-### A note of computation
+### Computing the probabilities in log space
 
 From the computations, observe that we are constantly multiplying probabilities with values less than 0. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm domain. Products become sums, divisions. For instance;
 
