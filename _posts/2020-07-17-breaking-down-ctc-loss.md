@@ -90,7 +90,7 @@ $score(pathA) = y_{(0,0)}\*y_{(0,1)}\*y_{(0,2)}\*y_{(1,3)}\*y_{(1,4)}\*y_{(2,5)}
 
 $score(pathB) = y_{(1,0)}\*y_{(1,1)}\*y_{(2,2)}\*y_{(3,3)}\*y_{(3,4)}\*y_{(4,5)}\*y_{(5,6)}\*y_{(7,7)}\*y_{(7,8)}\*y_{(8,9)}$
 
-There are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(|V|^T M)$ where $|V|$ is the length of vocabulary, $T$ is the length of the input and $M$, the number of labels.
+There are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(\|V\|^T\*M)$ where $\|V\|$ is the length of vocabulary, $T$ is the length of the input and $M$, the number of labels.
 
 Can we find a dynamic programming algorithm for solving this problem? Well, the [viterbi algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm) is made for this type of problem.
 The viterbi algorithm finds the best path to a node by extending the best path to one of its parent nodes. Any other path would necessarily have a lower probability.
