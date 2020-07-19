@@ -86,9 +86,9 @@ To guarantee that the sequence is an expansion of the target sequence, we can on
 
 The score of a path is the product of probabilities of all nodes along the path. For the two paths considered in the examples above.
 
-$score(pathA) = y_{(0,0)}*y_{(0,1)}*y_{(0,2)}*y_{(1,3)}*y_{(1,4)}*y_{(2,5)}*y_{(3,6)}*y_{(4,7)}*y_{(5,8)}*y_{(7,9)}$
+$score(pathA) = y_{(0,0)}\*y_{(0,1)}\*y_{(0,2)}\*y_{(1,3)}\*y_{(1,4)}\*y_{(2,5)}\*y_{(3,6)}\*y_{(4,7)}\*y_{(5,8)}\*y_{(7,9)}$
 
-$score(pathB) = y_{(1,0)}*y_{(1,1)}*y_{(2,2)}*y_{(3,3)}*y_{(3,4)}*y_{(4,5)}*y_{(5,6)}*y_{(7,7)}*y_{(7,8)}*y_{(8,9)}$
+$score(pathB) = y_{(1,0)}\*y_{(1,1)}\*y_{(2,2)}\*y_{(3,3)}\*y_{(3,4)}\*y_{(4,5)}\*y_{(5,6)}\*y_{(7,7)}\*y_{(7,8)}\*y_{(8,9)}$
 
 There are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(|V|^T M)$ where $|V|$ is the length of vocabulary, $T$ is the length of the input and $M$, the number of labels.
 
