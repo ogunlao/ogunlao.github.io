@@ -103,7 +103,7 @@ Instead of only selecting the most likely alignment, we find the expectation ove
 
 To compute this effectively, we need a forward variable $\alpha_{s, t}$ and backward variable $beta_{s, t}$ where s is the index of the token considered. The forward variable computes the total probability of a sequence seq[1:s] up to a particular timestep t. The backward variable calculates the total probability of remaining sequence from token seq(s) to token seq(S), seq[s:S] at timestep t.
 
-### Forward Algorithm for computing $\alpha_{s, t}$
+### Forward Algorithm for computing $\alpha_{(s, t)}$
 
 First, let's create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\alpha$ values. The forward algorithm is given by;
 
@@ -129,7 +129,7 @@ $seq(s)$ - token at index $s$ e.g. $seq(s=1)="d"$
 
 ![computations of alpha probabilities](/images/ctc_loss/alpha_prob.png)
 
-### Backward algorithm for computing $\beta_{s, t}$
+### Backward algorithm for computing $\beta_{(s, t)}$
 
 Let's also create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\beta$ values.
 
