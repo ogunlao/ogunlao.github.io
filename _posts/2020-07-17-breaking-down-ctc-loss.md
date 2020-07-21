@@ -22,7 +22,7 @@ Here's what we will cover:
 
 Let's look an automatic speech recognition task where we have to predict the words spoken from the audio data.
 
-![audio converted to text](/images/ctc_loss/asr.png)
+->![audio converted to text](/images/ctc_loss/asr.png)<-
 
 Looking at the speech segment, how can we align the words to where they are spoken in the speech segment? Even if it is possible to manually do it for this task, it is not feasible for a large corpus of audio data.
 
@@ -42,7 +42,7 @@ Well, Instead of decoding characters, we can decode phonemes, subwords, or even 
 
 We can solve these problems by explicitly introducing a blank token into our vocabulary to cater for these dynamics. We further include a separator token to indicate spaces between each word.
 
-Thus, "a door" split into ["t", "h", "e", "_", "d", "o", "o", "r"] tokens is then transformed into ["ε", "t", "ε", "h", "ε", "e", "ε", "\_", "ε", "d", "ε", "o", "ε", "o", "ε", "r", "ε"] where the blank token is included. With this, we know that we can only have repeating tokens only if they are separated by a blank token, "ε" e.g. "d", "o", "ε", "o", "ε", "r" is allowed and not "d", "o", "o", "ε", "r". The latter contracts into "dor".
+Thus, "a door" split into ["ε", "a", "_", "d", "o", "o", "r"] tokens is then transformed into ["ε", "a", "ε", "\_", "ε", "d", "ε", "o", "ε", "o", "ε", "r", "ε"] where the blank token is included. With this, we know that we can only have repeating tokens only if they are separated by a blank token, "ε" e.g. "d", "o", "ε", "o", "ε", "r" is allowed and not "d", "o", "o", "ε", "r". The latter contracts into "dor".
 
 In general, given an initial sequence of length $M$, the length of the expanded sequence is $2*M + 1$
 
@@ -52,11 +52,11 @@ At the output of the RNN, we get a vector, which has the length of vocabulary, f
 
 We will consider a smaller label "door" but should be enough to explain the entire concept succinctly. Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
 
-$["ε":0, "_":1', "a": 2, "b":3,~ ... ~,"z":28]$
+$["ε":0, "\_":1', "a": 2, "b":3,~ ... ~,"z":28]$
 
 ![softmax layer from ctc](/images/ctc_loss/softmax_layer_from_ctc.png)
 
-We denote the total number of timesteps by $T$ and length of the expanded target output by $S$ where $S = 2*M + 1$. So, for "door", $S = 2\*4+1$
+We denote the total number of timesteps by $T$, length of the expanded target output by $S$, and length of label by $M$. So, $S = 2*M + 1$ e.g for "door", $S = 2\*4+1$
 
 Given these vectors of probability distributions, how do we learn the alignments of the probable predictions? We need a structured way to traverse from the first softmax distribution to the last to represent the word.
 
@@ -123,7 +123,9 @@ Iterate forward:
 if $seq(s) = "ε"$ or seq(s) = seq(s-2)
     - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)} + \alpha_{(s-2, t-2)})y_{(s, t)}$ otherwise
 
-seq(s) - token at index s e.g. seq(s=1)="d"
+Note that $\alpha_{(s, t)} = 0$ for all $s < S-2(T-t) - 1$ which corresponds to the unconnected boxes in the top-right. These variables correspond to states for which there are not enough time-steps left to complete the sequence.
+
+$seq(s)$ - token at index $s$ e.g. $seq(s=1)="d"$
 
 ![computations of alpha probabilities](/images/ctc_loss/alpha_prob.png)
 
@@ -144,11 +146,13 @@ Iterate backward:
       if $seq(s) = "ε"$ or $seq(s) = seq(s+2)$
     - $\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t)} + \beta_{(s+1, t+1)}y_{(s+1, t)} + \beta_{(s+2, t+2)})y_{(s+2, t)}$ otherwise
 
+Similarly, $\beta_{(s, t)} = 0$ for all $s > 2t$ which corresponds to the unconnected boxes in the bottom-left.
+
 ![computations of beta probabilities](/images/ctc_loss/beta_prob.png)
 
-### Computing the probabilities in log space
+### Computing the probabilities efficiently
 
-From the computations, observe that we are constantly multiplying probabilities with values less than 0. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm domain. Products become sums, divisions. For instance;
+From the computations, observe that we are constantly multiplying values less than 0. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
 
 $\alpha_{s, t} = (\alpha_{s, t-1} + \alpha_{(s-1, t-1)})y_{s, t}$
 
@@ -164,21 +168,21 @@ $\gamma_{s,t} = \alpha_{s,t}\beta_{s,t}$
 
 Afterwards, we compute the posterior probabilities of the sequence at every timestep by summing along columns. This is the total probability of all paths going through a token $seq(s)$ at timestep t.
 
-$P_{(seq_t), t)} = \sum\limits_{s=0}^{S}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}$
+$P_{(seq_t, t)} = \sum\limits_{s=0}^{S}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}$
 
 ![computations of gamma probabilities](/images/ctc_loss/gamma_prob.png)
 
 Total loss of the model is then;
 
-$\mathcal{l} = -\sum\limits_{t=0}^{T-1}\sum\limits_{s=0}^{S-1}\gamma_{s, t}log~y_{(s, t)}$
+$\mathcal{l} = -\sum\limits_{t=0}^{T-1} P_{(seq_t, t)}$
 
 Derivatives can then be calculated for back propagation using Autograd. Modern deep leaning libraries such as Pytorch, and TensorFlow have this feature.
 
 ## Conclusion
 
-In this article, we explained the connectionist temporal classification loss and how it can be applied in many-to-many input/output classification tasks without alignments. Then, we showed the computations for the forward and backward algorithm used for the decoding. However, we did not mention how the gradients are computed or decoding is done is done during inference. The reader can explore references below for more details.
+In this article, we explained the connectionist temporal classification loss and how it can be applied in many-to-many input/output classification tasks without alignments. Then, we showed the computations for the forward and backward algorithm used for the training the model.
 
 ## References
 
 1. Hannun, "Sequence Modeling with CTC", Distill, 2017.
-1. Bhiksha Raj, Connectionist Temporal Classification (CTC) lecture slide, [link](https://deeplearning.cs.cmu.edu/S20/document/slides/lec14.recurrent.pdf), retrieved July 2020.
+1. Bhiksha Raj, Connectionist Temporal Classification (CTC) lecture slide, [link](https://deeplearning.cs.cmu.edu/S20/document/slides/lec14.recurrent.pdf), last retrieved July 2020.
