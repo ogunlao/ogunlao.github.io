@@ -41,6 +41,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 
 ### Latest Articles
 
+- [Breaking down the CTC Loss](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html)
 - [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
 - [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
 - [Making Efficient Neural Networks](https://ogunlao.github.io/2020/04/19/making_efficient_neural_networks.html)
