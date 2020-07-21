@@ -174,7 +174,7 @@ $P_{(seq_t, t)} = \sum\limits_{s=0}^{S}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}$
 
 Total loss of the model is then;
 
-$\mathcal{l} = -\sum\limits_{t=0}^{T-1} P_{(seq_t, t)}$
+$\mathcal{l} = -\sum\limits_{t=0}^{T-1} log P_{(seq_t, t)}$
 
 Derivatives can then be calculated for back propagation using Autograd. Modern deep leaning libraries such as Pytorch, and TensorFlow have this feature.
 
