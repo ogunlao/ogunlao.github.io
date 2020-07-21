@@ -50,9 +50,9 @@ In general, given an initial sequence of length $M$, the length of the expanded 
 
 At the output of the RNN, we get a vector, which has the length of vocabulary, for each time step of RNN computation. The softmax function is applied to it to get a vector of probabilities. The number of output labels cannot be more than the number of features from the CNN, so the features has to be estimated accordingly (by taking the maximum length of sequence in vocabulary or some other heuristic).
 
-We will consider a smaller label "door" but should be enough to explain the entire concept succinctly. Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
+We will consider a smaller label "door" which should be enough to explain the entire concept succinctly. Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
 
-$["ε":0, "\_":1', "a": 2, "b":3,~ ... ~,"z":28]$
+$["ε":0, "_":1, "a": 2, "b":3,~ ... ~,"z":28]$
 
 ![softmax layer from ctc](/images/ctc_loss/softmax_layer_from_ctc.png)
 
