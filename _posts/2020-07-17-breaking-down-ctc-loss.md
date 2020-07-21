@@ -9,11 +9,12 @@ comments: true
 
 ---
 
-The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by [Alex Graves et al](https://www.cs.toronto.edu/~graves/icml_2006.pdf) for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. It has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm.
+The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by [Alex Graves et al](https://www.cs.toronto.edu/~graves/icml_2006.pdf) for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. These tasks require alignment between the input and output which may not be given. Therefore, it has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm.
 
-For an introductory look at CTC, you can read [Sequence Modeling With CTC](https://distill.pub/2017/ctc/) by Awni Hannun.
+We will not be discussing the decoding methods used during inference such as beam search with ctc or prefix search. For an introductory look at CTC, you can read [Sequence Modeling With CTC](https://distill.pub/2017/ctc/) by Awni Hannun.
 
 Here's what we will cover:
+
 1. TOC
 {:toc}
 
@@ -33,54 +34,56 @@ Let's get concrete with what we have been talking about by designing a task and 
 
 ![speech model using ctc ctc](/images/ctc_loss/speech_model.png)
 
-In the model above, we convert the raw audio signal into its spectrum or apply melfiterbanks, which is then passed through a convolution neural network (CNN). CNNs enable us extract features, by looking at a window of the data while performing strided convolutions along the feature dimension of the audio.
+In the model above, we convert the raw audio signal into its spectrum or apply melfiterbanks (this is optional and can be performed by a CNN layer), which is then passed through a convolution neural network (CNN). CNNs enable us extract features, by looking at a window of the data while performing strided convolutions along the feature dimension of the audio.
 
-The features are then passed through a Recurrent Neural Network (RNN) for decoding. At the decoding stage, observe that some outputs are similar to their previous timesteps indicating that predictions overlap. Also, how should we have dealt with silence in the audio?
+The features are then passed through a Recurrent Neural Network (RNN) for decoding. At the decoding stage, if we perform a max decoding at each timestep, we will get tokens of a much longer length than the input, which naturally implies that redundant tokens will be decoded to fill up some of the timesteps. How do we contract the decoded output to represent our predictions? How should we deal with silences in the audio? How should we indicate repetitions of tokens as in "d-oo-r"?
 
-Instead of decoding characters, we can decode phonemes, subwords, or even words depending on the task. Let's consider the instance of character decoding for this article.
+Well, Instead of decoding characters, we can decode phonemes, subwords, or even words depending on the task. Let's consider the instance of character decoding for this article.
 
-There are problems which arise when decoding characters. Some characters repeat in words (e.g. 'o' in 'door') and how does the model determine the correct sequence of character to be 'door' and not 'dor'. We can solve this problem by explicitly introducing a blank token into our vocabulary to cater for this. Don not forget we also have a separator token to cater for spaces between words.
+We can solve these problems by explicitly introducing a blank token into our vocabulary to cater for these dynamics. We further include a separator token to indicate spaces between each word.
 
-For instance, "the door" split into ["t", "h", "e", "d", "o", "o", "r"] tokens will be transformed into ["ε", "t", "ε", "h", "ε", "e", "_", "d", "ε", "o", "ε", "o", "ε", "r"] to cater for blanks and separator. With this, we know that we can only have two similar consecutive tokens only if they are separated by a blank token, "ε".
+Thus, "a door" split into ["t", "h", "e", "_", "d", "o", "o", "r"] tokens is then transformed into ["ε", "t", "ε", "h", "ε", "e", "ε", "\_", "ε", "d", "ε", "o", "ε", "o", "ε", "r", "ε"] where the blank token is included. With this, we know that we can only have repeating tokens only if they are separated by a blank token, "ε" e.g. "d", "o", "ε", "o", "ε", "r" is allowed and not "d", "o", "o", "ε", "r". The latter contracts into "dor".
 
-Given an initial sequence of length $M$, we expand the length of new sequence becomes $2*M + 1$
+In general, given an initial sequence of length $M$, the length of the expanded sequence is $2*M + 1$
 
-## Getting into details
+## Getting into ctc details
 
-At the output of the RNN, we get a vector, which has the length of vocabulary, for each time step of RNN computation. The softmax function is applied to it to get a vector of probabilities. The number of output sequences cannot be more than the number of features from the CNN, so the features has to be estimated accordingly (by taking the maximum length of sequence in vocabulary or some other heuristic).
+At the output of the RNN, we get a vector, which has the length of vocabulary, for each time step of RNN computation. The softmax function is applied to it to get a vector of probabilities. The number of output labels cannot be more than the number of features from the CNN, so the features has to be estimated accordingly (by taking the maximum length of sequence in vocabulary or some other heuristic).
 
-Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
+We will consider a smaller label "door" but should be enough to explain the entire concept succinctly. Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
 
-$\{"ε":0, "\_":1', "a": 2, "b":3, ... ,"z":28\}$
+$["ε":0, "_":1', "a": 2, "b":3,~ ... ~,"z":28]$
 
 ![softmax layer from ctc](/images/ctc_loss/softmax_layer_from_ctc.png)
 
-Let $T$ denote the length of the input, $S$ denote the length of the target output i.e $S = 2*M + 1$.
+We denote the total number of timesteps by $T$ and length of the expanded target output by $S$ where $S = 2*M + 1$. So, for "door", $S = 2\*4+1$
 
 Given these vectors of probability distributions, how do we learn the alignments of the probable predictions? We need a structured way to traverse from the first softmax distribution to the last to represent the word.
 
 ### Setting up constrains on the alignment
 
-We eliminate all rows that do not include tokens from the target sequence and then rearrange the tokens to form the output sequence. We copy the required output for the target into a secondary reduced structure. So we only decode on the reduced structure assuring us that only appropriate tokens will be used for decoding.
+In principle, we exclude all rows that do not include tokens from the target sequence and then rearrange the tokens to form the output sequence. This is done during training only. At inference, a beam search can be performed on the distribution. So, we copy the required output for the target into a secondary reduced structure and decode on the reduced structure assuring us that only appropriate tokens will be used for selected for computing loss and gradients.
 
-Also, if a token occur multiple times, we repeat the row in the appropriate location. This becomes our probability matrix, $y_{(s, t)}$
+If a token occur multiple times in the label, we repeat the rows for similar tokens in their appropriate location. This becomes our probability matrix, $y_{(s, t)}$
 
 ![reduced softmax layer ctc](/images/ctc_loss/reduced_softmax_layer_extract_ctc.png)
 
 ### Composing the graph
 
-Now that we have our full grid, we can begin traversing the grid from top-left to bottom right in such a way that; a) the first character in the decoding must be a blank token, 'ε' or the token 'd' b) the last token is either a blank token or 'r' c) the rest of the sequence follows a sequence that monotonically travels down from the top-left to bottom-right.
+Now that we have our full grid, we can begin traversing the grid from top-left to bottom right in such a way that; (a) the first character in the decoding must be a blank token, 'ε' or the first sequence token 'd' (b) the last token is either a blank token or the last sequence token 'r' (c) the rest of the sequence follows a sequence path that monotonically travels down from the top-left to bottom-right.
 
 ![probability matrix ctc](/images/ctc_loss/probability_matrix_ctc.png)
 
-To guarantee that the sequence is an expansion of the target sequence, we can only traverse the grid only through these paths. I have attempted to trave all paths in the grid, and you can do it as an exercise too. Two valid paths where both collapse into "door" are shown below;
+To guarantee that the sequence is an expansion of the target sequence, we can only traverse the grid through these valid paths from top-left to bottom-right. I have attempted to trave all paths in the grid, and you can do it as an exercise too. Two valid paths where both collapse into "door" are shown below;
 
-![](/images/ctc_loss/valid_paths_prob1.png)
+![ctc valid path 1](/images/ctc_loss/valid_paths_prob1.png)
 
-![](/images/ctc_loss/valid_paths_prob2.png)
+![ctc valid path 2](/images/ctc_loss/valid_paths_prob2.png)
+
+It is easy to trace this paths if we consider that the following traversal rules;
 
 - The sequence can start with a blank token or the first character token and end with a blank token or the last character token. So we have to consider both paths.
-- Skips are permitted across a blank token only if the tokens on either side of the blank token are different (because a blank is required to distinguish repetition of a token but not required between distinct tokens)
+- Skips are permitted across a blank token **only if the tokens on either side of the blank token are different** because a blank is required to distinguish repetition of a token but not required between distinct tokens
 
 ### Scoring the paths
 
@@ -90,28 +93,23 @@ $score(pathA) = y_{(0,0)}\*y_{(0,1)}\*y_{(0,2)}\*y_{(1,3)}\*y_{(1,4)}\*y_{(2,5)}
 
 $score(pathB) = y_{(1,0)}\*y_{(1,1)}\*y_{(2,2)}\*y_{(3,3)}\*y_{(3,4)}\*y_{(4,5)}\*y_{(5,6)}\*y_{(7,7)}\*y_{(7,8)}\*y_{(8,9)}$
 
-There are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(\|V\|^T\*M)$ where $\|V\|$ is the length of vocabulary, $T$ is the length of the input and $M$, the number of labels.
+We are required to trace out all the possible paths that contract into "door" and there are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(\|V\|^T)$ where $\|V\|$ is the length of vocabulary.
 
-Can we find a dynamic programming algorithm for solving this problem? Well, the [viterbi algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm) is made for this type of problem.
-The viterbi algorithm finds the best path to a node by extending the best path to one of its parent nodes. Any other path would necessarily have a lower probability.
-
-Spoiler: But, as good as this sounds, the viterbi algorithm has its drawbacks. It commits to a path or initial alignment early (without exploration) which can lead to suboptimal results.
-
-So, we need to find a way to disallow commit to any valid alignment during training.
+Can we find a dynamic programming algorithm for solving this problem? Well, the [viterbi algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm) can generate the most likely path, and does not guarantee we get the most likely sequence of labels. It finds the best path to a node by extending the best path to one of its parent nodes. Any other path would necessarily have a lower probability. But, the viterbi algorithm commits to a path or initial alignment early (without exploration) which can lead to suboptimal results.
 
 ## Forward-Backward Algorithm
 
-Instead of only selecting the most likely alignment, we find the expectation over all possible alignments. This allows us to also exploit the existence of subpaths in the graph.
+Instead of only selecting the most likely alignment, we find the expectation over all possible alignments during training. This allows us to also exploit the existence of subpaths in the graph.
 
-To compute this effectively, we need a forward probability $\alpha_{s, t}$ and backward probability $beta_{s, t}$ where t is the time-step and s is the index of the token considered.
+To compute this effectively, we need a forward variable $\alpha_{s, t}$ and backward variable $beta_{s, t}$ where s is the index of the token considered. The forward variable computes the total probability of a sequence seq[1:s] up to a particular timestep t. The backward variable calculates the total probability of remaining sequence from token seq(s) to token seq(S), seq[s:S] at timestep t.
 
 ### Forward Algorithm for computing $\alpha_{s, t}$
 
-First, let's create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\alpha$ values.
+First, let's create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\alpha$ values. The forward algorithm is given by;
 
 Initialize:
 
-$\alpha$-mat = numpy.zeros_like(y-mat)
+$\alpha$-mat = zeros_like(y-mat)
 
 $\alpha_{(0, 0)} = y_{(0, 0)}$, $\alpha_{(1, 0)} = y_{(1, 0)}$
 
@@ -121,7 +119,7 @@ Iterate forward:
 
 - for t = 1 to T-1:
   - for s = 0 to S:
-    - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)})y_{(s, t)}$ 
+    - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)})y_{(s, t)}$
 if $seq(s) = "ε"$ or seq(s) = seq(s-2)
     - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)} + \alpha_{(s-2, t-2)})y_{(s, t)}$ otherwise
 
