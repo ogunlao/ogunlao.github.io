@@ -22,7 +22,7 @@ Here's what we will cover:
 
 Let's look an automatic speech recognition task where we have to predict the words spoken from the audio data.
 
-->![audio converted to text](/images/ctc_loss/asr.png)<-
+![audio converted to text](/images/ctc_loss/asr.png)
 
 Looking at the speech segment, how can we align the words to where they are spoken in the speech segment? Even if it is possible to manually do it for this task, it is not feasible for a large corpus of audio data.
 
