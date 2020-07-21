@@ -52,7 +52,7 @@ At the output of the RNN, we get a vector, which has the length of vocabulary, f
 
 We will consider a smaller label "door" which should be enough to explain the entire concept succinctly. Let's generate our vocabulary as the standard lowercase alphabets, including our special tokens.
 
-["ε":0, "_":1, "a": 2, "b":3,~ ... ~,"z":28]
+["ε":0, "_":1, "a": 2, "b":3, ... ,"z":28]
 
 ![softmax layer from ctc](/images/ctc_loss/softmax_layer_from_ctc.png)
 
