@@ -80,7 +80,7 @@ To guarantee that the sequence is an expansion of the target sequence, we can on
 
 ![ctc valid path 2](/images/ctc_loss/valid_paths_prob2.png)
 
-It is easy to trace this paths if we consider that the following traversal rules;
+It is easy to trace these paths if we consider the following traversal rules;
 
 - The sequence can start with a blank token or the first character token and end with a blank token or the last character token. So we have to consider both paths.
 - Skips are permitted across a blank token **only if the tokens on either side of the blank token are different** because a blank is required to distinguish repetition of a token but not required between distinct tokens

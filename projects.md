@@ -3,7 +3,7 @@ layout: page
 title: "Projects"
 tagline : ""
 use_math: true
-lang: zh
+lang: en
 ---
 {% include JB/setup %}
 
@@ -48,7 +48,7 @@ lang: zh
 </td>
 <td></td>
 <td markdown="1">
-**Comparing Yoruba and French Speech Models in Low-Resource Settings**
+**Comparing Yoruba and French Speech Speech Models in Low-Resource Settings**
 - CPC models is trained on 1 hour of yoruba and french audio with labels
 - Pretrained CPC model from Facebook CPC_audio library is then finetuned on 1hr of data.
 - Details of the project can be found on my [github repo](https://github.com/ogunlao/yoruba_speech_project/tree/master/project)
@@ -89,7 +89,7 @@ lang: zh
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
-![exploring detectron2](/images/project/cassava_disease.png32){:class="img-shadow"}
+![exploring detectron2](/images/project/cassava_disease.png){:class="img-shadow"}
 </td>
 <td></td>
 <td markdown="1">
@@ -133,7 +133,7 @@ lang: zh
 <tr height="25"/>
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
-![dog cat](/images/project/dog_cat.webp){:class="img-shadow"}
+![dog cat](/images/project/dog_cat.png){:class="img-shadow"}
 </td>
 <td></td>
 <td markdown="1">

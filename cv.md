@@ -3,7 +3,7 @@ layout: page
 title: "Curriculum Vitae"
 tagline : ""
 use_math: true
-lang: zh
+lang: en
 ---
 {% include JB/setup %}
 

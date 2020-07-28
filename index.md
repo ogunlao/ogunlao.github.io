@@ -28,6 +28,7 @@ img {
 </style>
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
+## Sewade Olaolu Ogun
 
 Masters Student, [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/)
 
