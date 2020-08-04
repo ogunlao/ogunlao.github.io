@@ -2,7 +2,7 @@
 layout: post
 title:  "How to get the best out of your AMMI programme"
 # categories: blog
-# tags: [loss]
+tags: [ammi, master's]
 comments: true
 # categories: coding
 # tags: linux
