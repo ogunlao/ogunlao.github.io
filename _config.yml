@@ -73,7 +73,7 @@ menuitems:
     #                   url:   /tags.html }]}
 # support the pagination
 # gems: [jekyll-paginate]
-paginate: 5
+paginate: 20
 paginate_path: "/archive/page:num"
 
 JB :
