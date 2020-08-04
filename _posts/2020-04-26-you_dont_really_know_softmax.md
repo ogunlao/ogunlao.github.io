@@ -17,24 +17,25 @@ Here's what we will cover:
 
 ## Introduction
 
-Softmax is a non-linear function, used majorly at the output of classifiers for multi-class classification. Given a vector $[x_1, x_2, x_3, ... x_d]$ for $i = 1,2, ...d$, the softmax function has the form
+Softmax is a non-linear function, used majorly at the output of classifiers for multi-class classification. Given a vector $[x_1, x_2, x_3, ... x_d]^T$ for $i = 1,2, ...d$, the softmax function has the form
 
 \begin{equation}
 sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}
 \end{equation}
 
 where d is the number of classes.  
-The sum of all the exponentiated values, $\sum_{j=1}^{d} e^{x_j}$ is a normalizing constant which helps to ensure that it maintains the properties of a probability distribution i.e. a) the values must sum to 1 b) they must be between 0 and 1 inclusive $[0, 1]$.   
+The sum of all the exponentiated values, $\sum_{j=1}^{d} e^{x_j}$ is a normalizing constant which helps to ensure that it maintains the properties of a probability distribution i.e. (a) the values must sum to 1 (b) they must be between 0 and 1 inclusive $[0, 1]$.
 
 ![Softmax classifier](/images/softmax.png "source: ljvmiranda921.github.io")  
 
-For example, given a vector $x = [10, 2, 40, 4]$, to calculate the softmax of each element;   
+For example, given a vector $x = [10, 2, 40, 4]$, to calculate the softmax of each element; 
 
 - exponentiate each value in the vector $e^x = [e^{10}, e^2, e^{40}, e^4]$,  
 - calculate the sum $\sum{e^x} = e^{10} + e^2 + e^{40} + e^4 = 2.353...e^{17}$
 - then, divide each $x_i$ by the sum to give $sm(x) = [9.35762297e^{-14}, 3.13913279e^{-17}, 1.00000000e^{+00}, 2.31952283e^{-16}]$
 
 This can be easily implemented in a numerical library like numpy,
+
 ```python
 import numpy as np
 def softmax(x):
@@ -42,10 +43,11 @@ def softmax(x):
     sum_exp_x = np.sum(exp_x)
     sm_x = exp_x/sum_exp_x
     return sm_x
-   
+
 x = np.array([10, 2, 40, 4])
 print(softmax(x))
 ```
+
 ```
 output: [9.35762297e-14 3.13913279e-17 1.00000000e+00 2.31952283e-16]
 ```
@@ -57,6 +59,7 @@ output: [9.35762297e-14 3.13913279e-17 1.00000000e+00 2.31952283e-16]
 These are pointers to what we will be discussing in the next sessions?
 
 ## Numerical Stability of Softmax
+
 From the softmax probabilities above, we can deduce that softmax can become numerically unstable for values with a very large range. Consider changing the 3rd value in the input vector to $10000$ and re-evaluate the softmax.  
 
 ```python
@@ -203,13 +206,14 @@ def logsoftmax(x, recover_probs=True):
 x = np.array([10, 2, 10000, 4])
 print(logsoftmax(x, recover_probs=True))
 ```
+
 ```
 output: [0., 0., 1., 0.]
 ```
 
 ## Softmax Temperature
 
-In the NLP domain, where the softmax is applied at the output of a classifier to get a probability distribution over tokens. The softmax can be too sure of its predictions and can make other words less likely to pre sampled.    
+In the NLP domain, where the softmax is applied at the output of a classifier to get a probability distribution over tokens. The softmax can be too sure of its predictions and can make other words less likely to pre sampled.
 For example, if we have a statement;
 
 The boy ___ to the market.
@@ -220,6 +224,7 @@ with possible answers, $[goes, go, went, comes]$. Assume we get logits of $[38, 
 x = [38, 20, 40, 39]
 softmax(x)
 ```
+
 ```
 output: [0.09, 0.00, 0.6, 0.24]
 ```
