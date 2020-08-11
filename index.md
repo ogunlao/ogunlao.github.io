@@ -1,6 +1,6 @@
 ---
 layout: default
-title: homepage
+title: "Sewade's Website"
 use_math: true
 lang: en-GB
 comments: true
