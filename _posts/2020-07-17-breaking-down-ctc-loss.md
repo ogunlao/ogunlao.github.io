@@ -135,8 +135,8 @@ Let's also create a matrix of zeros of same shape as our probability matrix, $y_
 
 Initialize:
 
-- $\beta_{(T-1, S-1)} = 1$, $\beta_{(T-1, S-2)} = 1$,
-- $\beta_{(T-1, s)} = 0$ for $s < S-2$
+- $\beta_{(S-1, T-1)} = 1$, $\beta_{(S-2, T-1)} = 1$,
+- $\beta_{(s, T-1)} = 0$ for $s < S-2$
 
 Iterate backward:
 
