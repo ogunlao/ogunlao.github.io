@@ -27,8 +27,7 @@ A speech corpus is a database containing audio recordings and the corresponding 
 
 With these problems in mind, you may need to determine if the audio is well suited for your task. In this article, we will focus on read speech for creating our own corpus, instead of relying on pre-recorded audio as explained above.
 
-<span>Photo by <a href="https://unsplash.com/@kateoseen?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kate Oseen</a> on <a href="https://unsplash.com/s/photos/recording?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-
+![Photo by Kate Oseen on Unsplash](/images/kate-oseen-XQKUIPjPl-s-unsplash.jpg)
 
 # Getting Started
 
