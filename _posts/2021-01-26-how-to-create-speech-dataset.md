@@ -102,9 +102,9 @@ Also, depending on the task, these metadata can be used to properly sample from 
 
 ### Size of the data
 
-As with all machine learning tasks involving deep neural networks, more data is better. The task can be split across many speakers to have a large sample size. Tasks like ASR and TTS require a lot of audio samples for good performance. The best models in English ASR are trained on about 60 thousand hours of speech [Jacob Kahn et al - LibriLight](https://arxiv.org/abs/1912.07875). That is equivalent to about 7 years of speech. This particular data was created from the LibriVox database of audio books.
+As with all machine learning tasks involving deep neural networks, more data is better. The task can be split across many speakers to have a large sample size. Tasks like ASR and TTS require a lot of audio samples for good performance. The best models in English ASR are trained on about 60 thousand hours of speech [\[Jacob Kahn et al - LibriLight\]](https://arxiv.org/abs/1912.07875). That is equivalent to about 7 years of speech. This particular data was created from the LibriVox database of audio books.
 
-In low resource audio settings, audio samples of this size may not be possible. We may then have to result to domain adaptation or training a self-supervised acoustic model from raw speech, if audio is available without transcriptions. There have been significant advances in unsupervised and self-supervised speech representation learnings enabling SOTA performance with limited data [Alexei Baevski et al. - wav2vec 2.0](https://arxiv.org/abs/2006.11477)
+In low resource audio settings, audio samples of this size may not be possible. We may then have to result to domain adaptation or training a self-supervised acoustic model from raw speech, if audio is available without transcriptions. There have been significant advances in unsupervised and self-supervised speech representation learnings enabling SOTA performance with limited data [\[Alexei Baevski et al. - Wav2Vec 2.0\]](https://arxiv.org/abs/2006.11477)
 
 ### Noise and Artefacts
 
@@ -116,7 +116,7 @@ On the converse, training with noisy audio can make the acoustic model robust to
 
 ### Unlabelled audio
 
-It may be difficult and more cumbersome to get large amounts of labelled data. Recent research has shown that clean unlabelled audio can also be useful for pretraining acoustic models. Unlabelled data may be easier to collect in many cases and that can be put to use in a self-supervised way. These methods have been shown to be competitive with their labelled counterparts for downstream tasks such as ASR. Two popular acoustic models for representation learning are [Aaron van den Oord et al - Contrastive Predictive Coding](https://arxiv.org/abs/1807.03748) and [A Baevski, 2020 - Wave2Vec2.0](https://arxiv.org/abs/2006.11477) are two popular unsupervised methods of learning speech representations for downstream tasks.
+It may be difficult and more cumbersome to get large amounts of labelled data. Recent research has shown that clean unlabelled audio can also be useful for pretraining acoustic models. Unlabelled data may be easier to collect in many cases and that can be put to use in a self-supervised way. These methods have been shown to be competitive with their labelled counterparts for downstream tasks such as ASR. Two popular acoustic models for representation learning are [\[Aaron van den Oord et al - Contrastive Predictive Coding\]](https://arxiv.org/abs/1807.03748) and [\[A Baevski, 2020 - Wave2Vec2.0\]](https://arxiv.org/abs/2006.11477) are two popular unsupervised methods of learning speech representations for downstream tasks.
 
 ### Data Split
 
@@ -162,7 +162,7 @@ In general, it is a good starting point to check online repositories like [Open 
 
 ### Source of Text
 
-Text is freely and openly available for high-resource languages like English, Mandarin, French etc. Some other languages of the world do not have large amount of text available for annotation. More often, texts are sourced from textbooks, news and media, religious publications e.g [JW.org](https://www.aclweb.org/anthology/P19-1310/) and the Bible. Wikipedia is also a good source of text for many languages and should be the first place to go, for clean text.
+Text is freely and openly available for high-resource languages like English, Mandarin, French etc. Some other languages of the world do not have large amount of text available for annotation. More often, texts are sourced from textbooks, news and media, religious publications e.g [Ž Agić et al - JW300](https://www.aclweb.org/anthology/P19-1310/) and the Bible. Wikipedia is also a good source of text for many languages and should be the first place to go, for clean text.
 
 The acoustic model may be biased towards text from the specific domain it was trained on. So, care should be taken when using the acoustic model.
 
