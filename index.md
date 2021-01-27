@@ -30,9 +30,9 @@ img {
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 ## Sewade Olaolu Ogun
 
-Masters Student, [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/)
+Teaching Assistant for the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme at AIMS.
 
-NLP Engineer, [Proto](https://www.proto.cx/)
+Previously, NLP Engineer, [Proto](https://www.proto.cx/)
 
 ---
 
@@ -42,6 +42,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 
 ### Latest Articles
 
+- [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html)
 - [Breaking down the CTC Loss](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html)
 - [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
 - [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
