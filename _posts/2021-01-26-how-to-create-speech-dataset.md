@@ -29,7 +29,7 @@ With these problems in mind, you may need to determine if the audio is well suit
 
 ![Photo by Kate Oseen on Unsplash](/images/kate-oseen-XQKUIPjPl-s-unsplash.jpg)
 
-# Getting Started
+## Getting Started
 
 Since 2015, we have seen advances in using deep neural networks for ASR tasks [\[Papers with code\]](https://paperswithcode.com/sota/speech-recognition-on-librispeech-test-clean), surpassing previous models using ensembles of Gaussian Mixtures on various speech related task. Also, the introduction of the Connectionist Temporal Classification [\[A Graves, 2006\]](https://dl.acm.org/doi/10.1145/1143844.1143891) Loss has given a major boost to machine learning tasks like speech where alignment between the audio and text is cumbersome. Using the CTC Loss enables the model to maximize the objective over all possible and correct alignments between the audio and text. With these advancements, creating speech data has become significantly easier than previously imagined, with corpus requiring no alignment between the text and the read speech. 
 
