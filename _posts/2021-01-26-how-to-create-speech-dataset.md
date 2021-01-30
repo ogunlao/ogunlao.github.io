@@ -170,6 +170,4 @@ The most appropriate text is that which mimics the domain where the model will b
 
 ## Conclusion
 
-This article explained in detail the various aspects of data collection that needs to be considered when creating a speech corpus, specifically for ASR. #
-
-The article might require a re-read to digest every thing we have talked about. You can always have a reread at a later time. Also, feel free to initiate discussion in the comment section
+This article explained in detail the various aspects of data collection that needs to be considered when creating a speech corpus, specifically for ASR.
