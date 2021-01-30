@@ -53,7 +53,7 @@ For a brief overview of encodings and audio formats, checkout the article [\[Int
 
 ### Length of Recordings
 
-For ASR tasks, the length of the audio samples should be smaller than about 30 seconds. Typically, for the ASR tasks I have worked on, the average length of the recordings range between 10 seconds and 15 seconds. The shorter the duration the better for the model, especially models that use recurrent neural networks (RNN) for decoding. There is the problem of long term dependency that needs to be addressed, especially in the low data regime and when using recurrent neural networks. It is also advisable to ensure the variance between the audio duration is small.
+For ASR tasks, the length of the audio samples should be smaller than about 30 seconds. Typically, for the ASR tasks I have worked on, the average length of the recordings range between 10 seconds and 15 seconds. The shorter the duration the better for the model, especially for models that use recurrent networks (RNN) for decoding. There is also the problem of long-range temporal dependency that needs to be addressed with long duration. It is also advisable to ensure the variance between the audio duration is small likewise.
 
 In the case of TTS, recordings should be splitted on sentence stops instead of silence intervals, to learn long-term characteristics of speech such as the sentence-level prosody for given a text [\[LibriTTS - Heiga Zen et al.\]](https://arxiv.org/pdf/1904.02882.pdf)
 
