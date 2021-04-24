@@ -19,11 +19,11 @@ Here's what we will cover:
 
 Given a set of samples $x_i$ with corresponding labels $y_i$. Let us assume we have a binary classification task with only two labels $\{y_1, y_2\}$.
 
-We can train a classifier using binary cross=entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Then, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
+We can train a classifier using binary cross-entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Then, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
 
 ## Decomposing the accuracy score
 
-Accuracy can be computed from theconfusion matrix, which gives a breakdown of prediction scores such as true positive $(tp)$, true negative $(tn)$, false positive $(fp)$ and false negative $(fn)$. The goal of this article is not to explain these terms, since there are other great articles online on the subject of confusion matrix.
+Accuracy can be computed from the confusion matrix, which gives a breakdown of prediction scores such as true positive $(tp)$, true negative $(tn)$, false positive $(fp)$ and false negative $(fn)$. The goal of this article is not to explain these terms, since there are other great articles online on the subject of confusion matrix.
 
 \begin{equation}
 accuracy = \dfrac{total~correct~predictions}{total~number~of~predictions}
@@ -42,7 +42,6 @@ The class label we use as positive or negative is arbitrary here. We can further
 \begin{equation}
 accuracy = \dfrac{tp}{p + n} + \dfrac{tn}{p + n}
 \end{equation}
-\begin{equation}
 
 Multiplying the first part by $p$ and second part by $n$ clearly becomes;
 \begin{equation}
