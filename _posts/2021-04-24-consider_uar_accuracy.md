@@ -17,7 +17,7 @@ Here's what we will cover:
 
 ## Introduction
 
-Given a set of samples $x_i$ with corresponding labels $y_i$. Let us assume we have a binary classification task with only two labels \{y_1, y_2\}.
+Given a set of samples $x_i$ with corresponding labels $y_i$. Let us assume we have a binary classification task with only two labels $\{y_1, y_2\}$.
 
 We can train a classifier using binary cross=entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Then, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
 
@@ -26,21 +26,21 @@ We can train a classifier using binary cross=entropy loss, hinge loss (or whatev
 Accuracy can be computed from theconfusion matrix, which gives a breakdown of prediction scores such as true positive $(tp)$, true negative $(tn)$, false positive $(fp)$ and false negative $(fn)$. The goal of this article is not to explain these terms, since there are other great articles online on the subject of confusion matrix.
 
 \begin{equation}
-$$accuracy = \dfrac{total correct predictions}{total number of predictions}
+accuracy = \dfrac{total~correct~predictions}{total~number~of~predictions}
 \end{equation}
 
 This can be shown to correspond the following from the confusion matrix;
 \begin{equation}
-$$accuracy = \dfrac{tp + tn}{tp + tn + fp + fn}
+accuracy = \dfrac{tp + tn}{tp + tn + fp + fn}
 \end{equation}
 \begin{equation}
-$$accuracy = \dfrac{tp + tn}{p + n}
+accuracy = \dfrac{tp + tn}{p + n}
 \end{equation}
 where $p$ is the total no. of positives and $n$ is the total no. of negatives.
 
 The class label we use as positive or negative is arbitrary here. We can further decompose the equation above into two parts;
 \begin{equation}
-$$accuracy = \dfrac{tp}{p + n} + \dfrac{tn}{p + n}
+accuracy = \dfrac{tp}{p + n} + \dfrac{tn}{p + n}
 \end{equation}
 \begin{equation}
 
@@ -60,11 +60,11 @@ The accuracy score can then be written as follows;
 accuracy = Sensitivity.\dfrac{p}{p + n} + Specificity.\dfrac{n}{p + n}
 \end{equation}
 
-\dfrac{p}{p + n} and \dfrac{n}{p + n} are weights applied to the sensitivity and specificity and both sum to 1. These weights apply a higher score to the recall with more class samples and lower to the other, so it does not weigh the two classes equally. This makes it generally unfit for understanding how well the model is performing for very skewed datasets.
+$\dfrac{p}{p + n}$ and $\dfrac{n}{p + n}$ are weights applied to the sensitivity and specificity and both sum to 1. These weights apply a higher score to the recall with more class samples and lower to the other, so it does not weigh the two classes equally. This makes it generally unfit for understanding how well the model is performing for very skewed datasets.
 
 ## Balanced Classification Accuracy
 
-To mitigate the bias in weighting, we can simply replace the weights with 0.5 or $\dfrac{1}{no of classes}$ for the multiclass scenario.
+To mitigate the bias in weighting, we can simply replace the weights with 0.5 or $\dfrac{1}{no~of~classes}$ for the multiclass scenario.
 
 The balanced accuracy then becomes;
 
@@ -88,12 +88,15 @@ def compute_metrics(confusion_matrix):
       output: tuple of float (specificity, sensitivity, accuracy, uar)
     """
     cm = confusion_matrix
-    specificity = cm[1, 1] / cm[:, 1].sum()
-    sensitivity = cm[0, 0] / cm[:, 0].sum()
-
+    tp, tn = cm[0, 0], cm[1, 1]
+    fn, fp = cm[0, 1], cm[0, 1]
+    
+    sensitivity = tp / (tp + fn)
+    specificity = tn / (fp + tn)
+    
     uar = (specificity + sensitivity)/2.0
     
-    accuracy = (tp + tn) / cm.sum()
+    accuracy = (tp + tn) / (tp + tn + fp + fn)
         
     return specificity, sensitivity, accuracy, uar
 ```
