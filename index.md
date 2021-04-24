@@ -32,6 +32,8 @@ img {
 
 Teaching Assistant for the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme at AIMS.
 
+Machine Learning Research Intern, [Ubenwa.ai](http://ubenwa.ai/)
+
 Previously, NLP Engineer, [Proto](https://www.proto.cx/)
 
 ---
@@ -40,8 +42,21 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 
 ---
 
+### Latest News
+
+- 24 Apr 2021: New blog post on [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html)
+- 15 Apr 2021: I will be [volunteering at the International Conference for Learning and Representations, 2021](https://iclr.cc/Conferences/2021/Volunteers)
+- 01 Mar 2021: I started a Machine Learning Research Internship with [ubenwa.ai](http://ubenwa.ai/). I will be working on predicting infant asphyxia through machine learning.
+- 26 Feb 2021: I participated in the [Google hash code 2021](https://hashcodejudge.withgoogle.com/) online competition, our team, Team OKAY was ranked amomg the top 25 percent on the leaderboard.
+- 26 Jan 2021: New blog post on [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html) targetted at the speech processing community
+- 01 Dec 2020: I will be a teaching assistant for the [African Masters in Machine Intelligence programme](https://aimsammi.org/) at AIMS Senegal
+- 01 Sep 2020: Finished cousework for my masters programme at AIMS AMMI. Currently looking for internship postions in Natural Language Processing or Speech Recognition
+
+---
+
 ### Latest Articles
 
+- [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html)
 - [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html)
 - [Breaking down the CTC Loss](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html)
 - [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
