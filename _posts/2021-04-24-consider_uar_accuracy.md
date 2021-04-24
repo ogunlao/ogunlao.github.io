@@ -61,7 +61,7 @@ accuracy = Sensitivity.\dfrac{p}{p + n} + Specificity.\dfrac{n}{p + n}
 
 $\dfrac{p}{p + n}$ and $\dfrac{n}{p + n}$ are weights applied to the sensitivity and specificity and both sum to 1. These weights apply a higher score to the recall with more class samples and lower to the other, so it does not weigh the two classes equally. This makes it generally unfit for understanding how well the model is performing for very skewed datasets.
 
-## Balanced Classification Accuracy
+## Balanced Classification Accuracy or Unweighted Average Recall
 
 To mitigate the bias in weighting, we can simply replace the weights with 0.5 or $\dfrac{1}{no~of~classes}$ for the multiclass scenario.
 
