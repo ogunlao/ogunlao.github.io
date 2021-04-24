@@ -68,7 +68,7 @@ To mitigate the bias in weighting, we can simply replace the weights with 0.5 or
 The balanced accuracy then becomes;
 
 \begin{equation}
-accuracy = Sensitivity\times 0.5 + Specificity\times 0.5
+accuracy_{bal} = Sensitivity\times 0.5 + Specificity\times 0.5
 \end{equation}
 
 This balanced accuracy is known as the Unweighted Average Recall, the average of the recall on the positive class and recall on the negative class. There is a correlation between the accuracy and UAR but the UAR gives the correct expectation on class predictions.
