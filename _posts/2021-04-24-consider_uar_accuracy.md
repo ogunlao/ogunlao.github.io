@@ -112,7 +112,7 @@ output: (1.0, 1.0, 1.0, 1.0)
 
 You can play with different formulations of the confusion matrix to better understand how class imbalance affects the scores.
 
->> This article is an exerpt from [Charles Onu](https://onucharles.github.io/)'s Master thesis under the section "Balanced Classification Accuracy and Misclassification Loss
+> This article is an exerpt from [Charles Onu](https://onucharles.github.io/)'s Master thesis from the section on "Balanced Classification Accuracy and Misclassification Loss"
 
 ## Conclusion
 

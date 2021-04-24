@@ -2,7 +2,7 @@
 layout: default
 title: "Sewade's Website"
 use_math: true
-lang: en-GB
+lang: en
 comments: true
 ---
 {% include JB/setup %}
