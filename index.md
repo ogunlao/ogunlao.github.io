@@ -44,7 +44,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 
 ### Latest News
 
-- 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach python to beginners and intermediate students \\
+- 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach python to beginners and intermediate students &nbsp; &nbsp;
 - 24 Apr 2021: New blog post on [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html) \\
 - 15 Apr 2021: I will be [volunteering](https://iclr.cc/Conferences/2021/Volunteers) at the International Conference for Learning and Representations, ICLR 2021 \\
 - 01 Mar 2021: I started a Machine Learning Research Internship with [ubenwa.ai](http://ubenwa.ai/). I will be working on predicting infant asphyxia through machine learning \\
