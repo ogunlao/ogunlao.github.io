@@ -43,15 +43,15 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
-- 29 May 2021: I am volunteering with [TREND IN
-AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach python to beginners and intermediate students
-- 24 Apr 2021: New blog post on [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html)
-- 15 Apr 2021: I will be [volunteering](https://iclr.cc/Conferences/2021/Volunteers) at the International Conference for Learning and Representations, ICLR 2021
-- 01 Mar 2021: I started a Machine Learning Research Internship with [ubenwa.ai](http://ubenwa.ai/). I will be working on predicting infant asphyxia through machine learning.
-- 26 Feb 2021: I participated in the qualifying rounds of [Google Hash Code 2021](https://hashcodejudge.withgoogle.com/) online competition, our team, Team OKAY was ranked amomg the top 25 percent on the leaderboard
-- 26 Jan 2021: New blog post on [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html) targetted at the speech processing community
-- 01 Dec 2020: I will be a teaching assistant for the [African Masters in Machine Intelligence programme](https://aimsammi.org/) at AIMS Senegal
-- 01 Sep 2020: Finished cousework for my masters programme at AIMS AMMI. Currently looking for internship postions in Natural Language Processing or Speech Recognition
+
+- 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach python to beginners and intermediate students \\
+- 24 Apr 2021: New blog post on [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html) \\
+- 15 Apr 2021: I will be [volunteering](https://iclr.cc/Conferences/2021/Volunteers) at the International Conference for Learning and Representations, ICLR 2021 \\
+- 01 Mar 2021: I started a Machine Learning Research Internship with [ubenwa.ai](http://ubenwa.ai/). I will be working on predicting infant asphyxia through machine learning \\
+- 26 Feb 2021: I participated in the qualifying rounds of [Google Hash Code 2021](https://hashcodejudge.withgoogle.com/) online competition, our team, Team OKAY was ranked amomg the top 25 percent on the leaderboard \\
+- 26 Jan 2021: New blog post on [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html) targetted at the speech processing communitym \\
+- 01 Dec 2020: I will be a teaching assistant for the [African Masters in Machine Intelligence programme](https://aimsammi.org/) at AIMS Senegal \\
+- 01 Sep 2020: Finished cousework for my masters programme at AIMS AMMI. Currently looking for internship postions in Natural Language Processing or Speech Recognition \\
 - 29 Aug, 2020: Took a 2-day Python workshop for beginners alongside colleagues, with over 100 partipants. Workshop materials can be found in this [github repo](https://github.com/WPSYG/Python-2-day-workshop)
 
 ---
