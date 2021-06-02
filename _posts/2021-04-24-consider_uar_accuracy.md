@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Consider using UAR instead of Accuracy for Classification tasks"
+title:  "Consider using UAR instead of Accuracy for Imbalanced Classification tasks"
 categories: blog
 tags: [metrics]
 comments: true

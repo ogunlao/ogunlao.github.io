@@ -66,11 +66,11 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 
 ### Latest Articles
 
-- [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html) <br/>
-- [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html) <br/>
-- [Breaking down the CTC Loss](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html) <br/>
-- [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html) <br/>
-- [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html) <br/>
+- [Consider using UAR instead of Accuracy for Imbalanced Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html)
+- [How to create a speech dataset for ASR, TTS, and other speech tasks](https://ogunlao.github.io/blog/2021/01/26/how-to-create-speech-dataset.html)
+- [Breaking down the CTC Loss](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html)
+- [From GRU to Transformer](https://ogunlao.github.io/blog/2020/06/12/from_gru_to_transformer.html)
+- [K Nearest Neighbor as a Neural Network](https://ogunlao.github.io/2020/05/23/knn-as-a-neural-network.html)
 - [Making Efficient Neural Networks](https://ogunlao.github.io/2020/04/19/making_efficient_neural_networks.html)
 
 For more articles, [visit my blog](https://ogunlao.github.io/archive/index.html).
