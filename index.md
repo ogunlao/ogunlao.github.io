@@ -43,8 +43,9 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
-
-- 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach python to beginners and intermediate students
+- 12 June 2021: We (a group of 8 research students) implemented the [SAINT paper](https://arxiv.org/abs/2106.01342) in the past week. It was so good working as a team to implement every detail in the paper
+<br/><br/>
+- 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach the Python programming language to beginners
 <br/><br/>
 - 24 Apr 2021: New blog post on [Consider using UAR instead of Accuracy for Classification tasks](https://ogunlao.github.io/blog/2021/04/24/consider_uar_accuracy.html)
 <br/><br/>
@@ -60,7 +61,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 <br/><br/>
 - 01 Sep 2020: Finished cousework for my masters programme at AIMS AMMI. Currently looking for internship postions in Natural Language Processing or Speech Recognition
 <br/><br/>
-- 29 Aug, 2020: Took a 2-day Python workshop for beginners alongside colleagues, with over 100 partipants. Workshop materials can be found in this [github repo](https://github.com/WPSYG/Python-2-day-workshop)
+- 27 Aug, 2020: Teaching at a 2-day Python workshop for beginners alongside colleagues, with over 100 partipants. Workshop materials can be found in this [github repo](https://github.com/WPSYG/Python-2-day-workshop)
 
 ---
 
