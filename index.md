@@ -29,6 +29,7 @@ img {
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 ## Sewade Olaolu Ogun
+PhD Student, [Inria-Nancy](https://www.inria.fr/en/centre-inria-nancy-grand-est) and [Vivoka](https://vivoka.com/)
 
 Teaching Assistant for the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme at AIMS.
 
@@ -43,6 +44,9 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
+
+- 01 Aug 2021: I will be starting my PhD at Inria-Nancy and Vivoka in October. I will be working on research in Speech recognition for Embedded Systems.
+<br/><br/>
 - 12 June 2021: We (a group of 8 research students) implemented the [SAINT paper](https://arxiv.org/abs/2106.01342) in the past week. It was so good working as a team to implement every detail in the paper
 <br/><br/>
 - 29 May 2021: I am volunteering with [TREND IN AFRICA](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach the Python programming language to beginners
