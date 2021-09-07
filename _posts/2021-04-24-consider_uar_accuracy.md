@@ -17,9 +17,9 @@ Here's what we will cover:
 
 ## Introduction
 
-Given a set of samples $x_i$ with corresponding labels $y_i$. Let us assume we have a binary classification task with only two labels $\{y_1, y_2\}$.
+Given a set of samples $\mathcal{X}$ with corresponding labels $\mathcal{Y}$. Let us assume we have a binary classification task with only two labels $\{y_1, y_2\}$.
 
-We can train a classifier using binary cross-entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Then, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
+We can train a classifier using binary cross-entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Afterwards, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
 
 ## Decomposing the accuracy score
 
@@ -96,23 +96,51 @@ def compute_metrics(confusion_matrix):
     uar = (specificity + sensitivity)/2.0
     
     accuracy = (tp + tn) / (tp + tn + fp + fn)
-        
-    return specificity, sensitivity, accuracy, uar
+    
+    metrics_dict = dict(sensitivity=sensitivity, specificity=specificity, 
+                       accuracy=accuracy, uar=uar)
+    return metrics_dict
 ```
 
-```
+Let us look at some cases of how accuracy and UAR differ in their metrics
+
+**Case 1: Balanced class**
+Here, we have 50 samples of the positive class and 50 samples of the negative class. The model predicts 45 of 50 samples correctly for the positive class and 39 of 50 samples correctly for the negative class.
+
+```bash
 >> import numpy as np
->> cm = np.array([[50, 0],[0, 50]]) # Balanced class with no incorrect predictions.
+>> cm = np.array([[45, 11],
+                  [5, 39]])
 >> print(compute_metrics(cm))
 ```
 
+```bash
+# Note that this figures have been rounded to 3 decimal places
+output: {'sensitivity': 0.804, 'specificity': 0.780,  
+        'accuracy': 0.792, 'uar': 0.792}
 ```
-output: (1.0, 1.0, 1.0, 1.0)
+
+Since the classes are balanced, the UAR and accuracy both gives similar information
+
+**Case 2: Imbalanced class**
+In this case, we have 20 samples of the positive class and 80 samples of negative class. The model predicts 4 of 20 samples correctly for the positive class and 75 of 80 samples correcly for the negative class.
+
+```bash
+>> cm = np.array([[4, 80],
+                  [16, 75]])
+>> print(compute_metrics(cm))
 ```
+
+```bash
+output: {'sensitivity': 0.444, 'specificity': 0.9375,  
+        'accuracy': 0.888, 'uar': 0.691}
+```
+
+Here the accuracy is over optimistic and indicating that we are doing well on about $90%$ of the samples. This is because of the size of samples of the negative class. However, the UAR gives a truer result showing that we still have work to do. Looking at the specificity and sensitivity closely, they show where the problem lies. The model is doing poorly on the positive class \(as indicated by the sensitivity\)
 
 You can play with different formulations of the confusion matrix to better understand how class imbalance affects the scores.
 
-> This article is an exerpt from [Charles Onu](https://onucharles.github.io/)'s Master thesis from the section on "Balanced Classification Accuracy and Misclassification Loss"
+> I first saw the UAR score on [Charles Onu](https://onucharles.github.io/)'s Master thesis in the section "Balanced Classification Accuracy and Misclassification Loss". This is a decomposition of the equation.
 
 ## Conclusion
 
