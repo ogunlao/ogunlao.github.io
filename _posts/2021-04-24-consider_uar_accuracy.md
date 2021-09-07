@@ -17,7 +17,7 @@ Here's what we will cover:
 
 ## Introduction
 
-Given a set of samples $\mathcal{X}$ with corresponding labels $\mathcal{Y}$. Let us assume we have a binary classification task with only two labels $\{y_1, y_2\}$.
+Given a set of samples $\mathcal{X}$ with corresponding labels $\mathcal{Y}$. Let us assume we have a binary classification task with only two labels, $y_1$ and $y_2$.
 
 We can train a classifier using binary cross-entropy loss, hinge loss (or whatever loss is fit) to get the best model for our task. Afterwards, we evaluate this model on unseen data to determine how well it generalizes. This is commonly done by calculating a score like accuracy.
 
