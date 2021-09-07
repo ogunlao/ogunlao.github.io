@@ -141,7 +141,7 @@ You can play with different formulations of the confusion matrix to better under
 > I first saw the UAR score on [Charles Onu](https://onucharles.github.io/)'s Master thesis in the section "Balanced Classification Accuracy and Misclassification Loss". This is a decomposition of the equation.
 
 **Update**
-Sep 11, 21: Fixed in a bug in computing the UAR in an earlier version of this article
+Sep 11, 21: Fixed in a bug in computing the UAR in an earlier version of this article, and added clearer examples
 
 ## Conclusion
 
