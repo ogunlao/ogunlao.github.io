@@ -105,7 +105,7 @@ def compute_metrics(confusion_matrix):
 Let us look at some cases of how accuracy and UAR differ in their metrics
 
 **Case 1: Balanced class**
-Here, we have 50 samples of the positive class and 50 samples of the negative class. The model predicts 45 of 50 samples correctly for the positive class and 39 of 50 samples correctly for the negative class.
+Here, we have 50 samples from the positive class and 50 samples from the negative class. The model predicts 45 of 50 samples correctly for the positive class and 39 of 50 samples correctly for the negative class.
 
 ```python
 >> import numpy as np
@@ -122,7 +122,7 @@ output: {'sensitivity': 0.90, 'specificity': 0.78, 'accuracy': 0.84, 'uar': 0.84
 Since the classes are balanced, the UAR and accuracy both gives similar information
 
 **Case 2: Imbalanced class**
-In this case, we have 20 samples of the positive class and 80 samples of negative class. The model predicts 4 of 20 samples correctly for the positive class and 75 of 80 samples correcly for the negative class.
+In this case, we have 20 samples from the positive class and 80 samples from negative class. The model predicts 4 of 20 samples correctly for the positive class and 75 of 80 samples correcly for the negative class.
 
 ```python
 >> cm = np.array([[4, 5],
