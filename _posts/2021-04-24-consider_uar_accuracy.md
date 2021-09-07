@@ -88,7 +88,7 @@ def compute_metrics(confusion_matrix):
     """
     cm = confusion_matrix
     tp, tn = cm[0, 0], cm[1, 1]
-    fn, fp = cm[0, 1], cm[0, 1]
+    fn, fp = cm[1, 0], cm[0, 1]
     
     sensitivity = tp / (tp + fn)
     specificity = tn / (fp + tn)
@@ -115,9 +115,8 @@ Here, we have 50 samples of the positive class and 50 samples of the negative cl
 ```
 
 ```bash
-# Note that this figures have been rounded to 3 decimal places
-output: {'sensitivity': 0.804, 'specificity': 0.780,  
-        'accuracy': 0.792, 'uar': 0.792}
+# Note that this figures have been rounded to 2 decimal places
+output: {'sensitivity': 0.90, 'specificity': 0.78, 'accuracy': 0.84, 'uar': 0.84}
 ```
 
 Since the classes are balanced, the UAR and accuracy both gives similar information
@@ -126,21 +125,23 @@ Since the classes are balanced, the UAR and accuracy both gives similar informat
 In this case, we have 20 samples of the positive class and 80 samples of negative class. The model predicts 4 of 20 samples correctly for the positive class and 75 of 80 samples correcly for the negative class.
 
 ```bash
->> cm = np.array([[4, 80],
+>> cm = np.array([[4, 5],
                   [16, 75]])
 >> print(compute_metrics(cm))
 ```
 
 ```bash
-output: {'sensitivity': 0.444, 'specificity': 0.937,  
-        'accuracy': 0.888, 'uar': 0.691}
+output: {'sensitivity': 0.20, 'specificity': 0.94, 'accuracy': 0.79, 'uar': 0.57}
 ```
 
-Here, the accuracy is over optimistic and indicating that we are doing well on about $90%$ of the samples. This is because of the size of samples of the negative class. However, the UAR gives a truer result showing that we still have work to do. Looking at the specificity and sensitivity closely, they show where the problem lies. The model is doing poorly on the positive class \(as indicated by the sensitivity\)
+Here, the accuracy is over optimistic and indicating that we are doing well on about $79%$ of the samples. This is because of the size of samples of the negative class. However, the UAR gives a truer result showing that we still have work to do. Looking at the specificity and sensitivity closely, they show where the problem lies. The model is doing poorly on the positive class \(as indicated by the sensitivity, $20%$\)
 
 You can play with different formulations of the confusion matrix to better understand how class imbalance affects the scores.
 
 > I first saw the UAR score on [Charles Onu](https://onucharles.github.io/)'s Master thesis in the section "Balanced Classification Accuracy and Misclassification Loss". This is a decomposition of the equation.
+
+**Update**
+Sep 11, 21: Fixed in a bug in computing the UAR in an earlier version of this article
 
 ## Conclusion
 
