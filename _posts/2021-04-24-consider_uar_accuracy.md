@@ -132,7 +132,7 @@ In this case, we have 20 samples of the positive class and 80 samples of negativ
 ```
 
 ```bash
-output: {'sensitivity': 0.444, 'specificity': 0.9375,  
+output: {'sensitivity': 0.444, 'specificity': 0.937,  
         'accuracy': 0.888, 'uar': 0.691}
 ```
 
