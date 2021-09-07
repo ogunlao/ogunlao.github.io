@@ -130,7 +130,7 @@ In this case, we have 20 samples of the positive class and 80 samples of negativ
 >> print(compute_metrics(cm))
 ```
 
-```bash
+```python
 output: {'sensitivity': 0.20, 'specificity': 0.94, 'accuracy': 0.79, 'uar': 0.57}
 ```
 
