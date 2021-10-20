@@ -31,7 +31,7 @@ img {
 ## Sewade Olaolu Ogun
 PhD Student, [Inria-Nancy](https://www.inria.fr/en/centre-inria-nancy-grand-est) and [Vivoka](https://vivoka.com/)
 
-Previously, Teaching Assistant for the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme at AIMS.
+Previously, Teaching Assistant at African Institute for Mathematical Science and the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme (AIMS/AMMI).
 
 ---
 
