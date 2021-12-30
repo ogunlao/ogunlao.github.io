@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cross Validation and Reproducibility in Neural Network Training"
-# categories: article
+categories: blog
 tags: [cross_validation, model_fitting, random_seed]
 comments: true
 # categories: coding

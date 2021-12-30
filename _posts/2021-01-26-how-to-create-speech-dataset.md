@@ -2,7 +2,7 @@
 layout: post
 title:  "How to create a speech dataset for ASR, TTS, and other speech tasks"
 categories: blog
-tags: [speech, asr, tts]
+tags: [speech_recognition, data_augmentation, asr, tts, data_collection]
 comments: true
 # categories: coding
 # tags: linux
@@ -39,7 +39,7 @@ For a detailed introduction to CTC Loss, checkout my blog post on [\[Breaking Do
 
 44.1kHz is the most common sampling frequency used to produce most digital audio. This ensures that the audio can be reconstructed for frequency below 22.05kHz, since it covers all frequencies that can be heard by a human. ASR experiments do not require that high sampling rate; more common frequencies are 8kHz and 16kHz, with sampling frequency of `16kHz` becoming the de facto in speech experiments, as there is no significant improvement in using a sampling frequency higher than that, but a lower sampling frequency may reduce accuracy. Therefore, it is advisable to stick to the 16kHz rule. Also, increasing the sampling frequency beyond that just increases the overhead during preprocessing and training, with some training procedures taking twice as much time, without any improvements.
 
-On the converse, modern production quality TTS often use 24, 32, 44.1, or 48 kHz sampling rate, as 16kHz is too low to achieve high quality TTS [\[LibriTTS - Heiga Zen et al.\]](https://arxiv.org/pdf/1904.02882.pdf). For TTS, the acoustic model needs to learn the fine-grained acoustic characteristic of the audio to be able to reproduce the same form of signal from text.
+On the converse, modern production quality TTS often use 22.05kHz, 32kHz, 44.1kHz, or 48 kHz sampling rate, as 16kHz is too low to achieve high quality TTS [\[LibriTTS - Heiga Zen et al.\]](https://arxiv.org/pdf/1904.02882.pdf) though many research works still use 16kHz for their research work. For TTS, the acoustic model needs to learn the fine-grained acoustic characteristic of the audio to be able to reproduce the same form of signal from text.
 
 During the signal preprocessing, the audio can be downsampled to its required sampling rate.
 
@@ -57,7 +57,7 @@ For ASR tasks, the length of the audio samples should be smaller than about 30 s
 
 In the case of TTS, recordings should be splitted on sentence stops instead of silence intervals, to learn long-term characteristics of speech such as the sentence-level prosody for given a text [\[LibriTTS - Heiga Zen et al.\]](https://arxiv.org/pdf/1904.02882.pdf)
 
-Other speech classification tasks such as gender identification and speaker identification, do not require long duration of samples. Typical duration of audio is 2  to 4 secs, which is enough to learn the signal characteristic for each class.
+Other speech classification tasks such as gender identification and speaker identification don't require long duration of samples. Typical duration of audio is 2  to 4 secs, which is enough to learn the signal characteristic for each class.
 
 ### Labels
 
@@ -94,7 +94,7 @@ Another idea may be to feed in an accent identifier into the acoustic model duri
 
 ### Other Metadata
 
-Some metadata pertaining to the speaker should be collected during the recording. Speaker ID, age, country, text domain, Signal-to-Noise Ratio (SNR), time of recording etc. can be collected for each speaker. It is good practice to inform the annotators of the metadata that is been collected from them and how it will be used.
+Some metadata pertaining to the speaker should be collected during the recording. Speaker ID, age, country, text domain, Signal-to-Noise Ratio (SNR), time of recording etc. can be collected for each speaker. It is good practice to inform the speakers/annotators of the metadata that is been collected from them and how it may possibly be used.
 
 Also, depending on the task, these metadata can be used to properly sample from the corpus to avoid the imbalance we discussed earlier.
 
