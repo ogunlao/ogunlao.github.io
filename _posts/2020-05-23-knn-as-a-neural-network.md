@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "K Nearest Neighbor as a Neural Network"
-categories: blog
+#categories: blog
 tags: [softmax, knn, neural_network]
 comments: true
 # categories: coding
