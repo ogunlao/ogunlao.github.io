@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Making Efficient Neural Networks"
-categories: blog
+#categories: blog
 tags: [neural_network, layer-drop, quantization, sparsity]
 comments: true
 # categories: coding

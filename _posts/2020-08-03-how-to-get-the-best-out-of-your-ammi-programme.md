@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to get the best out of your AMMI programme"
-categories: article
+#categories: article
 tags: [ammi, master's]
 comments: true
 # categories: coding
