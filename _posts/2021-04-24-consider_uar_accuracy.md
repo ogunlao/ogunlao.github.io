@@ -115,11 +115,11 @@ Here, we have 50 samples from the positive class and 50 samples from the negativ
 ```
 
 ```python
-# Note that this figures have been rounded to 2 decimal places
+# Note that values have been rounded up to 2 decimal places
 output: {'sensitivity': 0.90, 'specificity': 0.78, 'accuracy': 0.84, 'uar': 0.84}
 ```
 
-Since the classes are balanced, the UAR and accuracy both gives similar information
+Since the classes are balanced, the UAR and accuracy both give similar information
 
 **Case 2: Imbalanced class**
 In this case, we have 20 samples from the positive class and 80 samples from negative class. The model predicts 4 of 20 samples correctly for the positive class and 75 of 80 samples correcly for the negative class.
