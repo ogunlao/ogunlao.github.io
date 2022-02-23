@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by [Alex Graves et al](https://www.cs.toronto.edu/~graves/icml_2006.pdf) for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. These tasks require alignment between the input and output which may not be given. Therefore, it has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm.
+The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf) for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. These tasks require alignment between the input and output which may not be given. Therefore, it has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm.
 
 We will not be discussing the decoding methods used during inference such as beam search with ctc or prefix search. For an introductory look at CTC, you can read [Sequence Modeling With CTC](https://distill.pub/2017/ctc/) by Awni Hannun.
 
@@ -177,6 +177,11 @@ Total loss of the model is then;
 $\mathcal{l} = -\sum\limits_{t=0}^{T-1} log P_{(seq_t, t)}$
 
 Derivatives can then be calculated for back propagation using Autograd. Modern deep leaning libraries such as Pytorch, and TensorFlow have this feature.
+
+### Note
+
+1. The CTC loss algorithm can be applied to both convolutional and recurrent networks. For recurrent networks, it is possible to compute the loss at each timestep in the path or make use of the final loss, depending on the use case.
+2. Some forms of the loss use only the forward algorithm in its computation i.e $\alpha_{s, t}$. I was only able to reproduce the Pytorch CTC loss when I used the forward path in my computation, and ignoring the backward algorithm. However, the algorithm explained in this blog post is the one proposed in the seminal paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf).
 
 ## Conclusion
 
