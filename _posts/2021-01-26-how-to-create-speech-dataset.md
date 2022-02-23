@@ -17,13 +17,13 @@ Here's what we'll cover:
 
 ## Introduction
 
-A speech corpus is a database containing audio recordings and the corresponding label. The label depends on the task. For ASR tasks, the label is the text, for TTS, the label is the audio itself, while the input is text. For speaker classification, the label will be the speaker id. Therefore, the label and data depends on the particular task. For ASR, the audio samples and text require that they correspond to the same entity. There is a large amount of recorded audio which can be sourced from podcasts, streaming platforms like Youtube, and even talk shows. As much as audio is available, there are major challenges in using them for speech task are that should be considered;
+A speech corpus is a database containing audio recordings and the corresponding label. The label depends on the task. For ASR tasks, the label is the text, for TTS, the label is the audio itself, while the input is text. For speaker classification, the label will be the speaker id. Therefore, the label and data depends on the particular task. For ASR, the audio samples and text require that they correspond to the same entity. There is a large amount of recorded audio which can be sourced from podcasts, streaming platforms like Youtube, and even talk shows (if permission is granted to you to use them). While the data is available, there are major problems that should be considered when using them for speech tasks. These include;
 
 - they may contain artefacts/noise which are not important to the task and machine learning models may find it hard separating those artefacts from the actual signal,
 - recordings may/may not have corresponding transcription which may be needed,
 - multiple speakers talking simultaneously in the recordings,
 - audio recordings may have to be split into short durations, with alignment performed with the corresponding text,
-- Podcasts may have music playing at the background, multiple simultaneous speakers
+- Podcasts may have music playing at the background, multiple simultaneous speakers etc.
 
 With these problems in mind, you may need to determine if the audio is well suited for your task. In this article, we will focus on read speech for creating our own corpus, instead of relying on pre-recorded audio as explained above.
 
@@ -31,7 +31,7 @@ With these problems in mind, you may need to determine if the audio is well suit
 
 ## Getting Started
 
-Since 2015, we have seen advances in using deep neural networks for ASR tasks [\[Papers with code\]](https://paperswithcode.com/sota/speech-recognition-on-librispeech-test-clean), surpassing previous works using Hidden Markov Models (HMM) with Gaussian Mixtures (GMM) or their ensembles on various speech related task. Also, the introduction of the Connectionist Temporal Classification [\[A Graves, 2006\]](https://dl.acm.org/doi/10.1145/1143844.1143891) Loss to alignment has given a major boost to machine learning tasks like speech where alignment between the audio and text is cumbersome. Using the CTC Loss enables the model to maximize the objective over all possible and correct alignments between the audio and text. With these advancements, creating speech data has become significantly easier than previously imagined, with corpus requiring no alignment between the text and the read speech. 
+Since 2015, we have seen advances in using deep neural networks for ASR tasks [\[Papers with code\]](https://paperswithcode.com/sota/speech-recognition-on-librispeech-test-clean), surpassing previous works using Hidden Markov Models (HMM) with Gaussian Mixtures (GMM) or their ensembles on various speech related task. Also, the introduction of the Connectionist Temporal Classification [\[A Graves, 2006\]](https://dl.acm.org/doi/10.1145/1143844.1143891) Loss to alignment has given a major boost to machine learning tasks like speech where alignment between the audio and text is cumbersome. Using the CTC Loss enables the model to maximize the objective over all possible and correct alignments between the audio and text. With these advancements, creating speech data has become significantly easier than previously imagined, with corpus requiring no alignment between the text and the read speech.
 
 For a detailed introduction to CTC Loss, checkout my blog post on [\[Breaking Down the CTC Loss\]](https://ogunlao.github.io/blog/2020/07/17/breaking-down-ctc-loss.html)
 

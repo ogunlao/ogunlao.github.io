@@ -152,7 +152,7 @@ Similarly, $\beta_{(s, t)} = 0$ for all $s > 2t$ which corresponds to the unconn
 
 ### Computing the probabilities efficiently
 
-From the computations, observe that we are constantly multiplying values less than 0. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
+From the computations, observe that we are constantly multiplying values less than 1. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
 
 $\alpha_{s, t} = (\alpha_{s, t-1} + \alpha_{(s-1, t-1)})y_{s, t}$
 
