@@ -134,7 +134,7 @@ In this case, we have 20 samples from the positive class and 80 samples from neg
 output: {'sensitivity': 0.20, 'specificity': 0.94, 'accuracy': 0.79, 'uar': 0.57}
 ```
 
-Here, the accuracy is over optimistic and indicating that we are doing well on about $79%$ of the samples. This is because of the size of samples of the negative class. However, the UAR gives a truer result showing that we still have work to do. Looking at the specificity and sensitivity closely, they show where the problem lies. The model is doing poorly on the positive class \(as indicated by the sensitivity, $20%$\)
+Here, the accuracy is over optimistic and indicating that we are doing well on about $79 \%$ of the samples. This is because of the size of samples of the negative class. However, the UAR gives a truer result showing that we still have work to do. Looking at the specificity and sensitivity closely, they show where the problem lies. The model is doing poorly on the positive class \(as indicated by the sensitivity, $20 \%$\)
 
 You can play with different formulations of the confusion matrix to better understand how class imbalance affects the scores.
 

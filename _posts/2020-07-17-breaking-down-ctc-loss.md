@@ -152,7 +152,7 @@ Similarly, $\beta_{(s, t)} = 0$ for all $s > 2t$ which corresponds to the unconn
 
 ### Computing the probabilities efficiently
 
-From the computations, observe that we are constantly multiplying values less than 1. This can lead to underflow especially for longer sequences. We can improve this computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
+From the computations, observe that we are constantly multiplying values less than 1. This can lead to underflow especially for longer sequences. We can improve these computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
 
 $\alpha_{s, t} = (\alpha_{s, t-1} + \alpha_{(s-1, t-1)})y_{s, t}$
 
@@ -181,7 +181,7 @@ Derivatives can then be calculated for back propagation using Autograd. Modern d
 ### Note
 
 1. The CTC loss algorithm can be applied to both convolutional and recurrent networks. For recurrent networks, it is possible to compute the loss at each timestep in the path or make use of the final loss, depending on the use case.
-2. Some forms of the loss use only the forward algorithm in its computation i.e $\alpha_{s, t}$. I was only able to reproduce the Pytorch CTC loss when I used the forward path in my computation, and ignoring the backward algorithm. However, the algorithm explained in this blog post is the one proposed in the seminal paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf).
+2. Some forms of the loss use only the forward algorithm in its computation i.e $\alpha_{s, t}$. I was only able to reproduce the Pytorch CTC loss when I used the forward algorithm in my loss computation, and ignoring the backward algorithm. However, the algorithm explained in this blog post is the one proposed in the seminal paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf).
 
 ## Conclusion
 
