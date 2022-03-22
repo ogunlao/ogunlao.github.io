@@ -29,7 +29,7 @@ img {
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 ## Sewade Olaolu Ogun
-PhD Student, [Inria-Nancy](https://www.inria.fr/en/centre-inria-nancy-grand-est) and [Vivoka](https://vivoka.com/)
+PhD Student, [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est)
 
 Previously, Teaching Assistant at African Institute for Mathematical Science and the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme (AIMS/AMMI).
 

@@ -48,9 +48,12 @@ lang: en
 </td>
 <td></td>
 <td markdown="1">
-**Comparing Yoruba and French Speech Speech Models in Low-Resource Settings**
-- CPC models is trained on 1 hour of yoruba and french audio with labels
-- Pretrained CPC model from Facebook CPC_audio library is then finetuned on 1hr of data.
+**Evaluating Transfer of English Pretrained Model to Yoruba and French Languages in Very Low-Resource Settings**
+- We use a self-supervised pretrained model trained on large amount of English speech
+- Model is finetuned on 1 hour of yoruba and french audio with labels
+- We compare this to training on 1 hour of audio in the target language from scratch.
+- Audio samples are from only 1 speaker
+- Surprisingly, we got better results finetuning on a single speaker for Yoruba language. Many factors could have contributed to this including gender (Male for Yoruba and Female for French, quality of audio recording etc)
 - Details of the project can be found on my [github repo](https://github.com/ogunlao/yoruba_speech_project/tree/master/project)
 
 </td> 
