@@ -20,7 +20,7 @@ Here's what we will cover:
 Softmax is a non-linear function, used majorly at the output of classifiers for multi-class classification. Given a vector $[x_1, x_2, x_3, ... x_d]^T$ for $i = 1,2, ...d$, the softmax function has the form
 
 \begin{equation}
-sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}
+sm(x_i) = \dfrac{e^{x_i}}{\sum_{j=1}^{d} e^{x_j}}
 \end{equation}
 
 where d is the number of classes.  
@@ -77,7 +77,7 @@ Exponentiating a large number like $10000$ leads to a very, very large number. T
 - Can we do better? Well, we can.
 Taking our original equation, 
 \begin{equation} 
-sm(x_i) = \dfrac{e^x_i}{\sum_{j=1}^{d} e^{x_j}}
+sm(x_i) = \dfrac{e^{x_i}}{\sum_{j=1}^{d} e^{x_j}}
 \end{equation} 
 Let's subtract a constant $c$ from the $x_i$s  
 \begin{equation} 
