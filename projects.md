@@ -48,7 +48,7 @@ lang: en
 </td>
 <td></td>
 <td markdown="1">
-**Evaluating Transfer of English Pretrained Model to Yoruba and French Languages in Very Low-Resource Settings**
+**Exploring Transfer of Self-supervised English Pretrained Model to Yoruba and French Languages in Very Low-Resource Settings**
 - We use a self-supervised pretrained model trained on large amount of English speech
 - Model is finetuned on 1 hour of yoruba and french audio with labels
 - We compare this to training on 1 hour of audio in the target language from scratch.
@@ -60,7 +60,7 @@ lang: en
 </tr>
 </table>
 
-<table style="width:100%">
+<!-- <table style="width:100%">
 <col width="20%">
 <col width="10">
 <col >
@@ -126,9 +126,9 @@ lang: en
 
 </td> 
 </tr>
-</table>
+</table>  -->
 
-<table style="width:100%">
+<!-- <table style="width:100%">
 <col width="20%">
 <col width="10">
 <col >
@@ -146,7 +146,7 @@ lang: en
 
 </td> 
 </tr>
-</table>
+</table> -->
 
 <table style="width:100%">
 <col width="20%">
