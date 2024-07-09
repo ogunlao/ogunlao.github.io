@@ -53,8 +53,8 @@ menuitems:
         url:      /index.html }
     - { title:    Projects,
         url:      /projects.html }
-    # - { title:    Publications,
-    #     url:      /publications.html }
+    - { title:    Publications,
+        url:      /publications.html }
     # - { title:    Curriculum Vitae,
     #     url:      /cv.html}
     - { title:    Blog,
