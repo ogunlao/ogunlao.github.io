@@ -13,7 +13,7 @@ lang: en
 <link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
 
 <table style="width:100%">
-<col width="20%">
+<col width="80%">
 <col width="10">
 <col >
 
@@ -44,7 +44,7 @@ lang: en
 <td style="padding-left: 1px;
     padding-bottom: 3px;
     vertical-align: bottom;">
-    <strong style="font-size: 25px;">2023</strong></td>
+    <strong style="font-size: 25px;">2024</strong></td>
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
@@ -63,6 +63,13 @@ Afonja, T., Olatunji, T., Ogun, S., Etori, N. A., Owodunni, A., & Yekini, M. (20
 Ogun, S., Owodunni, A. T., Olatunji, T., Alese, E., Oladimeji, B., Afonja, T., ... & Adewumi, T. (2024). 1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis. Interspeech 2024.</div>
 || <em class="icon-home"/> || [paper](https://arxiv.org/abs/2406.11727) || <em class="icon-github"/> || [model link](https://huggingface.co/intronhealth/afro-tts) ||
 </td>
+</tr>
+
+<tr height="50">
+<td style="padding-left: 1px;
+    padding-bottom: 3px;
+    vertical-align: bottom;">
+    <strong style="font-size: 25px;">2023</strong></td>
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
