@@ -31,7 +31,7 @@ img {
 ## Sewade Olaolu Ogun
 PhD Student, [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est)
 
-Previously, Teaching Assistant at African Institute for Mathematical Science and the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme (AIMS/AMMI).
+I work on building high-quality TTS systems using open-source datasets, which can be used for generating synthetic datasets for augmenting ASR training data. 
 
 ---
 
@@ -40,8 +40,21 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
-
-- 01 Aug 2021: I will be starting my PhD at Inria-Nancy and Vivoka in October. I will be working on Automatic Speech recognition with limited data for Embedded Systems.
+- 09 July 2024: I will be submitting my thesis at the end of July. My thesis defense is slated for October, therefore, I am on the lookout for new and interesting positions on deep-learning in research and in the industry. 
+<br/><br/>
+- 04 June 2024: Two papers were accepted at Interspeech 2024. The first paper is in on [improving NER for accented speech](https://arxiv.org/abs/2406.12387) while the other paper is on [TTS for African-accentend English](https://arxiv.org/abs/2406.11727). I will be presenting the two papers alongside my colleagues in Kos, Greece.
+<br/><br/>
+- 29 Nov 2023: I attended the [Rencontres des Jeunes Chercheurs en Parole RJCP 2023](https://rjcp-2023.sciencesconf.org/) workshop in Grenoble. I had the opportunity to present one of my papers at the event.
+<br/><br/>
+- 20 Aug 2023: I will be attending Interspeech 2023 in Dublin. I will be presenting my work on [improving the diversity and naturalness of TTS systems](https://arxiv.org/abs/2305.17724).
+<br/><br/>
+- 05 Jan 2023: I will be presenting my work at Speech and Language Processing (SLT) workshop holding in Qatar. I will be presenting my work on [curating high-quality datasets from crowdsourced datasets for TTS training](https://arxiv.org/abs/2210.06370).
+<br/><br/>
+- 02 Oct 2022: I implemented some [iterative phase retrieval algorithms](https://github.com/ogunlao/iter_vocoder) that can be used as vocoders for TTS.
+<br/><br/>
+- 20 Apr 2022: I will be attending the DeepLearn summer school in Guimarães, Portugal. 
+<br/><br/>
+- 01 Aug 2021: I will be starting my PhD at Inria-Nancy and Vivoka in October. I will be working on builing an Automatic Speech recognition with limited data for Embedded Systems.
 <br/><br/>
 - 12 June 2021: We (a group of 8 research students) implemented the [SAINT paper](https://arxiv.org/abs/2106.01342) in the past week. It was so good working as a team to implement every detail in the paper
 <br/><br/>
