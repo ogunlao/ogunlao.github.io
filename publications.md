@@ -13,7 +13,7 @@ lang: en
 <link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
 
 <table style="width:100%">
-<col width="80%">
+<col width="20%">
 <col width="10">
 <col >
 
@@ -48,20 +48,34 @@ lang: en
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
+<td></td>
 <td markdown="1">
 <div><b>Performant ASR Models for Medical Entities in Accented Speech</b></div>
 <div>
 Afonja, T., Olatunji, T., Ogun, S., Etori, N. A., Owodunni, A., & Yekini, M. (2024). Performant ASR Models for Medical Entities in Accented Speech. Interspeech 2024.</div>
 || <em class="icon-home"/> || [paper](https://arxiv.org/abs/2406.12387) || <em class="icon-github"/> || [model link](https://huggingface.co/intronhealth/afrispeech-whisper-medium-all) ||
 </td>
+<td></td>
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
+<td></td><td></td>
 <td markdown="1">
 <div><b>1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis</b></div>
 <div>
 Ogun, S., Owodunni, A. T., Olatunji, T., Alese, E., Oladimeji, B., Afonja, T., ... & Adewumi, T. (2024). 1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis. Interspeech 2024.</div>
 || <em class="icon-home"/> || [paper](https://arxiv.org/abs/2406.11727) || <em class="icon-github"/> || [model link](https://huggingface.co/intronhealth/afro-tts) ||
+</td>
+
+</tr>
+
+<tr style="border-bottom:1pt solid #eee" >
+<td></td><td></td>
+<td markdown="1">
+<div><b>STATE OF THE ART. THINK BEFORE LOADING.</b></div>
+<div>
+Guillaume Coiﬀier, Sewade Ogun, Leo Valque, Priyansh Trivedi. STATE OF THE ART. THINK BEFORE LOADING, 2024, 978-2-9591975-0-5. ￿hal-04509255￿</div>
+|| <em class="icon-home"/> || [paper](https://hal.univ-lorraine.fr/hal-04509255v1/document) ||
 </td>
 </tr>
 
@@ -77,6 +91,7 @@ Ogun, S., Owodunni, A. T., Olatunji, T., Alese, E., Oladimeji, B., Afonja, T., .
 ![spiden](/img/main/masakhane_paper_1.png){:class="img-shadow"}
 </td>
 <td></td> -->
+<td></td><td></td>
 <td markdown="1">
 <div><b>Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS.</b></div>
 <div>
@@ -86,6 +101,7 @@ Ogun, S., Colotte, V., Vincent, E. (2023) Stochastic Pitch Prediction Improves t
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
+<td></td><td></td>
 <td markdown="1">
 <div><b>Can we use Common Voice to train a Multi-Speaker TTS system?</b></div>
 <div>
