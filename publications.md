@@ -44,23 +44,47 @@ lang: en
 <td style="padding-left: 1px;
     padding-bottom: 3px;
     vertical-align: bottom;">
-    <strong style="font-size: 25px;">2020</strong></td>
+    <strong style="font-size: 25px;">2023</strong></td>
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
+<div><b>Performant ASR Models for Medical Entities in Accented Speech</b></div>
+<div>
+Afonja, T., Olatunji, T., Ogun, S., Etori, N. A., Owodunni, A., & Yekini, M. (2024). Performant ASR Models for Medical Entities in Accented Speech. Interspeech 2024.</div>
+|| <em class="icon-home"/> || [paper](https://arxiv.org/abs/2406.12387) || <em class="icon-github"/> || [model link](https://huggingface.co/intronhealth/afrispeech-whisper-medium-all) ||
+</td>
+</tr>
+
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<div><b>1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis</b></div>
+<div>
+Ogun, S., Owodunni, A. T., Olatunji, T., Alese, E., Oladimeji, B., Afonja, T., ... & Adewumi, T. (2024). 1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis. Interspeech 2024.</div>
+|| <em class="icon-home"/> || [paper](https://arxiv.org/abs/2406.11727) || <em class="icon-github"/> || [model link](https://huggingface.co/intronhealth/afro-tts) ||
+</td>
+</tr>
+
+<tr style="border-bottom:1pt solid #eee" >
+<!-- <td markdown="1">
 ![spiden](/img/main/masakhane_paper_1.png){:class="img-shadow"}
 </td>
-<td></td>
+<td></td> -->
 <td markdown="1">
-<div><b>MASAKHANE - MACHINE TRANSLATION FOR AFRICA</b></div>
+<div><b>Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS.</b></div>
 <div>
-Africa has over 2000 languages. Despite this, African languages account for a small portion of available resources and publications in Natural Language Processing (NLP). This is due to multiple factors, including: a lack of focus from government and funding, discoverability, a lack of community, sheer language complexity, difficulty in reproducing papers and no benchmarks to compare techniques. In this paper, we discuss our methodology for building the community and spurring research from the African continent, as well as outline the success of the community in terms of addressing the identified problems affecting African NLP.</div>
-<div><i>Accepted for the AfricaNLP Workshop, ICLR 2020</i></div>
+Ogun, S., Colotte, V., Vincent, E. (2023) Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS. Proc. INTERSPEECH 2023, 4878-4882, doi: 10.21437/Interspeech.2023-1673</div>
+|| <em class="icon-home"/> || [paper](https://arxiv.org/abs/2305.17724) || <em class="icon-github"/> || [source code](https://github.com/ogunlao/glowtts_stdp) ||
+</td>
+</tr>
 
-|| <em class="icon-home"/> || [paper](https://arxiv.org/pdf/2003.11529.pdf) || <em class="icon-github"/> || [source code](https://github.com/masakhane-io/masakhane.git) ||
-
-</td> 
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<div><b>Can we use Common Voice to train a Multi-Speaker TTS system?</b></div>
+<div>
+Ogun, S., Colotte, V., & Vincent, E. (2023, January). Can we use Common Voice to train a Multi-Speaker TTS system?. In 2022 IEEE Spoken Language Technology Workshop (SLT) (pp. 900-905). IEEE.</div>
+|| <em class="icon-home"/> || [paper](https://arxiv.org/abs/2210.06370) || <em class="icon-github"/> || [Dataset link](https://github.com/ogunlao/glowtts_stdp/tree/main/dataset) ||
+</td>
 </tr>
 
 <!-- <tr height="50">
