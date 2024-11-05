@@ -28,10 +28,14 @@ img {
 </style>
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
-## Sewade Olaolu Ogun
-PhD Student, [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est)
+## Sewade Olaolu Ogun, PhD
+I hold a PhD in Computer Science with a speacialization in Artificial Intelligence from [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est). I am looking out for new opportunities in my related areas of research.
 
-I work on building high-quality TTS systems using open-source datasets, which can be used for generating synthetic datasets for augmenting ASR training data. 
+My research areas include:
+- Generative text-to-speech systems
+- Automatic speech recognition systems
+- Speech dataset curation and augmentation
+- Large language models
 
 ---
 
@@ -40,6 +44,8 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
+- 10 Oct 2024: I have successfull defended my PhD thesis titled "Generating diverse synthetic dataset for ASR training data augmentation". Thank you to everyone who have supported me on this journey.
+<br/><br/>
 - 09 July 2024: I will be submitting my thesis at the end of July. My thesis defense is slated for October, therefore, I am on the lookout for new and interesting positions on deep-learning in research and in the industry. 
 <br/><br/>
 - 04 June 2024: Two papers were accepted at Interspeech 2024. The first paper is in on [improving NER for accented speech](https://arxiv.org/abs/2406.12387) while the other paper is on [TTS for African-accentend English](https://arxiv.org/abs/2406.11727). I will be presenting the two papers alongside my colleagues in Kos, Greece.
