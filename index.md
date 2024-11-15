@@ -29,12 +29,12 @@ img {
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 ## Sewade Olaolu Ogun, PhD
-I hold a PhD in Computer Science with a speacialization in Artificial Intelligence from [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est). I am looking out for new opportunities in my related areas of research.
+I hold a PhD in Computer Science with a specialization in Artificial Intelligence from [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est). I am looking out for new opportunities in my related areas of research.
 
 My research areas include:
 - Generative text-to-speech systems
 - Automatic speech recognition systems
-- Speech dataset curation and augmentation
+- Dataset curation and augmentation
 - Large language models
 
 ---
