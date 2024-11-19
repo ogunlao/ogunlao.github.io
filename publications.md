@@ -53,7 +53,7 @@ lang: en
 <div><b>Generating diverse synthetic data for ASR training data augmentation.</b></div>
 <div>
 Ogun, S. (2024). PhD thesis.</div>
-|| <em class="icon-home"/> || [paper](/archive/PhD_Thesis_IAEM___Sewade.pdf) ||
+|| <em class="icon-home"/> || [paper](https://docnum.univ-lorraine.fr/public/DDOC_T_2024_0116_OGUN.pdf) ||
 [slides](https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=o2qWt6) ||
 
 </td>
