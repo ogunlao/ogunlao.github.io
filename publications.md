@@ -47,6 +47,16 @@ lang: en
     <strong style="font-size: 25px;">2024</strong></td>
 </tr>
 
+
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<div><b>Generating diverse synthetic data for ASR training data augmentation.</b></div>
+<div>
+Ogun, S. (2024). PhD thesis.</div>
+|| <em class="icon-home"/> || [paper](/archive/PhD_Thesis_IAEM___Sewade.pdf) ||
+</td>
+</tr>
+
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
 <div><b>Performant ASR Models for Medical Entities in Accented Speech</b></div>
@@ -100,6 +110,23 @@ Ogun, S., Colotte, V., Vincent, E. (2023) Stochastic Pitch Prediction Improves t
 <div>
 Ogun, S., Colotte, V., & Vincent, E. (2023, January). Can we use Common Voice to train a Multi-Speaker TTS system?. In 2022 IEEE Spoken Language Technology Workshop (SLT) (pp. 900-905). IEEE.</div>
 || <em class="icon-home"/> || [paper](https://arxiv.org/abs/2210.06370) || <em class="icon-github"/> || [Dataset link](https://github.com/ogunlao/glowtts_stdp/tree/main/dataset) ||
+</td>
+</tr>
+
+
+<tr height="50">
+<td style="padding-left: 1px;
+    padding-bottom: 3px;
+    vertical-align: bottom;">
+    <strong style="font-size: 25px;">2021</strong></td>
+</tr>
+
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<div><b>Towards a weakly-supervised learning paradigm for speech recognition</b></div>
+<div>
+Ndoye A., Ogun, S., Adi, Y., & Cisse, M. (2021, March). Towards a weakly-supervised learning paradigm for speech recognition. Masters Thesis.</div>
+|| <em class="icon-home"/> || [paper](/archive/Weak_Supervised_Learning_for_Speech.pdf) || <em class="icon-github"/> ||
 </td>
 </tr>
 
