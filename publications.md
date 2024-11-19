@@ -54,6 +54,8 @@ lang: en
 <div>
 Ogun, S. (2024). PhD thesis.</div>
 || <em class="icon-home"/> || [paper](/archive/PhD_Thesis_IAEM___Sewade.pdf) ||
+[slides](https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=3YF3zQ&nav=eyJzSWQiOjI1NiwiY0lkIjozOTY5Nzc4ODE3fQ) ||
+
 </td>
 </tr>
 
