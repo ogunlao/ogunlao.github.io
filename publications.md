@@ -128,7 +128,7 @@ Ogun, S., Colotte, V., & Vincent, E. (2023, January). Can we use Common Voice to
 <div><b>Towards a weakly-supervised learning paradigm for speech recognition</b></div>
 <div>
 Ndoye A., Ogun, S., Adi, Y., & Cisse, M. (2021, March). Towards a weakly-supervised learning paradigm for speech recognition. Masters Thesis.</div>
-|| <em class="icon-home"/> || [paper](/archive/Weak_Supervised_Learning_for_Speech.pdf) || <em class="icon-github"/> ||
+|| <em class="icon-home"/> || [paper](/archive/Weak_Supervised_Learning_for_Speech.pdf) || <em class="icon-github"/> || [source code](https://github.com/ogunlao/low_res_speech_project) ||
 </td>
 </tr>
 
