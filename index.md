@@ -44,6 +44,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 ---
 
 ### Latest News
+- 23 Oct 2024: I will give a practical talk to community members of AI Saturdays Lagos on the topic, Implementation and evaluation of a research paper". Slides will be available after the talk.
 - 10 Oct 2024: I have successfull defended my PhD thesis titled "Generating diverse synthetic dataset for ASR training data augmentation". Thank you to everyone who have supported me on this journey.
 <br/><br/>
 - 09 July 2024: I will be submitting my thesis at the end of July. My thesis defense is slated for October, therefore, I am on the lookout for new and interesting positions on deep-learning in research and in the industry. 
