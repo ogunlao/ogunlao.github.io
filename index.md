@@ -49,7 +49,7 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 <br/><br/>
 - 10 Oct 2024: I have successfull defended my PhD thesis titled "Generating diverse synthetic dataset for ASR training data augmentation". Thank you to everyone who have supported me on this journey.
 <br/><br/>
-- 09 July 2024: I will be submitting my thesis at the end of July. My thesis defense is slated for October, therefore, I am on the lookout for new and interesting positions on deep-learning in research and in the industry. 
+- 09 July 2024: I will be submitting my thesis at the end of July. My thesis defense is slated for October, therefore, I am on the lookout for new and interesting positions on deep-learning in research and in the industry.
 <br/><br/>
 - 04 June 2024: Two papers were accepted at Interspeech 2024. The first paper is in on [improving NER for accented speech](https://arxiv.org/abs/2406.12387) while the other paper is on [TTS for African-accentend English](https://arxiv.org/abs/2406.11727). I will be presenting the two papers alongside my colleagues in Kos, Greece.
 <br/><br/>
@@ -57,11 +57,13 @@ View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https
 <br/><br/>
 - 20 Aug 2023: I will be attending Interspeech 2023 in Dublin. I will be presenting my work on [improving the diversity and naturalness of TTS systems](https://arxiv.org/abs/2305.17724).
 <br/><br/>
+- 16 Jun 2023: I attended the vivatech conference, an annual technology conference, dedicated to innovation and startups, held in Paris. Thanks to INRIA innovation lab for sponsoring my trip.
+<br/><br/>
 - 05 Jan 2023: I will be presenting my work at Speech and Language Processing (SLT) workshop holding in Qatar. I will be presenting my work on [curating high-quality datasets from crowdsourced datasets for TTS training](https://arxiv.org/abs/2210.06370).
 <br/><br/>
 - 02 Oct 2022: I implemented some [iterative phase retrieval algorithms](https://github.com/ogunlao/iter_vocoder) that can be used as vocoders for TTS.
 <br/><br/>
-- 20 Apr 2022: I will be attending the DeepLearn summer school in Guimarães, Portugal. 
+- 20 Apr 2022: I will be attending the DeepLearn summer school in Guimarães, Portugal.
 <br/><br/>
 - 01 Aug 2021: I will be starting my PhD at Inria-Nancy and Vivoka in October. I will be working on builing an Automatic Speech recognition with limited data for Embedded Systems.
 <br/><br/>
@@ -106,6 +108,7 @@ For more articles, [visit my blog](https://ogunlao.github.io/archive/index.html)
 - [Generating diverse synthetic dataset for ASR training data augmentation](https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=o2qWt6), PhD thesis presentation, Nancy
 - [1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis](https://drive.google.com/file/d/17YDN0Y0-5sOaKDZdsPWnsTFoRhSaCSQO/view?usp=drive_link), Poster presentation, InterSpeech 2024
 - [Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS](https://drive.google.com/file/d/1FXLMV0zuYcT6sQTsAk3bzsWOAJl2jwaZ/view?usp=drive_link), Poster presentation, InterSpeech 2023
+- [Data augmentation for speech processing tasks](https://docs.google.com/presentation/d/1p7pY6slepSvVgX_1MPkL3v4VxvlyqercCZql9ulxZEw/edit?usp=sharing), Presentation for the speech corpus course, Masters TAL, University of Lorraine
 - [Can we use Common Voice to train a Multi-Speaker TTS system?](https://drive.google.com/file/d/1hY6yXwwErjZSiELMPeghbR_rem6CyYiL/view?usp=drive_link), Poster presentation, SLT 2023, Doha
 - [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana.
 - [Chance Constrained Optimization](https://drive.google.com/file/d/1Z9-7nmAwEFTz7bUu_I3oRpGWdZA3wYTE/view?usp=sharing), Convex Optimization Course, AIMS
