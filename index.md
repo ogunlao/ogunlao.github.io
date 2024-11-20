@@ -106,7 +106,7 @@ For more articles, [visit my blog](https://ogunlao.github.io/archive/index.html)
 - [Generating diverse synthetic dataset for ASR training data augmentation](https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=o2qWt6), PhD thesis presentation, Nancy
 - [1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis](https://drive.google.com/file/d/17YDN0Y0-5sOaKDZdsPWnsTFoRhSaCSQO/view?usp=drive_link), Poster presentation, InterSpeech 2024
 - [Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS](https://drive.google.com/file/d/1FXLMV0zuYcT6sQTsAk3bzsWOAJl2jwaZ/view?usp=drive_link), Poster presentation, InterSpeech 2023
-- [Can we use Common Voice to train a Multi-Speaker TTS system?]("https://drive.google.com/file/d/1hY6yXwwErjZSiELMPeghbR_rem6CyYiL/view?usp=drive_link), Poster presentation, SLT 2023, Doha
+- [Can we use Common Voice to train a Multi-Speaker TTS system?](https://drive.google.com/file/d/1hY6yXwwErjZSiELMPeghbR_rem6CyYiL/view?usp=drive_link), Poster presentation, SLT 2023, Doha
 - [Adversarial Examples](https://github.com/ogunlao/adversarial-example-presentation/blob/master/AdversarialExamples.pdf), African Institute for Mathematical Sciences, Ghana.
 - [Chance Constrained Optimization](https://drive.google.com/file/d/1Z9-7nmAwEFTz7bUu_I3oRpGWdZA3wYTE/view?usp=sharing), Convex Optimization Course, AIMS
 
