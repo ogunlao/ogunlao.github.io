@@ -90,6 +90,23 @@ Guillaume Coiﬀier, Sewade Ogun, Leo Valque, Priyansh Trivedi. STATE OF THE ART
 <td style="padding-left: 1px;
     padding-bottom: 3px;
     vertical-align: bottom;">
+    <strong style="font-size: 10px;">Pre-print</strong></td>
+</tr>
+
+<tr style="border-bottom:1pt solid #eee" >
+<td markdown="1">
+<div><b>Evaluating the importance of synthetic data augmentation in improving automatic speech recognition.</b></div>
+<div>
+Ogun, S., Colotte, V., Vincent, E. Submitted to IEEE/ACM Transactions on Audio, Speech, and Language Processing</div>
+
+</td>
+</tr>
+
+
+<tr height="50">
+<td style="padding-left: 1px;
+    padding-bottom: 3px;
+    vertical-align: bottom;">
     <strong style="font-size: 25px;">2023</strong></td>
 </tr>
 

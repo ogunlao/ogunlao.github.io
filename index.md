@@ -104,7 +104,7 @@ For more articles, [visit my blog](https://ogunlao.github.io/archive/index.html)
 
 ### Talks and Presentations
 
-- Implementation and evaluation of a research paper, Talk at AI Saturdays research community
+- [Implementation and evaluation of a research paper](https://docs.google.com/presentation/d/1FoYz4y9NK3ZtkcQOdIEyec_GNVDuDSMxuHEmA_uIGUg/edit?usp=sharing), Talk at AI Saturdays research community
 - [Generating diverse synthetic dataset for ASR training data augmentation](https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=o2qWt6), PhD thesis presentation, Nancy
 - [1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis](https://drive.google.com/file/d/17YDN0Y0-5sOaKDZdsPWnsTFoRhSaCSQO/view?usp=drive_link), Poster presentation, InterSpeech 2024
 - [Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS](https://drive.google.com/file/d/1FXLMV0zuYcT6sQTsAk3bzsWOAJl2jwaZ/view?usp=drive_link), Poster presentation, InterSpeech 2023
