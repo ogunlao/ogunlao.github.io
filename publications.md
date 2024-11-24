@@ -90,7 +90,7 @@ Guillaume Coiﬀier, Sewade Ogun, Leo Valque, Priyansh Trivedi. STATE OF THE ART
 <td style="padding-left: 1px;
     padding-bottom: 3px;
     vertical-align: bottom;">
-    <strong style="font-size: 10px;">Pre-print</strong></td>
+    <strong style="font-size: 18px;">Pre-print</strong></td>
 </tr>
 
 <tr style="border-bottom:1pt solid #eee" >
