@@ -95,9 +95,9 @@ Guillaume Coiﬀier, Sewade Ogun, Leo Valque, Priyansh Trivedi. STATE OF THE ART
 
 <tr style="border-bottom:1pt solid #eee" >
 <td markdown="1">
-<div><b>Evaluating the importance of synthetic data augmentation in improving automatic speech recognition.</b></div>
+<div><b>An Exhaustive Evaluation of TTS- and VC-based Data Augmentation for ASR</b></div>
 <div>
-Ogun, S., Colotte, V., Vincent, E. Submitted to IEEE/ACM Transactions on Audio, Speech, and Language Processing</div>
+Ogun, S., Colotte, V., Vincent, E. Preprint</div>
 
 </td>
 </tr>
