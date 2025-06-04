@@ -29,9 +29,12 @@ img {
 
 <!-- <img src="/img/main/sewade.jpg" class="center" style="width:100px"> -->
 ## Sewade Olaolu Ogun, PhD
-I hold a PhD in Computer Science with a specialization in Artificial Intelligence from [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est). I am looking out for new opportunities in my related areas of research.
+
+Welcome to my homepage. I am currently building interesting AI products at GetVocal AI in Paris. I recently finished my PhD in Computer Science at [Inria](https://www.inria.fr/en/centre-inria-nancy-grand-est).
 
 My research areas include:
+
+- Speech language models
 - Generative text-to-speech systems
 - Automatic speech recognition systems
 - Dataset curation and augmentation
@@ -39,12 +42,14 @@ My research areas include:
 
 ---
 
-View CV in [PDF version](/archive/SewadeOgunCV.pdf)  or [LinkedIn Profile](https://www.linkedin.com/in/sewade-ogun/)
+View CV on [LinkedIn](https://www.linkedin.com/in/sewade-ogun/)
 
 ---
 
 ### Latest News
 
+- 01 Jun 2025: Our paper on NiajaVoices got accepted at Interspeech 2025. This paper introduces over 1800 hours of speech-text pairs for the three major languages in Nigeria.
+<br/><br/>
 - 23 Oct 2024: I will give a practical talk to community members of AI Saturdays Lagos on the topic, "Implementation and evaluation of a research paper". Slides will be available after the talk.
 <br/><br/>
 - 10 Oct 2024: I have successfull defended my PhD thesis titled "Generating diverse synthetic dataset for ASR training data augmentation". Thank you to everyone who have supported me on this journey.
