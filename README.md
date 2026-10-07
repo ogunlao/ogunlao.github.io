@@ -5,6 +5,7 @@ Source for [Sewade Ogun's blog](https://ogunlao.github.io/), built with Jekyll a
 ## Writing
 
 - New post: add `_posts/YYYY-MM-DD-slug.md` with `title`, `tags` and optionally `description` (shown on the home page) in the front matter. Math (`$...$`, `$$...$$`), Disqus comments and reading time are on by default.
+- Add `hidden: true` to a post to keep it off the home page; it stays in the archive and search.
 - Table of contents: put `1. TOC` followed by `{:toc}` where it should appear.
 - News, talks, publications and projects live in `_data/*.yml`.
 

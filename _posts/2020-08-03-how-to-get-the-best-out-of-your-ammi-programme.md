@@ -4,6 +4,7 @@ title:  "How to get the best out of your AMMI programme"
 #categories: article
 tags: [ammi, master's]
 comments: true
+hidden: true  # not listed on the home page; still in the archive
 # categories: coding
 # tags: linux
 
