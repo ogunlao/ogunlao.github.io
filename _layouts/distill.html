@@ -1,0 +1,91 @@
+---
+layout: default
+---
+{%- comment -%}
+  Distill-style post (https://distill.pub/). Opt in with `layout: distill`.
+  The title, byline and "cite this post" block are rendered here rather than by
+  the Distill template, whose defaults are written for the Distill journal.
+  Distill provides the page grid, <d-cite>, <d-footnote> and the reference list.
+{%- endcomment -%}
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+{%- assign authors = page.authors | default: site.author.name -%}
+
+<d-title>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+</d-title>
+
+<div class="base-grid distill-byline">
+  <div class="byline-grid">
+    <div>
+      <h3>{% if page.authors.size > 1 %}Authors{% else %}Author{% endif %}</h3>
+      {% if page.authors %}
+        {% for a in page.authors %}<p>{% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if a.affiliation %}<br><span class="affiliation">{{ a.affiliation }}</span>{% endif %}</p>{% endfor %}
+      {% else %}
+        <p><a href="{{ '/about/' | relative_url }}">{{ site.author.name }}</a></p>
+      {% endif %}
+    </div>
+    <div>
+      <h3>Published</h3>
+      <p><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+    </div>
+    <div>
+      <h3>Reading time</h3>
+      <p>{{ minutes }} min</p>
+    </div>
+  </div>
+</div>
+
+<d-article>
+  {{ content }}
+</d-article>
+
+<d-appendix>
+  {%- capture cite_authors -%}{% if page.authors %}{% for a in page.authors %}{{ a.name }}{% unless forloop.last %} and {% endunless %}{% endfor %}{% else %}{{ site.author.name }}{% endif %}{%- endcapture -%}
+  {%- capture cite_key -%}{{ cite_authors | split: " " | last | downcase }}{{ page.date | date: "%Y" }}{{ page.slug | split: "-" | first | downcase }}{%- endcapture -%}
+  <h3>Cite this post</h3>
+  <p>{{ cite_authors | replace: " and ", ", " }}. ({{ page.date | date: "%b %Y" }}). <em>{{ page.title }}</em>. {{ site.url | remove: 'https://' }}. {{ page.url | absolute_url }}</p>
+  <pre class="citation">@article{ {{- cite_key }},
+  title   = "{{ page.title }}",
+  author  = "{{ cite_authors }}",
+  journal = "{{ site.url | remove: 'https://' }}",
+  year    = "{{ page.date | date: '%Y' }}",
+  month   = "{{ page.date | date: '%b' }}",
+  url     = "{{ page.url | absolute_url }}"
+}</pre>
+  <d-footnote-list></d-footnote-list>
+  <d-citation-list></d-citation-list>
+</d-appendix>
+
+{% if page.bibliography %}
+<d-bibliography src="{{ '/assets/bibliography/' | append: page.bibliography | relative_url }}"></d-bibliography>
+{% endif %}
+
+<div class="base-grid distill-after">
+  <footer class="post-footer">
+    {% if site.show_tags and page.tags.size > 0 %}
+    <ul class="post-tags">
+      {% for tag in page.tags %}
+      <li><a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if page.previous or page.next %}
+    <nav class="paginav">
+      {% if page.next %}
+      <a class="prev" href="{{ page.next.url | relative_url }}">
+        <span class="title">&laquo; Newer</span><br><span>{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+      {% if page.previous %}
+      <a class="next" href="{{ page.previous.url | relative_url }}">
+        <span class="title">Older &raquo;</span><br><span>{{ page.previous.title }}</span>
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </footer>
+  {% include comments.html %}
+</div>

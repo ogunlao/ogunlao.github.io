@@ -1,15 +1,11 @@
 ---
-layout: post
 title:  "Cross Validation and Reproducibility in Neural Network Training"
 #categories: blog
 tags: [cross_validation, model_fitting, random_seed]
 comments: true
-# categories: coding
-# tags: linux
-
 ---
 
-Neural networks have a high tendency to overfit on training data, especially when the examples are few and the network has a large capacity. There is even a famous quote which says, A popular deep learning adage is that "If your neural network is not overfitting, then it is not learning enough. It just matters how much you want it to." But with this comes its own problem; the ability to generalize to unseen data. Cross validation is a great tool to mimic generalization accuracy, and it is especially important for experiments with very few training examples. Reproducibility, on the other hand, ensures that we can repeat our experiments several times, without much randomness in the results (as is the case in cross validation).  
+Neural networks have a high tendency to overfit on training data, especially when the examples are few and the network has a large capacity. There is even a famous quote which says, A popular deep learning adage is that "If your neural network is not overfitting, then it is not learning enough. It just matters how much you want it to." But with this comes its own problem; the ability to generalize to unseen data. Cross validation is a great tool to mimic generalization accuracy, and it is especially important for experiments with very few training examples. Reproducibility, on the other hand, ensures that we can repeat our experiments several times, without much randomness in the results (as is the case in cross validation).
 
 Here's what we will cover:
 1. TOC
@@ -18,7 +14,7 @@ Here's what we will cover:
 ## Introduction
 
 Cross-validation is a resampling technique that assesses how the results of a statistical analysis will generalize to an independent data set. Three commonly used types are; i) K-fold cross validation, ii) a variant called Stratified K-fold cross validation and iii) the leave-one-out cross validation.   
-Given data samples $\{(x_1, y_1), (x_2, y_2), ... (x_n, y_n)\}$  where n is the total number of examples, $\textbf{x}_i$ is a d-dimensional vector or a tensor (as in images), and $y_i$ is the class or label of example, $i$
+Given data samples $$\{(x_1, y_1), (x_2, y_2), \dots (x_n, y_n)\}$$  where n is the total number of examples, $$\textbf{x}_i$$ is a d-dimensional vector or a tensor (as in images), and $$y_i$$ is the class or label of example, $$i$$
 
 - The k-fold cross validation is the standard type. The training data is split into k different parts. k is an integer (usually between 5-10), and depends on the size of data). k < total number of examples.
 - If k = total number of examples, then, the k-fold becomes leave-one-out cross validation, as only one example is placed in the validation set in each validation run.
@@ -74,7 +70,7 @@ args.device = torch.device("cuda" if args.cuda else "cpu")
 
 Our computers only generate pseudo-random numbers. This means that we can make them generate the same set on random numbers continuously if we set a starting seed. Recall that neural network training requires different libraries such as numpy, pytorch, pandas, cudnn etc interfacing. They also make use of random number generators which all require seeds. Also, many parts of the neural network model itself - such as weights, biases, dropout - require sampling.  
 How can we account for these randomness in our experiments?  
-The simple solution is to set a single seed and consistently apply this seed across all the libraries requiring it.  
+The simple solution is to set a single seed and consistently apply this seed across all the libraries requiring it.
 
 ```python
 def setup_seed(seed, cuda):
@@ -99,15 +95,15 @@ That's it!! Now that you understand reproducibility, let me walk you through a c
 
 Cross validation can be used to select the best hyperparameters for training a neural network. If the folds have good performance on their validation sets when a set of hyperparameters is applied, then that set of hyperparameters is believed will help generalize the model to unseen data. In the same vein, the Cross validation models can likewise be ensembled in several different ways for prediction;
 - the weights of all the folds can be averaged to get a more robust model. This is popularly known as Polyak Averaging.
-- the model of each fold can be saved to make predictions on an unseen data. Then, softmax predictions of examples of each fold can be averaged to predict the correct class. This is popularly known as model ensemble.  
+- the model of each fold can be saved to make predictions on an unseen data. Then, softmax predictions of examples of each fold can be averaged to predict the correct class. This is popularly known as model ensemble.
 
-I will be using the [Cassava Disease Challenge](https://www.kaggle.com/c/ammi-2020-convnets) on Kaggle as a running example to explain the underlying concept. The challenge entailed classifying pictures of cassava leaves into 1 of 4 disease categories or healthy.   
+I will be using the [Cassava Disease Challenge](https://www.kaggle.com/c/ammi-2020-convnets) on Kaggle as a running example to explain the underlying concept. The challenge entailed classifying pictures of cassava leaves into 1 of 4 disease categories or healthy.
 
 I will only highlight parts of the code that performs the cross-validation and will not try to show all codes here. For the full code, you can check the [cassava disease classification](https://www.kaggle.com/ogunlao/crossvalidation-for-cassava-disease-classification) Kaggle kernel I created for this tutorial.
 
 ### The (Stratified) K-fold cross validation
 
-Every task has its own peculiarity and understanding the statistics of the data can go a long way in getting good results. For instance, the number of cassava leaf samples in each disease category differs by a large margin, creating a data imbalance. To ensure each class is involved in each fold, we can "bias" the sampling using the Stratified K-fold cross validation.  
+Every task has its own peculiarity and understanding the statistics of the data can go a long way in getting good results. For instance, the number of cassava leaf samples in each disease category differs by a large margin, creating a data imbalance. To ensure each class is involved in each fold, we can "bias" the sampling using the Stratified K-fold cross validation.
 
 Using 5-fold cross validation splits the data into 80% training and 20% validation (which is a popular choice).
 

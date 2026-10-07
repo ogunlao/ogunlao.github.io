@@ -1,12 +1,8 @@
 ---
-layout: post
 title:  "How to create a speech dataset for ASR, TTS, and other speech tasks"
 categories: blog
 tags: [speech_recognition, data_augmentation, asr, tts, data_collection]
 comments: true
-# categories: coding
-# tags: linux
-
 ---
 
 Over the past few months, I have come across a plethora of questions related to dataset creation for speech projects. I could not find a concise resource detailing all the necessary factors that need to be put in place to have a well balanced, unbiased and clean speech corpus. Many of the answers are distributed across research papers, online platforms and data repositories. As it is well known in the Machine Learning community, creating good datasets for predictive tasks require a ton of effort and attention to detail to get the right results. This article will report my findings on dataset creation for speech related tasks. It will be most useful for students, software engineers and researchers preparing to create their own corpus for specific tasks, especially in the low resource domain. The focus will be on creating corpus for Automatic Speech Recognition (ASR) but the ideas will still be useful for Text-To-Speech(TTS), Speech translation, Speaker classification and other machine learning tasks requiring speech as a modality.

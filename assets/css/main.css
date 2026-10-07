@@ -246,7 +246,11 @@ code, pre, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Li
 .post-content .highlight pre { margin: 0; }
 
 /* MathJax: let wide equations scroll instead of overflowing the column */
-mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+body.distill d-article mjx-container[display="true"] { margin: 1.25em 0 !important; }
+/* Display equations may use Distill's wider page column (same centre line as the text). */
+body.distill d-article > mjx-container[display="true"],
+body.distill d-article > span:has(> mjx-container[display="true"]) { grid-column: page; }
 
 /* Post footer */
 .post-footer { margin-top: 48px; }
@@ -446,3 +450,115 @@ mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
 .highlight .gi { color: #98c379; }
 .highlight .gh, .highlight .gu { color: #61afef; font-weight: bold; }
 .highlight .err { color: #e06c75; }
+
+/* ==========================================================================
+   Distill layout (layout: distill)
+   The Distill template injects its own styles after this file, so rules here
+   use slightly higher specificity where they need to win.
+   ========================================================================== */
+body.distill .main { max-width: none; padding: 0; }
+body.distill .header a, body.distill .footer a { color: inherit; }
+body.distill .footer a { border-bottom: 1px solid var(--secondary); }
+
+body.distill d-title { padding-top: 40px; }
+body.distill d-title h1 { color: var(--primary); }
+body.distill d-title p { color: var(--secondary); }
+
+.distill-byline { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.distill-byline .byline-grid {
+  grid-column: text;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  column-gap: 48px;
+  row-gap: 12px;
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.distill-byline h3 {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+.distill-byline p { margin: 0; color: var(--primary); }
+.distill-byline a { color: var(--link); }
+.distill-byline .affiliation { color: var(--secondary); }
+
+body.distill d-article { color: var(--content); border-top: 0; }
+body.distill d-article h2,
+body.distill d-article h3,
+body.distill d-article h4 { color: var(--primary); }
+body.distill d-article h2 { border-bottom-color: var(--border); }
+body.distill d-article a { color: var(--link); border-bottom-color: color-mix(in srgb, var(--link) 40%, transparent); }
+body.distill d-article img { display: block; margin: 0 auto 24px; max-width: 100%; height: auto; border-radius: 4px; }
+body.distill d-article hr { border: 0; height: 1px; background: var(--border); }
+body.distill d-article blockquote { color: var(--secondary); border-left-color: var(--tertiary); }
+
+/* Inline code and highlighted blocks, matching the rest of the site */
+body.distill d-article code {
+  padding: 2px 5px;
+  font-size: 0.85em;
+  background: var(--code-bg);
+  border-radius: 3px;
+  color: inherit;
+}
+body.distill d-article div.highlight,
+body.distill d-article pre {
+  background: var(--code-block-bg);
+  border-radius: var(--radius);
+}
+body.distill d-article pre {
+  margin: 0 0 24px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  color: #d5d5d6;
+  font-size: 14px;
+  line-height: 1.5;
+}
+body.distill d-article pre code { padding: 0; background: none; font-size: inherit; color: inherit; }
+
+/* kramdown "{:toc}" */
+body.distill d-article #markdown-toc {
+  list-style: none;
+  padding: 12px 16px 12px 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--entry);
+  font-size: 15px;
+}
+body.distill d-article #markdown-toc ul,
+body.distill d-article #markdown-toc ol { list-style: none; padding-inline-start: 18px; margin: 0; }
+body.distill d-article #markdown-toc li { margin-bottom: 0; }
+body.distill d-article #markdown-toc a { border-bottom: 0; color: var(--content); }
+body.distill d-article #markdown-toc a:hover { color: var(--link); }
+
+body.distill d-appendix { color: var(--secondary); background: var(--entry); border-top-color: var(--border); }
+body.distill d-appendix h3 { color: var(--primary); }
+body.distill d-appendix a { color: var(--link); }
+body.distill d-appendix pre.citation {
+  grid-column: text;
+  overflow-x: auto;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--content);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.distill-after > * { grid-column: text; }
+.distill-after .post-footer { margin-top: 32px; }
+
+/* d-cite / d-footnote render in shadow DOM with hard-coded light colours;
+   inverting them in dark mode keeps the numbers and hover boxes readable. */
+:root[data-theme="dark"] body.distill d-cite,
+:root[data-theme="dark"] body.distill d-footnote { filter: invert(1) hue-rotate(180deg); }
+
+@media (max-width: 768px) {
+  .distill-byline .byline-grid { grid-template-columns: 1fr 1fr; }
+}

@@ -68,7 +68,7 @@ paginate_path: "/page/:num/"
 defaults:
   - scope: { path: "", type: posts }
     values:
-      layout: post
+      layout: distill
       comments: true
       use_math: true
   - scope: { path: "", type: pages }

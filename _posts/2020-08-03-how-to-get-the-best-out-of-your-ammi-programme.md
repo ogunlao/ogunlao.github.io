@@ -1,13 +1,9 @@
 ---
-layout: post
 title:  "How to get the best out of your AMMI programme"
 #categories: article
 tags: [ammi, master's]
 comments: true
 hidden: true  # not listed on the home page; still in the archive
-# categories: coding
-# tags: linux
-
 ---
 
 The night I finished my coursework at the [African Institute of Mathematical Sciences](https://www.nexteinstein.org/), I sat down to evaluate the knowledge I have gained and how I have come to survive the intensive master's program. I evaluated my progression from being a newbie with vague knowledge of machine learning to where I have reached in my journey. I can say I have come a long way and never had I thought I could reach this level in a short while. At the very least, I can say that; I can read research papers in the field and not wonder what is being talked about; I can break down mathematical formulations and derive proof of algorithms; I can evaluate pseudocode and determine the best data structure and algorithmic pattern for implementing such; I can perform independent research and question ideas. I owe it all to the resilience of myself and the passion of tutors and lecturers in providing guidance to everyone of us. As such, I asked colleagues what they will like the incoming students to be aware of or what they would have loved to do better if they were to start again. This article is a collection of those advice which I believe can be a guiding torch in your journey through the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme and beyond.

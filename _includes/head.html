@@ -14,4 +14,5 @@
 <link rel="icon" href="{{ '/img/favicon.ico' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 {% if page.use_math %}{% include mathjax.html %}{% endif %}
+{% if page.layout == "distill" %}<script src="{{ '/assets/js/distill/template.v2.js' | relative_url }}"></script>{% endif %}
 {% include analytics.html %}

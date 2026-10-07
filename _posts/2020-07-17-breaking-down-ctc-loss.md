@@ -1,17 +1,15 @@
 ---
-layout: post
 title:  "Breaking down the CTC Loss"
+description: How the forward-backward algorithm computes the Connectionist Temporal Classification loss, step by step.
 categories: blog
 tags: [loss]
 comments: true
-# categories: coding
-# tags: linux
-
+bibliography: 2020-07-17-ctc-loss.bib
 ---
 
-The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf) for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. These tasks require alignment between the input and output which may not be given. Therefore, it has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm.
+The Connectionist Temporal Classification is a type of scoring function for the output of neural networks where the input sequence may not align with the output sequence at every timestep. It was first introduced in the paper by Graves et al.<d-cite key="graves2006ctc"></d-cite> for labelling unsegmented phoneme sequence. It has been successfully applied in other classification tasks such as speech recognition, keyword spotting, handwriting recognition, video description. These tasks require alignment between the input and output which may not be given. Therefore, it has become an ubiquitous loss for tasks requiring dynamic alignment of input to output. In this article, we will breakdown the inner workings of the CTC loss computation using the forward-backward algorithm<d-cite key="graves2006ctc,raj2020ctc"></d-cite>.
 
-We will not be discussing the decoding methods used during inference such as beam search with ctc or prefix search. For an introductory look at CTC, you can read [Sequence Modeling With CTC](https://distill.pub/2017/ctc/) by Awni Hannun.
+We will not be discussing the decoding methods used during inference such as beam search with ctc or prefix search. For an introductory look at CTC, you can read [Sequence Modeling With CTC](https://distill.pub/2017/ctc/) by Awni Hannun<d-cite key="hannun2017ctc"></d-cite>.
 
 Here's what we will cover:
 
@@ -44,7 +42,7 @@ We can solve these problems by explicitly introducing a blank token into our voc
 
 Thus, "a door" split into ["ε", "a", "_", "d", "o", "o", "r"] tokens is then transformed into ["ε", "a", "ε", "\_", "ε", "d", "ε", "o", "ε", "o", "ε", "r", "ε"] where the blank token is included. With this, we know that we can only have repeating tokens only if they are separated by a blank token, "ε" e.g. "d", "o", "ε", "o", "ε", "r" is allowed and not "d", "o", "o", "ε", "r". The latter contracts into "dor".
 
-In general, given an initial sequence of length $M$, the length of the expanded sequence is $2*M + 1$
+In general, given an initial sequence of length $$M$$, the length of the expanded sequence is $$2M + 1$$
 
 ## Getting into ctc details
 
@@ -56,7 +54,7 @@ We will consider a smaller label "door" which should be enough to explain the en
 
 ![softmax layer from ctc](/images/ctc_loss/softmax_layer_from_ctc.png)
 
-We denote the total number of timesteps by $T$, length of the expanded target output by $S$, and length of label by $M$. So, $S = 2*M + 1$ e.g for "door", $S = 2\*4+1$
+We denote the total number of timesteps by $$T$$, length of the expanded target output by $$S$$, and length of label by $$M$$. So, $$S = 2M + 1$$, e.g. for "door", $$S = 2 \cdot 4 + 1$$
 
 Given these vectors of probability distributions, how do we learn the alignments of the probable predictions? We need a structured way to traverse from the first softmax distribution to the last to represent the word.
 
@@ -64,7 +62,7 @@ Given these vectors of probability distributions, how do we learn the alignments
 
 In principle, we exclude all rows that do not include tokens from the target sequence and then rearrange the tokens to form the output sequence. This is done during training only. At inference, a beam search can be performed on the distribution. So, we copy the required output for the target into a secondary reduced structure and decode on the reduced structure assuring us that only appropriate tokens will be used for selected for computing loss and gradients.
 
-If a token occur multiple times in the label, we repeat the rows for similar tokens in their appropriate location. This becomes our probability matrix, $y_{(s, t)}$
+If a token occur multiple times in the label, we repeat the rows for similar tokens in their appropriate location. This becomes our probability matrix, $$y_{(s, t)}$$
 
 ![reduced softmax layer ctc](/images/ctc_loss/reduced_softmax_layer_extract_ctc.png)
 
@@ -89,11 +87,14 @@ It is easy to trace these paths if we consider the following traversal rules;
 
 The score of a path is the product of probabilities of all nodes along the path. For the two paths considered in the examples above.
 
-$score(pathA) = y_{(0,0)}\*y_{(0,1)}\*y_{(0,2)}\*y_{(1,3)}\*y_{(1,4)}\*y_{(2,5)}\*y_{(3,6)}\*y_{(4,7)}\*y_{(5,8)}\*y_{(7,9)}$
+$$
+\begin{aligned}
+\operatorname{score}(\text{path A}) &= y_{(0,0)} \cdot y_{(0,1)} \cdot y_{(0,2)} \cdot y_{(1,3)} \cdot y_{(1,4)} \cdot y_{(2,5)} \cdot y_{(3,6)} \cdot y_{(4,7)} \cdot y_{(5,8)} \cdot y_{(7,9)} \\
+\operatorname{score}(\text{path B}) &= y_{(1,0)} \cdot y_{(1,1)} \cdot y_{(2,2)} \cdot y_{(3,3)} \cdot y_{(3,4)} \cdot y_{(4,5)} \cdot y_{(5,6)} \cdot y_{(7,7)} \cdot y_{(7,8)} \cdot y_{(8,9)}
+\end{aligned}
+$$
 
-$score(pathB) = y_{(1,0)}\*y_{(1,1)}\*y_{(2,2)}\*y_{(3,3)}\*y_{(3,4)}\*y_{(4,5)}\*y_{(5,6)}\*y_{(7,7)}\*y_{(7,8)}\*y_{(8,9)}$
-
-We are required to trace out all the possible paths that contract into "door" and there are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $\mathcal{O}(\|V\|^T)$ where $\|V\|$ is the length of vocabulary.
+We are required to trace out all the possible paths that contract into "door" and there are an exponential number of such valid paths as can be seen from the graph. The complexity is of the order $$\mathcal{O}(\lvert V \rvert^T)$$ where $$\lvert V \rvert$$ is the length of vocabulary.
 
 Can we find a dynamic programming algorithm for solving this problem? Well, the [viterbi algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm) can generate the most likely path, and does not guarantee we get the most likely sequence of labels. It finds the best path to a node by extending the best path to one of its parent nodes. Any other path would necessarily have a lower probability. But, the viterbi algorithm commits to a path or initial alignment early (without exploration) which can lead to suboptimal results.
 
@@ -101,52 +102,52 @@ Can we find a dynamic programming algorithm for solving this problem? Well, the 
 
 Instead of only selecting the most likely alignment, we find the expectation over all possible alignments during training. This allows us to also exploit the existence of subpaths in the graph.
 
-To compute this effectively, we need a forward variable $\alpha_{(s, t)}$ and backward variable $\beta_{(s, t)}$ where $s$ is the index of the token considered. The forward variable computes the total probability of a sequence $seq[1:s]$ up to a particular timestep $t$. The backward variable calculates the total probability of remaining sequence from token $seq(s)$ to token $seq(S)$, $seq[s:S]$ at timestep $t$.
+To compute this effectively, we need a forward variable $$\alpha_{(s, t)}$$ and backward variable $$\beta_{(s, t)}$$ where $$s$$ is the index of the token considered. The forward variable computes the total probability of a sequence $$\operatorname{seq}[1:s]$$ up to a particular timestep $$t$$. The backward variable calculates the total probability of remaining sequence from token $$\operatorname{seq}(s)$$ to token $$\operatorname{seq}(S)$$, $$\operatorname{seq}[s:S]$$ at timestep $$t$$.
 
-### Forward Algorithm for computing $\alpha_{(s, t)}$
+### Forward Algorithm for computing $$\alpha_{(s, t)}$$
 
-First, let's create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\alpha$ values. The forward algorithm is given by;
+First, let's create a matrix of zeros of same shape as our probability matrix, $$y_{(s, t)}$$ to store our $$\alpha$$ values. The forward algorithm is given by;
 
 Initialize:
 
-$\alpha$-mat = zeros_like(y-mat)
+`alpha_mat = zeros_like(y_mat)`
 
-$\alpha_{(0, 0)} = y_{(0, 0)}$, $\alpha_{(1, 0)} = y_{(1, 0)}$
+$$\alpha_{(0, 0)} = y_{(0, 0)}$$, $$\alpha_{(1, 0)} = y_{(1, 0)}$$
 
-$\alpha_{(s, 0)} = 0$ for $s > 1$
+$$\alpha_{(s, 0)} = 0$$ for $$s > 1$$
   
 Iterate forward:
 
-- for t = 1 to T-1:
-  - for s = 0 to S:
-    - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)})y_{(s, t)}$
-if $seq(s) = "ε"$ or seq(s) = seq(s-2)
-    - $\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)} + \alpha_{(s-2, t-2)})y_{(s, t)}$ otherwise
+- for $$t = 1$$ to $$T-1$$:
+  - for $$s = 0$$ to $$S$$:
+    - $$\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)})y_{(s, t)}$$
+      if $$\operatorname{seq}(s) = \text{“ε”}$$ or $$\operatorname{seq}(s) = \operatorname{seq}(s-2)$$
+    - $$\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)} + \alpha_{(s-2, t-2)})y_{(s, t)}$$ otherwise
 
-Note that $\alpha_{(s, t)} = 0$ for all $s < S-2(T-t) - 1$ which corresponds to the unconnected boxes in the top-right. These variables correspond to states for which there are not enough time-steps left to complete the sequence.
+Note that $$\alpha_{(s, t)} = 0$$ for all $$s < S-2(T-t) - 1$$ which corresponds to the unconnected boxes in the top-right. These variables correspond to states for which there are not enough time-steps left to complete the sequence.
 
-$seq(s)$ - token at index $s$ e.g. $seq(s=1)="d"$
+$$\operatorname{seq}(s)$$ - token at index $$s$$ e.g. $$\operatorname{seq}(s=1)=\text{“d”}$$
 
 ![computations of alpha probabilities](/images/ctc_loss/alpha_prob.png)
 
-### Backward algorithm for computing $\beta_{(s, t)}$
+### Backward algorithm for computing $$\beta_{(s, t)}$$
 
-Let's also create a matrix of zeros of same shape as our probability matrix, $y_{(s, t)}$ to store our $\beta$ values.
+Let's also create a matrix of zeros of same shape as our probability matrix, $$y_{(s, t)}$$ to store our $$\beta$$ values.
 
 Initialize:
 
-- $\beta_{(S-1, T-1)} = 1$, $\beta_{(S-2, T-1)} = 1$,
-- $\beta_{(s, T-1)} = 0$ for $s < S-2$
+- $$\beta_{(S-1, T-1)} = 1$$, $$\beta_{(S-2, T-1)} = 1$$,
+- $$\beta_{(s, T-1)} = 0$$ for $$s < S-2$$
 
 Iterate backward:
 
-- for t = T-2 to 0:
-  - for s = S-1 to 0:
-    - $\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t)} + \beta_{(s+1, t+1)}y_{(s+1, t)}$
-      if $seq(s) = "ε"$ or $seq(s) = seq(s+2)$
-    - $\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t)} + \beta_{(s+1, t+1)}y_{(s+1, t)} + \beta_{(s+2, t+2)})y_{(s+2, t)}$ otherwise
+- for $$t = T-2$$ to $$0$$:
+  - for $$s = S-1$$ to $$0$$:
+    - $$\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t)} + \beta_{(s+1, t+1)}y_{(s+1, t)}$$
+      if $$\operatorname{seq}(s) = \text{“ε”}$$ or $$\operatorname{seq}(s) = \operatorname{seq}(s+2)$$
+    - $$\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t)} + \beta_{(s+1, t+1)}y_{(s+1, t)} + \beta_{(s+2, t+2)}y_{(s+2, t)}$$ otherwise
 
-Similarly, $\beta_{(s, t)} = 0$ for all $s > 2t$ which corresponds to the unconnected boxes in the bottom-left.
+Similarly, $$\beta_{(s, t)} = 0$$ for all $$s > 2t$$ which corresponds to the unconnected boxes in the bottom-left.
 
 ![computations of beta probabilities](/images/ctc_loss/beta_prob.png)
 
@@ -154,40 +155,45 @@ Similarly, $\beta_{(s, t)} = 0$ for all $s > 2t$ which corresponds to the unconn
 
 From the computations, observe that we are constantly multiplying values less than 1. This can lead to underflow especially for longer sequences. We can improve these computations by performing the computations in the logarithm space. Products become sums, divisions become subtraction. For instance;
 
-$\alpha_{s, t} = (\alpha_{s, t-1} + \alpha_{(s-1, t-1)})y_{s, t}$
+$$
+\alpha_{s, t} = (\alpha_{s, t-1} + \alpha_{(s-1, t-1)})y_{s, t}
+$$
 
 becomes
 
-$log \alpha_{s,t} = log( e^{log\alpha_{s,t-1}} + e^{log\alpha_{s-1,t-1}}) + log P_{s,t} $
+$$
+\log \alpha_{s,t} = \log( e^{\log\alpha_{s,t-1}} + e^{\log\alpha_{s-1,t-1}}) + \log P_{s,t}
+$$
 
 ### CTC Loss calculation for each timestep
 
-Now that we have the $\alpha$ and $\beta$ probabilities(or log probabilities), we will compute the joint probability of the sequence at every timestep. This we will call $\gamma_{s,t}$.
+Now that we have the $$\alpha$$ and $$\beta$$ probabilities(or log probabilities), we will compute the joint probability of the sequence at every timestep. This we will call $$\gamma_{s,t}$$.
 
-$\gamma_{s,t} = \alpha_{s,t}\beta_{s,t}$
+$$
+\gamma_{s,t} = \alpha_{s,t}\beta_{s,t}
+$$
 
-Afterwards, we compute the posterior probabilities of the sequence at every timestep by summing along columns. This is the total probability of all paths going through a token $seq(s)$ at timestep t.
+Afterwards, we compute the posterior probabilities of the sequence at every timestep by summing along columns. This is the total probability of all paths going through a token $$\operatorname{seq}(s)$$ at timestep t.
 
-$P_{(seq_t, t)} = \sum\limits_{s=0}^{S}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}$
+$$
+P_{(\operatorname{seq}_t, t)} = \sum\limits_{s=0}^{S}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}
+$$
 
 ![computations of gamma probabilities](/images/ctc_loss/gamma_prob.png)
 
 Total loss of the model is then;
 
-$\mathcal{l} = -\sum\limits_{t=0}^{T-1} log P_{(seq_t, t)}$
+$$
+\mathcal{L} = -\sum\limits_{t=0}^{T-1} \log P_{(\operatorname{seq}_t, t)}
+$$
 
 Derivatives can then be calculated for back propagation using Autograd. Modern deep leaning libraries such as Pytorch, and TensorFlow have this feature.
 
 ### Note
 
 1. The CTC loss algorithm can be applied to both convolutional and recurrent networks. For recurrent networks, it is possible to compute the loss at each timestep in the path or make use of the final loss, depending on the use case.
-2. Some forms of the loss use only the forward algorithm in its computation i.e $\alpha_{s, t}$. I was only able to reproduce the Pytorch CTC loss when I used the forward algorithm in my loss computation, and ignoring the backward algorithm. However, the algorithm explained in this blog post is the one proposed in the seminal paper by [\[Alex Graves et al\]](https://www.cs.toronto.edu/~graves/icml_2006.pdf).
+2. Some forms of the loss use only the forward algorithm in its computation i.e $$\alpha_{s, t}$$. I was only able to reproduce the Pytorch CTC loss when I used the forward algorithm in my loss computation, and ignoring the backward algorithm. However, the algorithm explained in this blog post is the one proposed in the seminal paper by Graves et al.<d-cite key="graves2006ctc"></d-cite>.
 
 ## Conclusion
 
 In this article, we explained the connectionist temporal classification loss and how it can be applied in many-to-many input/output classification tasks without alignments. Then, we showed the computations for the forward and backward algorithm used for the training the model.
-
-## References
-
-1. Hannun, "Sequence Modeling with CTC", Distill, 2017.
-1. Bhiksha Raj, Connectionist Temporal Classification (CTC) lecture slide, [link](https://deeplearning.cs.cmu.edu/S20/document/slides/lec14.recurrent.pdf), last retrieved July 2020.

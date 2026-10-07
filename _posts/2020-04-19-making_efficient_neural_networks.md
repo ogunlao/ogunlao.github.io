@@ -1,12 +1,8 @@
 ---
-layout: post
 title:  "Making Efficient Neural Networks"
 #categories: blog
 tags: [neural_network, layer-drop, quantization, sparsity]
 comments: true
-# categories: coding
-# tags: linux
-
 ---
 
 {:.no_toc}
@@ -27,9 +23,9 @@ Efficiency in the context of neural networks deal with;
 - Low energy consumption etc.
 
 For example, with the introduction of the Transformer architecture in the NLP domain, the field has achieved giant strides, pushing up SOTA results i almost all NLP domains. The Transformer has an interesting architecture with parallel computations and self-attention mechanism. A major concern is its parameter size due to the multi-head attention. A recent architecture from Google called [Reformer](https://ai.googleblog.com/2020/01/reformer-efficient-transformer.html) uses locality-sensitive-hashing (LSH) to address this.
-Similarly, in Computer vision domain, models like [ResNext](https://arxiv.org/abs/1611.05431) with repeated blocks have shown to have great performance of Image-related tasks, at the expense of speed. These models are difficult to train and experiment with on low-memory GPUs. Therefore, how can we make this models more efficient without loosing performance?   
+Similarly, in Computer vision domain, models like [ResNext](https://arxiv.org/abs/1611.05431) with repeated blocks have shown to have great performance of Image-related tasks, at the expense of speed. These models are difficult to train and experiment with on low-memory GPUs. Therefore, how can we make this models more efficient without loosing performance?
 
-This article was written to give an introductory view on this subject, and hopefully inform Researchers and Machine Learning Engineers like me, on what to have at the back of our minds when we build models and do research.  
+This article was written to give an introductory view on this subject, and hopefully inform Researchers and Machine Learning Engineers like me, on what to have at the back of our minds when we build models and do research.
 
 ![](https://images.unsplash.com/photo-1547654387-a1b3c42b3d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80 "Source: @yogidan2012 on unsplash.com")
 
@@ -49,7 +45,7 @@ This is a really important aspect of efficiency that is being overlooked by the 
 
 - **How much energy will it require for training?**  
 Many AI research papers do not track or report the total power used in training their models. I think it will be more useful to have these results for comparism. Neural networks are implemented as computation graphs, and support vectorized implementations with GPUs and TPU support for faster computation. This is great considering the progress in hardware design but most on-device applications still require cpu for computation. Needless to say that, if on-line training will e required by these on-device models, then the computational cost increases as these models might not have been made with this specification in mind. 
-For energy conservation sake, we need models that can perform efficient computations. 
+For energy conservation sake, we need models that can perform efficient computations.
 
 - **How much energy will it require for inference?**  
 Energy consumption at inference time is another great consideration, especially for on-device AI applications that utilize other power sources like batteries for inference. We would like a model that runs effortlessly without consuming a substantial amount of energy.
@@ -64,7 +60,7 @@ Neural networks as computational graphs show some distinct traits which make the
 Increasing layer cardinality is also common in these models e.g ResNet, Inception, BERT etc. This also implies that some of the layers of the network may be redundant and may be learning similar properties. Skip connections and dynamic connections have been used in these large models to cater for this effect and ensure that gradients can be back-propagated efficiently. Similarly, the hyperparameters such as number of filters, number of multihead attentions, size of layers are made bigger than they should be just to squeeze out the performance.  
 This is better expressed by the [Lottery Ticket Hypothesis](https://towardsdatascience.com/breaking-down-the-lottery-ticket-hypothesis-ca1c053b3e58) postulated by MIT researchers. 
 The Lottery Ticket Hypothesis states that
-> “A randomly-initialized, dense neural network contains a subnetwork that is initialized such that — when trained in isolation — it can match the test accuracy of the original network after training for at most the same number of iterations.”  
+> “A randomly-initialized, dense neural network contains a subnetwork that is initialized such that — when trained in isolation — it can match the test accuracy of the original network after training for at most the same number of iterations.”
 
 What a great discovery!!!
 
@@ -83,7 +79,7 @@ Case b: Student model also learn to mimic intermediate layers as well as the out
 ![patient knowledge distillation approach to bert](/images/knowledge_distillation_bert.png "patient knowledge distillation approach to bert")    
 The image shows the model architecture of Patient Knowledge Distillation approach to BERT model compression. In the PKD-Skip architecture, the student network learns the teacher’s outputs in every 2 layers while the PKDLast represents where the student learns the teacher’s outputs from the last 6 layers.   
 A major advantage of the teacher-student setup is that it provides flexibility over size, as there is no restriction on size of teacher and student. A consequence of this smaller model is its fast inference time, with similar performance as the teacher. One thing to put in mind is that a pretrained teacher model is required in this setup and the student network inherits the biases of the teacher model.  
-Knowledge distillation has been successfully applied to production models such as the  HuggingFace [DistilBERT](https://arxiv.org/pdf/1910.01108v4.pdf) with a smaller, faster, cheaper and lighter BERT model.  It has also been applied in Generative Adversarial Networks, [KDGAN](https://papers.nips.cc/paper/7358-kdgan-knowledge-distillation-with-generative-adversarial-networks.pdf) for student training. In another area of application, knowledge distillation can be used to train a surrogate model without having knowledge of original model internals or even its training data. The paper titled ["Practical Black-Box Attacks against Machine Learning"](https://arxiv.org/abs/1602.02697) highlights the fact that this can aid adversarial attack of a machine learning model as the surrogate model just has to learn to mimic the decision boundaries of the original model.  
+Knowledge distillation has been successfully applied to production models such as the  HuggingFace [DistilBERT](https://arxiv.org/pdf/1910.01108v4.pdf) with a smaller, faster, cheaper and lighter BERT model.  It has also been applied in Generative Adversarial Networks, [KDGAN](https://papers.nips.cc/paper/7358-kdgan-knowledge-distillation-with-generative-adversarial-networks.pdf) for student training. In another area of application, knowledge distillation can be used to train a surrogate model without having knowledge of original model internals or even its training data. The paper titled ["Practical Black-Box Attacks against Machine Learning"](https://arxiv.org/abs/1602.02697) highlights the fact that this can aid adversarial attack of a machine learning model as the surrogate model just has to learn to mimic the decision boundaries of the original model.
 
 1. **Pruning**  
 Pruning involves training a large network at training time, but then eliminating some parts of the network at inference time. This might include heuristics such as  dropping convolution layers, dropping attention layers, or convolution filters, removing portion of weights etc. at inference time. The method above usually require some for of retraining or finetuning. Can we have a method that does not necessarily need retraining at inference time?     
@@ -102,12 +98,12 @@ The idea of weight sharing is that different layers can reuse weights. This just
 6. **Quantization**   
 Quantization refers to techniques for performing computations and storing tensors at lower bitwidths than floating point precision. This process compresses the model size after training and a go-to approach for model compression, especially for on-device AI applications.   
 In quantization, the goal is to efficiently store the weight floating point numbers using other number types such as int8, int4 or even bits(1 and 0). This is usually more memory efficient. The popular deep learning libraries provide quantization methods out of the box and have tutorials on how to perform quantization. See [Tensorflow](https://www.tensorflow.org/lite/performance/post_training_quantization) and [PyTorch](https://pytorch.org/docs/stable/quantization.html) libraries for their apis.  
-Quantization can drastically reduce model size by up to 80% and can easily be combined with other existing techniques for even lower model sizes. The quantization method and compression size has to be considered because drastic compression can reduce model performance and accuracy.  
+Quantization can drastically reduce model size by up to 80% and can easily be combined with other existing techniques for even lower model sizes. The quantization method and compression size has to be considered because drastic compression can reduce model performance and accuracy.
 
 7. **More Efficient Architectures**  
 As at this time, we have been exploring methods that involve starting with a bigger model, then compressing it. Can we do better by consciously building architectures made out of the goal for efficiency?  
 For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](https://arxiv.org/abs/1901.10430) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.    
-Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.  
+Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.
 
 ## Conclusion
 
