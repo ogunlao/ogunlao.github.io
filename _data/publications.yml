@@ -1,0 +1,71 @@
+# Grouped by `year` on the Publications page, in the order listed here.
+# "Ogun, S." / "Sewade Ogun" in `authors` is shown in bold automatically.
+- year: Preprint
+  title: An Exhaustive Evaluation of TTS- and VC-based Data Augmentation for ASR
+  authors: Ogun, S., Colotte, V., Vincent, E.
+  venue: Preprint
+
+- year: 2026
+  title: "Sometin Beta Pass Notin: Improving Multilingual ASR for Nigerian Languages via Knowledge Distillation"
+  authors: Ogun, S.
+  venue: IEEE Spoken Language Technology Workshop (SLT) 2026
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2605.17710" }
+
+- year: 2025
+  title: "The NaijaVoices Dataset: Cultivating Large-Scale, High-Quality, Culturally-Rich Speech Data for African Languages"
+  authors: Emezue, C., NaijaVoices Community, Awobade, B., Owodunni, A., Emezue, H., Emezue, G. M. T., Emezue, N. N., Ogun, S., Akinremi, B., Adelani, D. I., & Pal, C.
+  venue: Interspeech 2025
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2505.20564" }
+
+- year: 2024
+  title: Generating diverse synthetic data for ASR training data augmentation
+  authors: Ogun, S.
+  venue: PhD thesis, Université de Lorraine, 2024
+  links:
+    - { name: paper, url: "https://docnum.univ-lorraine.fr/public/DDOC_T_2024_0116_OGUN.pdf" }
+    - { name: slides, url: "https://1drv.ms/p/c/b2daf350ecfb3abd/Eb06--xQ89oggLIzAgAAAAABHxCtMm--iVhmbPx8FWps0A?e=o2qWt6" }
+- year: 2024
+  title: Performant ASR Models for Medical Entities in Accented Speech
+  authors: Afonja, T., Olatunji, T., Ogun, S., Etori, N. A., Owodunni, A., & Yekini, M.
+  venue: Interspeech 2024
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2406.12387" }
+    - { name: model, url: "https://huggingface.co/intronhealth/afrispeech-whisper-medium-all" }
+- year: 2024
+  title: "1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis"
+  authors: Ogun, S., Owodunni, A. T., Olatunji, T., Alese, E., Oladimeji, B., Afonja, T., ... & Adewumi, T.
+  venue: Interspeech 2024
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2406.11727" }
+    - { name: model, url: "https://huggingface.co/intronhealth/afro-tts" }
+- year: 2024
+  title: STATE OF THE ART. THINK BEFORE LOADING.
+  authors: Guillaume Coiffier, Sewade Ogun, Leo Valque, Priyansh Trivedi
+  venue: 2024, ISBN 978-2-9591975-0-5, hal-04509255
+  links:
+    - { name: paper, url: "https://hal.univ-lorraine.fr/hal-04509255v1/document" }
+
+- year: 2023
+  title: Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS
+  authors: Ogun, S., Colotte, V., Vincent, E.
+  venue: Proc. Interspeech 2023, 4878–4882, doi:10.21437/Interspeech.2023-1673
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2305.17724" }
+    - { name: code, url: "https://github.com/ogunlao/glowtts_stdp" }
+- year: 2023
+  title: Can we use Common Voice to train a Multi-Speaker TTS system?
+  authors: Ogun, S., Colotte, V., & Vincent, E.
+  venue: 2022 IEEE Spoken Language Technology Workshop (SLT), pp. 900–905
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2210.06370" }
+    - { name: dataset, url: "https://github.com/ogunlao/glowtts_stdp/tree/main/dataset" }
+
+- year: 2021
+  title: Towards a weakly-supervised learning paradigm for speech recognition
+  authors: Ndoye, A., Ogun, S., Adi, Y., & Cisse, M.
+  venue: Master's thesis, 2021
+  links:
+    - { name: paper, url: "/archive/Weak_Supervised_Learning_for_Speech.pdf" }
+    - { name: code, url: "https://github.com/ogunlao/low_res_speech_project" }

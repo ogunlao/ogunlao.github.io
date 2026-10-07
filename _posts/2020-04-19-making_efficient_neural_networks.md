@@ -106,7 +106,7 @@ Quantization can drastically reduce model size by up to 80% and can easily be co
 
 7. **More Efficient Architectures**  
 As at this time, we have been exploring methods that involve starting with a bigger model, then compressing it. Can we do better by consciously building architectures made out of the goal for efficiency?  
-For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](Pay Less Attention with Lightweight and Dynamic Convolutions) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.    
+For example, this paper titled ["Pay Less Attention with Lightweight and Dynamic Convolutions"](https://arxiv.org/abs/1901.10430) replaces some multihead attention weights in transformers with convolution layers. Some other propositions might include eliminating some bottlenecks in our current networks for faster computation, if it will not affect performance. Also, application specific models can be built for better efficiency.    
 Some other considerations for efficient networks which were not discussed in this article are; models for specialized hardwares and specialized memory block sizes. These are also great considerations for efficiency and important for hardware manufacturers who have their chips optimized for computation in this regard.  
 
 ## Conclusion

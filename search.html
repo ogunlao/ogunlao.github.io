@@ -1,0 +1,8 @@
+---
+layout: page
+title: Search
+permalink: /search/
+---
+<input id="search-input" type="search" data-index="{{ '/search.json' | relative_url }}" placeholder="Search posts…" aria-label="Search posts" autocomplete="off" autofocus>
+<ul id="search-results"></ul>
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>

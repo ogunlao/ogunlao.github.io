@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% if paginator.page == 1 %}
+<article class="home-info">
+  <h1>👋 Hi, I'm Sewade</h1>
+  <div class="entry-content">
+    <p>Welcome to my blog. I use it to document what I learn in the rapidly changing field of AI, mostly through the lens of multimodality: speech language models, text-to-speech, speech recognition and large language models.</p>
+    <p>I build AI products at GetVocal AI in Paris. More <a href="{{ '/about/' | relative_url }}"><u>about me</u></a>.</p>
+  </div>
+  {% include social-icons.html %}
+</article>
+{% endif %}
+
+{% for post in paginator.posts %}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2>{{ post.title }}</h2>
+  </header>
+  <div class="entry-content">
+    <p>{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncatewords: 50 }}</p>
+  </div>
+  <footer class="entry-footer">{% include post-meta.html post=post %}</footer>
+  <a class="entry-link" aria-label="Read {{ post.title }}" href="{{ post.url | relative_url }}"></a>
+</article>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+  {% if paginator.previous_page %}
+  <a class="prev" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer posts</a>
+  {% endif %}
+  {% if paginator.next_page %}
+  <a class="next" href="{{ paginator.next_page_path | relative_url }}">Older posts &raquo;</a>
+  {% endif %}
+</nav>
+{% endif %}

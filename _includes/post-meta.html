@@ -1,0 +1,4 @@
+{%- assign p = include.post | default: page -%}
+{%- assign words = p.content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+<span><time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%B %-d, %Y" }}</time>&nbsp;&middot;&nbsp;{{ minutes }} min read&nbsp;&middot;&nbsp;{{ site.author.name }}</span>

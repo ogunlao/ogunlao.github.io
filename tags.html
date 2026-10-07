@@ -1,0 +1,23 @@
+---
+layout: page
+title: Tags
+permalink: /tags/
+published: false  # hidden for now, see show_tags in _config.yml
+---
+{% assign tags = site.tags | sort %}
+<ul class="tag-cloud">
+  {% for tag in tags %}
+  <li><a href="#{{ tag[0] | slugify }}">{{ tag[0] }}<sup>{{ tag[1].size }}</sup></a></li>
+  {% endfor %}
+</ul>
+
+{% for tag in tags %}
+<section class="tag-section">
+  <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+  <ul>
+    {% for post in tag[1] %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <small>&middot; {{ post.date | date: "%b %Y" }}</small></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

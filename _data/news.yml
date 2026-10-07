@@ -1,0 +1,45 @@
+# Newest first. `text` is Markdown.
+- date: 2025-06-01
+  text: Our paper on [NaijaVoices](https://arxiv.org/abs/2505.20564) was accepted at Interspeech 2025. It introduces over 1,800 hours of speech-text pairs for the three major languages in Nigeria.
+- date: 2024-10-23
+  text: I will give a practical talk to members of the AI Saturdays Lagos community on "Implementation and evaluation of a research paper". [Slides](https://docs.google.com/presentation/d/1FoYz4y9NK3ZtkcQOdIEyec_GNVDuDSMxuHEmA_uIGUg/edit?usp=sharing) are available.
+- date: 2024-10-10
+  text: I successfully defended my PhD thesis, "Generating diverse synthetic dataset for ASR training data augmentation". Thank you to everyone who supported me on this journey.
+- date: 2024-07-09
+  text: I will submit my thesis at the end of July, with the defense slated for October. I am on the lookout for new and interesting deep-learning positions in research and industry.
+- date: 2024-06-04
+  text: Two papers accepted at Interspeech 2024, on [improving NER for accented speech](https://arxiv.org/abs/2406.12387) and on [TTS for African-accented English](https://arxiv.org/abs/2406.11727). I will present them with my colleagues in Kos, Greece.
+- date: 2023-11-29
+  text: Attended the [Rencontres des Jeunes Chercheurs en Parole (RJCP 2023)](https://rjcp-2023.sciencesconf.org/) workshop in Grenoble, where I presented one of my papers.
+- date: 2023-08-20
+  text: Attending Interspeech 2023 in Dublin to present my work on [improving the diversity and naturalness of TTS systems](https://arxiv.org/abs/2305.17724).
+- date: 2023-06-16
+  text: Attended VivaTech, the annual technology conference on innovation and startups in Paris. Thanks to the Inria innovation lab for sponsoring my trip.
+- date: 2023-01-05
+  text: Presenting my work on [curating high-quality data from crowdsourced datasets for TTS training](https://arxiv.org/abs/2210.06370) at the Spoken Language Technology (SLT) workshop in Qatar.
+- date: 2022-10-02
+  text: Implemented some [iterative phase retrieval algorithms](https://github.com/ogunlao/iter_vocoder) that can be used as vocoders for TTS.
+- date: 2022-04-20
+  text: Attending the DeepLearn summer school in Guimarães, Portugal.
+- date: 2021-08-01
+  text: Starting my PhD at Inria Nancy and Vivoka in October, working on automatic speech recognition with limited data for embedded systems.
+- date: 2021-06-12
+  text: A group of 8 research students and I implemented the [SAINT paper](https://arxiv.org/abs/2106.01342) in a week. It was great working as a team to implement every detail of the paper.
+- date: 2021-05-29
+  text: Volunteering with [TReND in Africa](https://trendinafrica.org/), a charity supporting scientific capacity building across Africa, to teach Python to beginners.
+- date: 2021-04-24
+  text: "New blog post: [Consider using UAR instead of Accuracy for Classification tasks](/blog/2021/04/24/consider_uar_accuracy.html)."
+- date: 2021-04-15
+  text: "[Volunteering](https://iclr.cc/Conferences/2021/Volunteers) at the International Conference on Learning Representations (ICLR 2021)."
+- date: 2021-03-01
+  text: Started a machine learning research internship with [ubenwa.ai](http://ubenwa.ai/), working on predicting infant asphyxia with machine learning.
+- date: 2021-02-26
+  text: Took part in the qualifying round of [Google Hash Code 2021](https://hashcodejudge.withgoogle.com/); our team, Team OKAY, ranked in the top 25% of the leaderboard.
+- date: 2021-01-26
+  text: "New blog post: [How to create a speech dataset for ASR, TTS, and other speech tasks](/blog/2021/01/26/how-to-create-speech-dataset.html), aimed at the speech processing community."
+- date: 2020-12-01
+  text: Teaching assistant for the [African Masters in Machine Intelligence](https://aimsammi.org/) programme at AIMS Senegal.
+- date: 2020-09-01
+  text: Finished the coursework for my master's at AIMS AMMI, and looking for internships in NLP or speech recognition.
+- date: 2020-08-27
+  text: Taught a 2-day Python workshop for beginners with colleagues, with over 100 participants. Materials are in this [GitHub repo](https://github.com/WPSYG/Python-2-day-workshop).

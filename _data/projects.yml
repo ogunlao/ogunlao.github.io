@@ -1,0 +1,89 @@
+# Shown in this order on the Projects page. `points` are Markdown.
+# Each project needs either an `image` (path) or an `icon` (emoji shown on a tile).
+- title: "SBPN: multilingual ASR models for Nigerian languages"
+  icon: 🎙️
+  points:
+    - Speech recognition models for Yoruba, Hausa, Igbo, Nigerian Pidgin and Nigerian English, which outperform other open-source models on these languages.
+    - "Two sizes, fine-tuned from NVIDIA Parakeet with NeMo: base (120M parameters) and large (600M parameters)."
+    - Described in the paper [Sometin Beta Pass Notin](https://arxiv.org/abs/2605.17710), accepted at SLT 2026.
+  links:
+    - { name: base model, url: "https://huggingface.co/ogunlao/SBPN_multilingual_base" }
+    - { name: large model, url: "https://huggingface.co/ogunlao/SBPN_multilingual_large" }
+    - { name: paper, url: "https://arxiv.org/abs/2605.17710" }
+
+- title: Speech Language Models
+  icon: 🧩
+  points:
+    - Research implementations of speech language models, focusing on recent advances in speech language modelling with acoustic codes.
+    - Includes VQ-VAE, wav2vec, vq-wav2vec and wav2vec 2.0, following the original papers closely.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/speech_language_models" }
+
+- title: Iterative Vocoders for Phase Retrieval
+  icon: 🔊
+  points:
+    - Implements the iterative phase-retrieval vocoders from [Beyond Griffin-Lim (Peer et al.)](https://arxiv.org/abs/2205.05496).
+    - Griffin-Lim, Fast Griffin-Lim, RAAR, Difference Map, ADMM, and hybrids that combine any of them.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/iter_vocoder" }
+
+- title: ASR Statistical Significance Testing
+  icon: 📊
+  points:
+    - Tests whether the word error rate difference between two ASR models is statistically significant, by computing a confidence interval with bootstrap sampling.
+    - Supports blockwise bootstrap, e.g. sampling by speaker, gender or age.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/asr_stat_significance" }
+
+- title: "SAINT: Neural Networks for Tabular Data"
+  image: /images/project/saint.png
+  fit: contain
+  points:
+    - Unofficial PyTorch implementation of [SAINT](https://arxiv.org/abs/2106.01342) (row attention and contrastive pre-training), built in a week with a team of 8 research students.
+    - Works with any tabular dataset for binary or multiclass classification, with PyTorch Lightning and Hydra configs.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/saint" }
+
+- title: "Yoruba Speech Dataset: a dataset for low-resource speech tasks"
+  image: /images/project/yor_face.jpeg
+  points:
+    - 3 hours of audio recordings from a native Yoruba speaker.
+    - Can be used for low-resource speech tasks.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/yoruba_speech_project" }
+
+- title: Exploring Transfer of Self-supervised English Pretrained Model to Yoruba and French Languages in Very Low-Resource Settings
+  image: /images/project/yor_face.jpeg
+  points:
+    - A self-supervised (CPC) model pretrained on a large amount of English speech is fine-tuned on 1 hour of labelled Yoruba and French audio.
+    - We compare this to training from scratch on 1 hour of audio in the target language. Audio samples are from a single speaker.
+    - Surprisingly, fine-tuning on a single speaker gave better results for Yoruba. Many factors could contribute, including speaker gender (male for Yoruba, female for French) and recording quality.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/yoruba_speech_project/tree/master/project" }
+    - { name: video demo, url: "https://youtu.be/XUTCowMHSQs" }
+
+- title: Exploring Detectron2 for Object Detection Tasks
+  image: /images/project/object_tracking.jpg
+  points:
+    - Instance segmentation, pose estimation and object tracking with the Detectron2 library.
+    - Pretrained models fine-tuned on custom tasks.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/exploring_detectron2" }
+    - { name: tracking demo, url: "https://github.com/ogunlao/exploring_detectron2/blob/master/ObjectTracking/tracked_vid.avi" }
+
+- title: Cassava Disease Classification
+  image: /images/project/cassava_disease.png
+  points:
+    - Classify cassava plants as healthy or as one of 4 disease classes.
+    - Experimented with various CNN architectures.
+    - Explored different ways of dealing with imbalanced datasets. I wrote a [blog post on what worked for me](/2020/05/08/cross-validation-and-reproducibility-in-neural-networks.html).
+  links:
+    - { name: code, url: "https://github.com/ogunlao/cassava_disease_classification" }
+
+- title: DNA Sequence Classification using Kernel Methods
+  image: /images/project/dna_sequence.jpeg
+  points:
+    - Predict whether a DNA sequence region is a binding site using kernel methods.
+    - Experimented with mismatch, Gaussian and weighted-degree kernels.
+  links:
+    - { name: code, url: "https://github.com/ogunlao/dna-sequence-kernels" }

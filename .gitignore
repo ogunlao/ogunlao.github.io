@@ -6,7 +6,9 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-_notebooks/.ipynb_checkpoints
+.bundle
+Gemfile.lock
+.DS_Store
 .vscode
 .ipynb_checkpoints/
 drafts
