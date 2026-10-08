@@ -102,7 +102,7 @@ Can we find a dynamic programming algorithm for solving this problem? Well, the 
 
 Instead of only selecting the most likely alignment, we find the expectation over all possible alignments during training. This allows us to also exploit the existence of subpaths in the graph.
 
-To compute this effectively, we need a forward variable $$\alpha_{(s, t)}$$ and backward variable $$\beta_{(s, t)}$$ where $$s$$ is the index of the token considered. The forward variable computes the total probability of emitting the first part of the sequence, $$\operatorname{seq}[0:s]$$, by timestep $$t$$ and being at token $$\operatorname{seq}(s)$$ at that timestep. The backward variable calculates the total probability of emitting the remaining sequence, from token $$\operatorname{seq}(s)$$ to the last token $$\operatorname{seq}(S-1)$$, starting at timestep $$t$$. Indices start at 0, and any term with an out-of-range index is taken to be 0.
+To compute this effectively, we need a forward variable $$\alpha_{(s, t)}$$ and backward variable $$\beta_{(s, t)}$$ where $$s$$ is the index of the token considered. The forward variable computes the total probability of emitting the first part of the sequence, $$\operatorname{seq}[0:s]$$, by timestep $$t$$ and being at token $$\operatorname{seq}(s)$$ at that timestep. The backward variable calculates the total probability of emitting the rest of the sequence, up to the last token $$\operatorname{seq}(S-1)$$, after timestep $$t$$, given that we are at token $$\operatorname{seq}(s)$$ at timestep $$t$$. Indices start at 0, and any term with an out-of-range index is taken to be 0.
 
 ### Forward Algorithm for computing $$\alpha_{(s, t)}$$
 
@@ -122,13 +122,11 @@ Iterate forward:
       if $$\operatorname{seq}(s) = \text{“ε”}$$ or $$\operatorname{seq}(s) = \operatorname{seq}(s-2)$$
     - $$\alpha_{(s, t)} = (\alpha_{(s, t-1)} + \alpha_{(s-1, t-1)} + \alpha_{(s-2, t-1)})y_{(s, t)}$$ otherwise
 
-Note that $$\alpha_{(s, t)} = 0$$ for all $$s < S-2(T-t)$$ which corresponds to the unconnected boxes in the top-right. These variables correspond to states for which there are not enough time-steps left to complete the sequence.
+Note that $$\alpha_{(s, t)} = 0$$ for all $$s > 2t + 1$$, the zero boxes in the bottom-left of the figure: these tokens cannot be reached within the first $$t + 1$$ timesteps. The states in the top-right, with $$s < S-2(T-t)$$, still get non-zero values, but there are not enough time-steps left to complete the sequence from them, so they never contribute to the loss.
 
 $$\operatorname{seq}(s)$$ - token at index $$s$$, e.g., $$\operatorname{seq}(s=1)=\text{“d”}$$
 
-![computations of alpha probabilities](/images/ctc_loss/alpha_prob.png)
-
-*In the figure, the label for $$\alpha_{(0,1)}$$ should read $$\alpha_{(0,0)} \cdot y_{(0,1)}$$.*
+<figure class="ctc-figure"><img src="/images/ctc_loss/alpha_prob.svg" alt="computations of alpha probabilities"></figure>
 
 ### Backward algorithm for computing $$\beta_{(s, t)}$$
 
@@ -137,24 +135,22 @@ Let's also create a matrix of zeros of same shape as our probability matrix, $$y
 Initialize:
 
 - $$\beta \in \mathbb{R}^{S \times T}$$, a matrix of zeros with the same shape as $$y$$
-- $$\beta_{(S-1, T-1)} = y_{(S-1, T-1)}$$, $$\beta_{(S-2, T-1)} = y_{(S-2, T-1)}$$
+- $$\beta_{(S-1, T-1)} = 1$$, $$\beta_{(S-2, T-1)} = 1$$
 - $$\beta_{(s, T-1)} = 0$$ for $$s < S-2$$
 
 Iterate backward:
 
 - for $$t = T-2$$ to $$0$$:
   - for $$s = S-1$$ to $$0$$:
-    - $$\beta_{(s, t)} = (\beta_{(s, t+1)} + \beta_{(s+1, t+1)})y_{(s, t)}$$
+    - $$\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t+1)} + \beta_{(s+1, t+1)}y_{(s+1, t+1)}$$
       if $$\operatorname{seq}(s) = \text{“ε”}$$ or $$\operatorname{seq}(s) = \operatorname{seq}(s+2)$$
-    - $$\beta_{(s, t)} = (\beta_{(s, t+1)} + \beta_{(s+1, t+1)} + \beta_{(s+2, t+1)})y_{(s, t)}$$ otherwise
+    - $$\beta_{(s, t)} = \beta_{(s, t+1)}y_{(s, t+1)} + \beta_{(s+1, t+1)}y_{(s+1, t+1)} + \beta_{(s+2, t+1)}y_{(s+2, t+1)}$$ otherwise
 
-This mirrors the forward algorithm: like $$\alpha_{(s, t)}$$, $$\beta_{(s, t)}$$ includes the probability $$y_{(s, t)}$$ of the token at timestep $$t$$.
+Unlike $$\alpha_{(s, t)}$$, $$\beta_{(s, t)}$$ does not include $$y_{(s, t)}$$, the probability of the token at timestep $$t$$ itself; it only covers the timesteps after $$t$$.
 
-Similarly, $$\beta_{(s, t)} = 0$$ for all $$s > 2t + 1$$ which corresponds to the unconnected boxes in the bottom-left.
+Similarly, $$\beta_{(s, t)} = 0$$ for all $$s < S-2(T-t)$$, the zero boxes in the top-right of the figure: the rest of the sequence cannot be completed from these states. The states in the bottom-left, with $$s > 2t + 1$$, get non-zero values but cannot be reached from the start, so they never contribute either. This is why $$\gamma$$ below is zero in both corners.
 
-![computations of beta probabilities](/images/ctc_loss/beta_prob.png)
-
-*The figure shows an earlier version of this recursion, which started from $$\beta = 1$$ and multiplied by $$y$$ at timestep $$t$$ of the next state. The equations above are the correct ones, from Graves et al.*<d-cite key="graves2006ctc"></d-cite>
+<figure class="ctc-figure"><img src="/images/ctc_loss/beta_prob.svg" alt="computations of beta probabilities"></figure>
 
 ### Computing the probabilities efficiently
 
@@ -180,15 +176,15 @@ $$
 \gamma_{s,t} = \alpha_{s,t}\beta_{s,t}
 $$
 
-Because both $$\alpha_{s,t}$$ and $$\beta_{s,t}$$ include $$y_{s,t}$$, the quantity $$\gamma_{s,t} / y_{s,t}$$ is the total probability of all valid paths that pass through token $$\operatorname{seq}(s)$$ at timestep $$t$$. Summing along a column gives the total probability of the target sequence:
+Since $$\alpha_{s,t}$$ covers a path up to and including timestep $$t$$ and $$\beta_{s,t}$$ covers the rest of it, $$\gamma_{s,t}$$ is the total probability of all valid paths that pass through token $$\operatorname{seq}(s)$$ at timestep $$t$$. Summing along a column gives the total probability of the target sequence:
 
 $$
-P(\operatorname{seq} \mid x) = \sum\limits_{s=0}^{S-1}\dfrac{\alpha_{s,t}\beta_{s,t}}{y_{s,t}}
+P(\operatorname{seq} \mid x) = \sum\limits_{s=0}^{S-1}\alpha_{s,t}\beta_{s,t}
 $$
 
 Every valid path passes through exactly one state at each timestep, so this sum is the same for every $$t$$, which is a useful check on an implementation.
 
-![computations of gamma probabilities](/images/ctc_loss/gamma_prob.png)
+<figure class="ctc-figure"><img src="/images/ctc_loss/gamma_prob.svg" alt="computations of gamma probabilities"></figure>
 
 The CTC loss is the negative log-probability of the target sequence:
 
@@ -203,10 +199,11 @@ Derivatives can then be calculated for back propagation using Autograd. Modern d
 ### Note
 
 1. The CTC loss algorithm can be applied to both convolutional and recurrent networks. For recurrent networks, it is possible to compute the loss at each timestep in the path or make use of the final loss, depending on the use case.
-2. The loss value itself only needs the forward variables, $$\alpha_{s, t}$$, as shown above; this matches PyTorch's `ctc_loss`. The backward variables are what make the gradients cheap to compute, as proposed in the seminal paper by Graves et al.<d-cite key="graves2006ctc"></d-cite>.
+2. Graves et al.<d-cite key="graves2006ctc"></d-cite> define the backward variable to include $$y_{(s, t)}$$, i.e., their $$\beta$$ equals $$\beta_{(s, t)}\,y_{(s, t)}$$ here. With that convention, the column sum becomes $$\sum_s \alpha_{s,t}\beta_{s,t} / y_{s,t}$$. Both give the same $$P(\operatorname{seq} \mid x)$$. This article follows the convention of the CMU lecture slides<d-cite key="raj2020ctc"></d-cite>.
+3. The loss value itself only needs the forward variables, $$\alpha_{s, t}$$, as shown above; this matches PyTorch's `ctc_loss`. The backward variables are what make the gradients cheap to compute, as proposed in the seminal paper by Graves et al.<d-cite key="graves2006ctc"></d-cite>. The CMU lecture<d-cite key="raj2020ctc"></d-cite> instead trains with the expected divergence, $$-\sum_t \sum_s \frac{\gamma_{s,t}}{P(\operatorname{seq} \mid x)} \log y_{s,t}$$, which has a different value but the same gradient with respect to $$y$$ as $$\mathcal{L}$$.
 
 **Update**
-Oct 8, 26: Fixed errors in the forward-backward algorithm from an earlier version of this article: the forward and backward recursions, the conditions for zero-valued states, and the loss formula.
+Oct 8, 26: Fixed errors in the forward-backward algorithm from an earlier version of this article: the forward and backward recursions and the loss formula. The notes on zero-valued states were also restated in 0-based indexing to match the figures.
 
 ## Conclusion
 

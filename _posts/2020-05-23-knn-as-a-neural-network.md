@@ -40,13 +40,13 @@ $$
 Using the matrix notation,
 
 $$
-d = \sqrt{\sum_{j=1}^{d} (X_j^2 - 1_n(x^t)_j^T)^2}
+d = \sqrt{\sum_{j=1}^{d} (X_j - 1_n x^t_j)^2}
 $$
 
-where $$X = (x_1, x_2, \dots, x_n)^T \in \mathbb{R}^{n \times d}$$ and $$(x^t)^T \in \mathbb{R}^d$$. To simplify notation, I will assume that $$x^t$$ will be broadcasted along the matrix, which becomes simply:
+where $$X = (x_1, x_2, \dots, x_n)^T \in \mathbb{R}^{n \times d}$$, $$X_j \in \mathbb{R}^n$$ is its $$j$$-th column, $$1_n$$ is a vector of ones, $$(x^t)^T \in \mathbb{R}^d$$, and the square and square root are taken element-wise. To simplify notation, I will assume that $$x^t_j$$ will be broadcasted along the column, which becomes simply:
 
 $$
-d = \sqrt{\sum_{j=1}^{d} (X_j^2 - x_j^t)^2}
+d = \sqrt{\sum_{j=1}^{d} (X_j - x^t_j)^2}
 $$
 
 ## Expressing KNN as a Neural Network
@@ -56,31 +56,31 @@ With the understanding of the distance function, we can break it apart to derive
 From the distance function,
 
 $$
-d_i^2 = \sum_{j=1}^{d} (x_{ij} - x_j)^2 = d'
+d_i^2 = \sum_{j=1}^{d} (x_{ij} - x^t_j)^2 = d'_i
 $$
 
-Since optimizing $$d^2$$ is equivalent to optimizing for $$d$$, we work with $$d^2$$ instead, which we will call $$d'$$
+Since the training point with the smallest $$d^2$$ also has the smallest $$d$$, we work with $$d^2$$ instead, which we will call $$d'$$.
 
 ### Layer 1: Computing the distance function
 
 Expanding the equation, we get:
 
 $$
-d' = \sum_{j=1}^{d} \left((X^2_j - x^t_j) \odot (X^2_j - x^t_j)\right)
+d' = \sum_{j=1}^{d} \left((X_j - x^t_j) \odot (X_j - x^t_j)\right)
 $$
 
 Note that: $$\odot$$ is a Hadamard product, i.e., element-wise product between the two matrices.
 
 $$
 \begin{aligned}
-d' &= \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2 - 2X_j \cdot x^t\right) \\
-     &= -2X_jx^t + \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2\right)
+d' &= \sum_{j=1}^{d} \left(X_j \odot X_j - 2x^t_j X_j + (x^t_j)^2\right) \\
+   &= -2Xx^t + \sum_{j=1}^{d} X_j \odot X_j + \lVert x^t \rVert^2
 \end{aligned}
 $$
 
-since the $$-2X_jx^t$$ does not depend on j.
+since $$\sum_{j=1}^{d} x^t_j X_j$$ is exactly the matrix-vector product $$Xx^t$$. The $$i$$-th entry is $$\lVert x_i \rVert^2 - 2x_i^T x^t + \lVert x^t \rVert^2$$.
 
-At this point we can easily extract our first layer, $$Z_1 = W_1x_1 + b$$ where $$W_1 = -2X_j$$, $$x_1 = x^t$$ and $$b = \sum_{j=1}^{d} \left(X^2_j + (x^t_j)^2\right)$$
+At this point we can easily extract our first layer, $$Z_1 = W_1x_1 + b$$ where $$W_1 = -2X$$, $$x_1 = x^t$$ and $$b = \sum_{j=1}^{d} X_j \odot X_j$$, i.e., $$b_i = \lVert x_i \rVert^2$$. The last term, $$\lVert x^t \rVert^2$$, depends on the test point rather than on the training data, so it is not a fixed bias. It adds the same value to every distance, and the softmax in the next layer is unchanged by a constant shift, so we can drop it: $$Z_1 = d' - \lVert x^t \rVert^2$$.
 
 ### Layer 2: Softmax Layer
 
@@ -90,7 +90,7 @@ After the previous step, we then need to find the datapoint with the closest dis
 - Multiply the vector by a large positive constant $$\lambda \rightarrow \infty$$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $$Z_1$$. This is equivalent to applying the softmax temperature on the vector. $$\lambda$$ is a hyperparameter.
 
 $$
-Z_2 = softmax(-\lambda * Z_1)
+Z_2 = \operatorname{softmax}(-\lambda Z_1)
 $$
 
 > For a refresher on the softmax temperature, check my previous post on [Softmax temperature](https://ogunlao.github.io/2020/04/26/you_dont_really_know_softmax.html#softmax-temperature)
@@ -99,16 +99,16 @@ $$
 
 Before now, we have not really talked about the labels of the training examples. It comes in at this layer to support in prediction.
 
-- For a regression task, this computation is almost done. We take the vector of distances and find the prediction of the class, with the minimum distance (or maximum value in this case, as we have performed inversion).
+- For a regression task, this computation is almost done. We take the target of the training point with the largest value in $$Z_2$$ (the minimum distance, as we have negated the distances). With the vector of training targets $$y \in \mathbb{R}^n$$, this is $$Z_3 = y^T Z_2$$.
 - For a classification task, we can also take the label of the datapoint with the minimum distance or go a step further.
 
-For a classification task, where $$Z_3 = W_3x_3 + b$$, firstly, we perform one-hot encoding on the train labels. $$y_{\text{onehot}} \in \mathbb{R}^{n \times d}$$
+For a classification task, where $$Z_3 = W_3x_3 + b$$, firstly, we perform one-hot encoding on the train labels, $$y_{\text{onehot}} \in \mathbb{R}^{n \times c}$$, where $$c$$ is the number of classes.
 
 $$
-Z_3 = Z_2^Ty_{\text{onehot}}
+Z_3 = y_{\text{onehot}}^T Z_2
 $$
 
-where $$W_3 = X^T$$, $$x_3 = z_2$$, $$b = 0$$
+where $$W_3 = y_{\text{onehot}}^T$$, $$x_3 = Z_2$$ and $$b = 0$$. The predicted class is the index of the largest entry of $$Z_3$$.
 
 ## Implementation
 

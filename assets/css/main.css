@@ -581,6 +581,14 @@ body.distill d-appendix pre.citation {
   border-radius: var(--radius);
 }
 
+/* Lattice diagrams (e.g. the CTC figures): the width of the text column. */
+body.distill d-article figure.ctc-figure {
+  grid-column: text;
+  width: 100%;
+  margin: 8px 0 32px;
+}
+body.distill d-article figure.ctc-figure img { width: 100%; margin: 0; border-radius: 0; }
+
 .distill-after > * { grid-column: text; }
 .distill-after .post-footer { margin-top: 32px; }
 

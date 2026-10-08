@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1288 1146" width="1288" height="1146">
+<defs><marker id="head" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,3.5 L0,7 z" fill="#9a3412"/></marker></defs>
+<rect width="1288" height="1146" fill="#fff"/>
+<text x="62" y="186" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="36" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="22">(s,t)</tspan><tspan dy="-7"></tspan></text>
+<text x="172.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">0</text>
+<text x="352.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">1</text>
+<text x="532.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">2</text>
+<text x="712.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">3</text>
+<circle cx="824.0" cy="598.0" r="5" fill="#2f45d8"/>
+<circle cx="854.0" cy="598.0" r="5" fill="#2f45d8"/>
+<circle cx="884.0" cy="598.0" r="5" fill="#2f45d8"/>
+<text x="996.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">T−2</text>
+<text x="1176.0" y="206" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" text-anchor="middle" fill="#111">T−1</text>
+<text x="40" y="272.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">ε</text>
+<text x="96" y="270.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">0</text>
+<rect x="130" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="271.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(0,0)</tspan><tspan dy="-7"></tspan></text>
+<rect x="310" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="271.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(0,1)</tspan><tspan dy="-7"></tspan></text>
+<rect x="490" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="271.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(0,2)</tspan><tspan dy="-7"></tspan></text>
+<rect x="670" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="271.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(0,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="272.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="1134" y="220" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="272.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="356.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">d</text>
+<text x="96" y="354.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">1</text>
+<rect x="130" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="355.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(1,0)</tspan><tspan dy="-7"></tspan></text>
+<rect x="310" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="355.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(1,1)</tspan><tspan dy="-7"></tspan></text>
+<rect x="490" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="355.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(1,2)</tspan><tspan dy="-7"></tspan></text>
+<rect x="670" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="355.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(1,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="356.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="1134" y="304" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="356.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="440.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">ε</text>
+<text x="96" y="438.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">2</text>
+<rect x="130" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="440.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="439.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(2,1)</tspan><tspan dy="-7"></tspan></text>
+<rect x="490" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="439.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(2,2)</tspan><tspan dy="-7"></tspan></text>
+<rect x="670" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="439.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(2,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="440.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="1134" y="388" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="440.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="524.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">o</text>
+<text x="96" y="522.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">3</text>
+<rect x="130" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="524.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="523.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(3,1)</tspan><tspan dy="-7"></tspan></text>
+<rect x="490" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="523.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(3,2)</tspan><tspan dy="-7"></tspan></text>
+<rect x="670" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="523.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(3,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="524.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="1134" y="472" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="524.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="608.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">ε</text>
+<text x="96" y="606.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">4</text>
+<rect x="130" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="608.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="608.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="490" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="607.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(4,2)</tspan><tspan dy="-7"></tspan></text>
+<rect x="670" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="607.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(4,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="608.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="1134" y="556" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="608.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="692.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">o</text>
+<text x="96" y="690.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">5</text>
+<rect x="130" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="692.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="692.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="490" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="692.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="670" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="691.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(5,3)</tspan><tspan dy="-7"></tspan></text>
+<rect x="954" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="691.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(5,8)</tspan><tspan dy="-7"></tspan></text>
+<rect x="1134" y="640" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="692.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="776.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">ε</text>
+<text x="96" y="774.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">6</text>
+<rect x="130" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="776.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="776.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="490" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="776.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="670" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="776.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="954" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="775.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(6,8)</tspan><tspan dy="-7"></tspan></text>
+<rect x="1134" y="724" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="776.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<text x="40" y="860.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">r</text>
+<text x="96" y="858.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">7</text>
+<rect x="130" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="860.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="860.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="490" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="860.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="670" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="860.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="954" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="859.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(7,8)</tspan><tspan dy="-7"></tspan></text>
+<rect x="1134" y="808" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="859.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(7,9)</tspan><tspan dy="-7"></tspan></text>
+<text x="40" y="944.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="38" text-anchor="middle" fill="#111">ε</text>
+<text x="96" y="942.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">8</text>
+<rect x="130" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="172.0" y="944.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="310" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="352.0" y="944.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="490" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="532.0" y="944.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="670" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="712.0" y="944.0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="29" text-anchor="middle" fill="#111">0</text>
+<rect x="954" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="996.0" y="943.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(8,8)</tspan><tspan dy="-7"></tspan></text>
+<rect x="1134" y="892" width="84" height="84" fill="#fff" stroke="#2f45d8" stroke-width="2"/>
+<text x="1176.0" y="943.0" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="29" text-anchor="middle" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(8,9)</tspan><tspan dy="-7"></tspan></text>
+<line x1="214" y1="262.0" x2="307" y2="262.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="214" y1="346.0" x2="307" y2="346.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="214" y1="278.8" x2="307" y2="329.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="214" y1="362.8" x2="307" y2="413.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="214" y1="377.9" x2="307" y2="482.1" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="262.0" x2="487" y2="262.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="346.0" x2="487" y2="346.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="278.8" x2="487" y2="329.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="430.0" x2="487" y2="430.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="362.8" x2="487" y2="413.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="514.0" x2="487" y2="514.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="446.8" x2="487" y2="497.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="377.9" x2="487" y2="482.1" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="394" y1="530.8" x2="487" y2="581.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="262.0" x2="667" y2="262.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="346.0" x2="667" y2="346.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="278.8" x2="667" y2="329.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="430.0" x2="667" y2="430.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="362.8" x2="667" y2="413.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="514.0" x2="667" y2="514.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="446.8" x2="667" y2="497.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="377.9" x2="667" y2="482.1" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="598.0" x2="667" y2="598.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="530.8" x2="667" y2="581.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="574" y1="614.8" x2="667" y2="665.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="1038" y1="850.0" x2="1131" y2="850.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="1038" y1="782.8" x2="1131" y2="833.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="1038" y1="713.9" x2="1131" y2="818.1" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="1038" y1="934.0" x2="1131" y2="934.0" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="1038" y1="866.8" x2="1131" y2="917.2" stroke="#9a3412" stroke-width="1.8" marker-end="url(#head)"/>
+<line x1="194.0" y1="90" x2="194.0" y2="220" stroke="#555" stroke-width="1.2"/><text x="172.0" y="70" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="27" text-anchor="middle" fill="#111"><tspan font-style="italic">α</tspan><tspan dy="7" font-size="16">(0,0)</tspan><tspan dy="-7"></tspan><tspan> · </tspan><tspan font-style="italic">β</tspan><tspan dy="7" font-size="16">(0,0)</tspan><tspan dy="-7"></tspan></text>
+<path d="M1228,814 h14 V970 h-14" fill="none" stroke="#444" stroke-width="1.5"/><path d="M1242,892.0 h16 V1041" fill="none" stroke="#555" stroke-width="1.2"/><text x="1248" y="1050" font-family="'Latin Modern Math','STIX Two Math','Cambria Math','Times New Roman',serif" font-size="27" text-anchor="end" fill="#111"><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(7,9)</tspan><tspan dy="-7"></tspan><tspan> + </tspan><tspan font-style="italic">γ</tspan><tspan dy="7" font-size="16">(8,9)</tspan><tspan dy="-7"></tspan><tspan> = </tspan><tspan font-style="italic">P</tspan><tspan>(seq | </tspan><tspan font-style="italic">x</tspan><tspan>)</tspan></text>
+</svg>
