@@ -906,12 +906,11 @@ ${math}
   function link_string(ent) {
     if ("url" in ent) {
       var url = ent.url;
-      var arxiv_match = /arxiv\.org\/abs\/([0-9\.]*)/.exec(url);
-      if (arxiv_match != null) {
-        url = `http://arxiv.org/pdf/${arxiv_match[1]}.pdf`;
-      }
-
-      if (url.slice(-4) == ".pdf") {
+      // ogunlao.github.io local change: keep arXiv abstract pages instead of
+      // rewriting them to direct PDF links, and label them "arXiv".
+      if (/arxiv\.org\/abs\//.test(url)) {
+        var label = "arXiv";
+      } else if (url.slice(-4) == ".pdf") {
         var label = "PDF";
       } else if (url.slice(-5) == ".html") {
         var label = "HTML";

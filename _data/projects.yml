@@ -31,7 +31,7 @@
   icon: 📊
   points:
     - Tests whether the word error rate difference between two ASR models is statistically significant, by computing a confidence interval with bootstrap sampling.
-    - Supports blockwise bootstrap, e.g. sampling by speaker, gender or age.
+    - Supports blockwise bootstrap, e.g., sampling by speaker, gender or age.
   links:
     - { name: code, url: "https://github.com/ogunlao/asr_stat_significance" }
 

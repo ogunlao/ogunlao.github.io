@@ -460,6 +460,36 @@ body.distill .main { max-width: none; padding: 0; }
 body.distill .header a, body.distill .footer a { color: inherit; }
 body.distill .footer a { border-bottom: 1px solid var(--secondary); }
 
+/* Post typography: Source Serif 4 for reading, Inter for titles, headings and meta. */
+body.distill {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+}
+body.distill d-title h1,
+body.distill d-title p,
+body.distill .distill-byline,
+body.distill d-article h2,
+body.distill d-article h3,
+body.distill d-article h4,
+body.distill d-article #markdown-toc,
+body.distill d-article #markdown-toc li,
+body.distill d-article table,
+body.distill d-appendix,
+body.distill .distill-after { font-family: var(--font-sans); }
+body.distill d-title h1 { font-weight: 700; letter-spacing: -0.02em; }
+body.distill d-article h2, body.distill d-article h3, body.distill d-article h4 { font-weight: 600; letter-spacing: -0.01em; }
+body.distill d-article {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.7;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+body.distill d-article p,
+body.distill d-article li { font-family: var(--font-serif); }
+body.distill d-article strong { font-weight: 600; }
+
 body.distill d-title { padding-top: 40px; }
 body.distill d-title h1 { color: var(--primary); }
 body.distill d-title p { color: var(--secondary); }

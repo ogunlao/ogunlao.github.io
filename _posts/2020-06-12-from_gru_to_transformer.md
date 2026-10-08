@@ -3,13 +3,14 @@ title:  "From GRU to Transformer"
 categories: blog
 tags: [GRU, attention, neural_network]
 comments: true
+bibliography: 2020-06-12-gru-to-transformer.bib
 ---
 
-Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer [\[Vaswani et. al., 2017\]](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf) is a model, at the fore-front of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
+Attention-based networks have been shown to outperform recurrent neural networks and its variants for various deep learning tasks including Machine Translation, Speech, and even Visio-Linguistic tasks. The Transformer<d-cite key="vaswani2017attention"></d-cite> is a model, at the forefront of using only self-attention in its architecture, avoiding recurrence and enabling parallel computations.
 
-To understand how the self-attention mechanism is applied in Transformers, it might be intuitive from a mathematical perspective to build-up step-by-step from what is known, i.e. Recurrent Neural Networks such as LSTMs or GRUs to a self-attention network such as Transformers. Blog posts such as [Jalammar](https://jalammar.github.io/illustrated-transformer/), [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html), [Vandergoten](http://vandergoten.ai/2018-09-18-attention-is-all-you-need/) have attacked the explanation of Transformers from different perspectives but I believe this article will give another perspective and help engineers and researchers understand Self-Attention better, as I did.
+To understand how the self-attention mechanism is applied in Transformers, it might be intuitive from a mathematical perspective to build up step-by-step from what is known, i.e., Recurrent Neural Networks such as LSTMs or GRUs to a self-attention network such as Transformers. Blog posts such as [Jalammar](https://jalammar.github.io/illustrated-transformer/)<d-cite key="alammar2018illustrated"></d-cite>, [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)<d-cite key="rush2018annotated"></d-cite>, [Vandergoten](https://web.archive.org/web/20200731224921/http://vandergoten.ai/2018-09-18-attention-is-all-you-need/)<d-cite key="vandergoten2018attention"></d-cite> have attacked the explanation of Transformers from different perspectives but I believe this article will give another perspective and help engineers and researchers understand Self-Attention better, as I did.
 
-For a beautiful explanation of everything Attention, check out [Lilianweng post on Attention](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html)
+For a beautiful explanation of everything Attention, check out [Lilianweng post on Attention](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html)<d-cite key="weng2018attention"></d-cite>
 
 Here's what we will cover:
 1. TOC
@@ -19,7 +20,7 @@ This article is based on a lecture given by [Kyunghyun Cho](https://kyunghyuncho
 
 ## Introduction
 
-Recurrent neural networks with gates such as Long-Short Term Memory (LSTM) and Gated Recurrent Units (GRU) have long been used for sequence modelling with the advantage that they help to significantly solve the vanishing problem and long-term dependency problems popularly found in Vanilla RNNs. Attention mechanisms have also been used together with these gated recurrent networks to improve their modelling capacity. However, recurrent computations still persist.
+Recurrent neural networks with gates such as Long Short-Term Memory (LSTM) and Gated Recurrent Units (GRU) have long been used for sequence modelling with the advantage that they help to significantly solve the vanishing gradient problem and long-term dependency problems popularly found in Vanilla RNNs. Attention mechanisms have also been used together with these gated recurrent networks to improve their modelling capacity. However, recurrent computations still persist.
 
 Given a sequence of input tokens, $$(x_1, x_2, \dots, x_T)$$, where T is the total number of tokens. At time step $$t$$, we can calculate a hidden vector $$h_t$$ which is a representation of information gotten from tokens from time step $$1$$ to $$t$$.
 
@@ -35,7 +36,7 @@ where $$\tilde{h}_t$$ is the candidate context vector for current time-step, $$t
 
 - With $$u_t \approx 0$$ (zero vector), $$h_t = \tilde{h}_t$$ implying the candidate vector represents the new context vector, $$h_t$$, ignoring information from previous time-step.
 - With $$u_t \approx 1$$, (vector of 1s), $$h_t = h_{t-1}$$ implying the previous context vector is copied to the new time-step, discarding the candidate vector information
-- In  most cases, $$u_t$$ will take values between $$0$$ and $$1$$, allowing some information depending on their values.
+- In most cases, $$u_t$$ will take values between $$0$$ and $$1$$, allowing some information depending on their values.
 
 $$\tilde{h}_t$$ is a function of the current input, $$x_t$$ and the previous hidden vector, $$h_{t-1}$$.
 
@@ -69,15 +70,15 @@ for $$t$$ steps of GRU update. The breakdown of $$h_t$$ shows the computation in
 
 ## Gated Recurrent Units to Causal Attention
 
-In causal attention as in GRUS, we will only have access or look at previous hidden states. This will allow us to proceed with our decomposition, but will be relaxed later to give a general non-causal attention.
+In causal attention as in GRUs, we will only have access or look at previous hidden states. This will allow us to proceed with our decomposition, but will be relaxed later to give a general non-causal attention.
 
-Looking at the expanded version of the GRU update, we see dependencies between a lot of parameters and components. We will attempt to free these dependencies one-by-one given rise to a disentangled unit.
+Looking at the expanded version of the GRU update, we see dependencies between a lot of parameters and components. We will attempt to free these dependencies one-by-one giving rise to a disentangled unit.
 
 $$
 h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} u_j \right) \left(\prod_{k=1}^{i-1} (1-u_k) \right) \tilde{h}_i
 $$
 
-### Let's free the  dependent weights
+### Let's free the dependent weights
 
 Recall that the update gate, $$u_t$$ is calculated thus in GRUs;
 
@@ -113,16 +114,16 @@ $$
 h_t = \sum_{i=1}^t \alpha_i \tilde{h}_i
 $$
 
-we replace the candidate vector by an input function $$f(x_i)$$. This input function takes in $$x_i \in \mathbb{R}^d$$ and map it into a space of $$\tilde{h}_i \in \mathbb{R}^d$$, without having to explicitly use previous candidate vectors.
+we replace the candidate vector by an input function $$f(x_i)$$. This input function takes in $$x_i \in \mathbb{R}^d$$ and maps it into a space of $$\tilde{h}_i \in \mathbb{R}^d$$, without having to explicitly use previous candidate vectors.
 
-The input function $$f(x_i)$$ which have been used to disentangle the candidate vectors for each time-step can serve different purposes as we see in Transformers.
+The input function $$f(x_i)$$ which has been used to disentangle the candidate vectors for each time-step can serve different purposes as we see in Transformers.
 
-1. It is sometimes used to query which of the previous hidden states are important, i.e.
+1. It is sometimes used to query which of the previous hidden states are important, i.e.,
 
    $$\alpha_i \propto \exp\left(\operatorname{ATT}\left(f(x_i), f(x_t)\right)\right)$$ 
    
    where $$i$$ ranges from $$1$$ to $$t$$, $$f(x_i)$$ represents the Key vector and $$f(x_t)$$, the Query vector of the attention function, $$\operatorname{ATT}(., .)$$. This attention function provides relatively high $$\alpha_i$$ values for $$f(x_i)$$ values associated with current token, $$f(x_t)$$.
-2. As seen, it is also used to calculate the candidate vectors for the content update i.e.
+2. As seen, it is also used to calculate the candidate vectors for the content update, i.e.,
 
     $$h_t = \sum_{i=1}^t \alpha_i f(x_i)$$
 
@@ -132,7 +133,7 @@ The input function $$f(x_i)$$ which have been used to disentangle the candidate 
 
 - What is $$f(x_t)$$ or $$f(x_i)$$ ?
 
-  $$f(.)$$ is a function that processes the current input $$x_t$$ or previous hidden vectors, $$x_i$$. At the input to the encoder or decoder, if $$x_t$$ or $$x_i$$ is a one-hot vector representation of a token, $$f(.)$$ is a lookup table or embedding layer. If $$x_i$$ is a hidden state from the lower layer, $$f(.)$$ can either be an identity function or a MLP.
+  $$f(.)$$ is a function that processes the current input $$x_t$$ or previous hidden vectors, $$x_i$$. At the input to the encoder or decoder, if $$x_t$$ or $$x_i$$ is a one-hot vector representation of a token, $$f(.)$$ is a lookup table or embedding layer. If $$x_i$$ is a hidden state from the lower layer, $$f(.)$$ can either be an identity function or an MLP.
 
 Even though we have performed a lot of disentanglement, notice that Key, Value and Query vectors will be similar as they are derived from the same function.
 
@@ -156,7 +157,7 @@ At this stage, we have pretty much built a disentangled model but ehrmm, we have
 
 We can create N multiple possible $$Q$$, $$K$$ and $$V$$ functions/neural networks. Since each of them takes in the same $$x_i$$ or $$x_t$$, we can have parallel computation performed by each $$Q$$, $$K$$ and $$V$$ functions.
 
-For each attention head, $$n \in \{1, 2, 3, \dots, N\}$$, we calculate $$h_t^n$$. Each $$h_t^n$$ is concatenated together to form the new $$h_t$$ i.e.
+For each attention head, $$n \in \{1, 2, 3, \dots, N\}$$, we calculate $$h_t^n$$. Each $$h_t^n$$ is concatenated together to form the new $$h_t$$, i.e.,
 
 $$
 h_t = \left[h_t^1;~ h_t^2;~ \dots;~ h_t^N \right]
@@ -269,7 +270,7 @@ In summary,
   h_t = \left[g(h_t^1);~ g(h_t^2);~ \dots;~ g(h_t^N) \right]
   $$
 
-- then, the attention weight are calculated using the Key and Query vectors as well as positional encoding for the input
+- then, the attention weights are calculated using the Key and Query vectors as well as positional encoding for the input
 
   $$
   \alpha_i^n \propto \exp(\operatorname{ATT}(K^n(f(x_i) + p(i)), Q^n(f(x_t) + p(i))))

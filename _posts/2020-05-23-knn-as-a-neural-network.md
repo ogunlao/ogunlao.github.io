@@ -3,9 +3,10 @@ title:  "K Nearest Neighbor as a Neural Network"
 #categories: blog
 tags: [softmax, knn, neural_network]
 comments: true
+bibliography: 2020-05-23-knn-neural-network.bib
 ---
 
-A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a 3 layer neural network, using the given datapoints. If you will like to jump directly into the accompanying code, just [follow this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb) to the notebook.
+A Neural network is a universal function approximator, so in theory it is possible to learn any function using a neural network. As K-nearest neighbor is a method of predicting the label of a new datapoint from the test set, it is possible to express its prediction function as a neural network<d-cite key="murphy1990nn,chen1997knn"></d-cite>, although less intuitive. This article will show how to express a 1-Nearest Neighbor as a 3 layer neural network, using the given datapoints. If you would like to jump directly into the accompanying code, just [follow this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb) to the notebook.
 
 Here's what we will cover:
 1. TOC
@@ -13,7 +14,7 @@ Here's what we will cover:
 
 ## Introduction
 
-k-Nearest Neighbor is a non-parametric model that uses a distance function to evaluate the label of a new test point. It involves taking the average of predictions of k nearest points to the given test point. It often serves a base model for many predictions tasks and often difficult to beat.
+k-Nearest Neighbor is a non-parametric model that uses a distance function to evaluate the label of a new test point. It involves taking the average of predictions of k nearest points to the given test point. It often serves as a base model for many prediction tasks and often difficult to beat.
 
 Given a set of train data-points,
 
@@ -28,7 +29,7 @@ with $$x_i \in \mathbb{R}^d$$, $$y_i \in \mathbb{R}$$ and $$i = 1, 2, \dots, n$$
 To classify a new test point into its correct label, we perform the following steps:
 
 - Calculate the distance between each datapoint in the training example and the test datapoint
-- Assign the test data point the label of the k datapoints with minimum distance. for a classification task, we can take the mode of the k classes, while for regressing task, we average the predictions to get the prediction.
+- Assign the test data point the label of the k datapoints with minimum distance. For a classification task, we can take the mode of the k classes, while for regression task, we average the predictions to get the prediction.
 - k can range from 1 to n, but usually between 1 and 10.
 - The distance function takes in each $$x_i$$ and $$x^t$$ and outputs a scalar. The distance function to use may depend on the task but a popular and common distance is the l2-distance. The l2-distance can be expressed as:
 
@@ -68,7 +69,7 @@ $$
 d' = \sum_{j=1}^{d} \left((X^2_j - x^t_j) \odot (X^2_j - x^t_j)\right)
 $$
 
-Note that: $$\odot$$ is a hadamard product, i.e. element-wise product between the two matrices.
+Note that: $$\odot$$ is a Hadamard product, i.e., element-wise product between the two matrices.
 
 $$
 \begin{aligned}
@@ -86,7 +87,7 @@ At this point we can easily extract our first layer, $$Z_1 = W_1x_1 + b$$ where 
 After the previous step, we then need to find the datapoint with the closest distance to the test datapoint. This can be performed in two steps using the softmax layer:
 
 - Negate the vector, so the datapoint with minimum distance, then have the maximum value. 
-- Multiply the vector by a large positive constant $$\lambda \rightarrow \infty$$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $$Z_1$$. This is equivalent to applying the softmax temperature on the vector. $$\lambda$$ is an hyperparameter.
+- Multiply the vector by a large positive constant $$\lambda \rightarrow \infty$$. This has the effect of shrinking small values and increases already large values. The intention is to have the neuron turned on for only the minimum value of the input $$Z_1$$. This is equivalent to applying the softmax temperature on the vector. $$\lambda$$ is a hyperparameter.
 
 $$
 Z_2 = softmax(-\lambda * Z_1)
@@ -96,7 +97,7 @@ $$
 
 ### Layer 3: Prediction Layer
 
-Before now, we have not really talked out the labels of the training examples. It comes in at this layer to support in prediction.
+Before now, we have not really talked about the labels of the training examples. It comes in at this layer to support in prediction.
 
 - For a regression task, this computation is almost done. We take the vector of distances and find the prediction of the class, with the minimum distance (or maximum value in this case, as we have performed inversion).
 - For a classification task, we can also take the label of the datapoint with the minimum distance or go a step further.
@@ -111,7 +112,7 @@ where $$W_3 = X^T$$, $$x_3 = z_2$$, $$b = 0$$
 
 ## Implementation
 
-I created a jupyter notebook to show predictions on the iris dataset. You can access the notebook [via this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb). Feel free to drop comments, and possibly give area for clarification or improvement. Let me try to explain the major parts of the implementation.
+I created a Jupyter notebook to show predictions on the iris dataset. You can access the notebook [via this link](https://github.com/ogunlao/ogunlao.github.io/blob/master/notebooks/knn_as_neural_network.ipynb). Feel free to drop comments, and possibly give area for clarification or improvement. Let me try to explain the major parts of the implementation.
 
 - Data: Loaded the iris dataset via the sklearn load dataset api.
 - Preprocessing: Normalized the dataset (often a good thing to normalize) and converted each label into one-hot encoded vectors.
@@ -119,15 +120,10 @@ I created a jupyter notebook to show predictions on the iris dataset. You can ac
 
 ## Future Work
 
-A 1-Nearest Neighbor implementation was discussed here. This can be extended to k- nearest neighbors. How will you go about it?
+A 1-Nearest Neighbor implementation was discussed here. This can be extended to k-nearest neighbors. How will you go about it?
 
 ## Conclusion
 
-In this article, We showed how a k-nearest neighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increases as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
+In this article, we showed how a k-nearest neighbor classifier can be transformed into a neural network using the datapoints as parameters. This is also a non-parametric model and the weights of the model increase as the number of training points increases. Finally, neural network is a universal function approximator and can therefore be an exercise to represent other models in terms of a basic neural network model.
 
 ---
-
-## Reference
-
-1. Yan Qiu Chen, R. I. Damper and M. S. Nixon, "On neural-network implementations of k-nearest neighbor pattern classifiers," in IEEE Transactions on Circuits and Systems I: Fundamental Theory and Applications, vol. 44, no. 7, pp. 622-629, July 1997, doi: 10.1109/81.596943.
-1. O. J. Murphy, "Nearest neighbor pattern classification perceptrons," in Proceedings of the IEEE, vol. 78, no. 10, pp. 1595-1598, Oct. 1990, doi: 10.1109/5.58344.

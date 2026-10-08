@@ -6,7 +6,7 @@ comments: true
 hidden: true  # not listed on the home page; still in the archive
 ---
 
-The night I finished my coursework at the [African Institute of Mathematical Sciences](https://www.nexteinstein.org/), I sat down to evaluate the knowledge I have gained and how I have come to survive the intensive master's program. I evaluated my progression from being a newbie with vague knowledge of machine learning to where I have reached in my journey. I can say I have come a long way and never had I thought I could reach this level in a short while. At the very least, I can say that; I can read research papers in the field and not wonder what is being talked about; I can break down mathematical formulations and derive proof of algorithms; I can evaluate pseudocode and determine the best data structure and algorithmic pattern for implementing such; I can perform independent research and question ideas. I owe it all to the resilience of myself and the passion of tutors and lecturers in providing guidance to everyone of us. As such, I asked colleagues what they will like the incoming students to be aware of or what they would have loved to do better if they were to start again. This article is a collection of those advice which I believe can be a guiding torch in your journey through the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme and beyond.
+The night I finished my coursework at the [African Institute of Mathematical Sciences](https://aims.edu.gh//), I sat down to evaluate the knowledge I have gained and how I have come to survive the intensive master's program. I evaluated my progression from being a newbie with vague knowledge of machine learning to where I have reached in my journey. I can say I have come a long way and never had I thought I could reach this level in a short while. At the very least, I can say that; I can read research papers in the field and not wonder what is being talked about; I can break down mathematical formulations and derive proof of algorithms; I can evaluate pseudocode and determine the best data structure and algorithmic pattern for implementing such; I can perform independent research and question ideas. I owe it all to the resilience of myself and the passion of tutors and lecturers in providing guidance to every one of us. As such, I asked colleagues what they will like the incoming students to be aware of or what they would have loved to do better if they were to start again. This article is a collection of those advice which I believe can be a guiding torch in your journey through the [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) programme and beyond.
 
 [African Masters in Machine Intelligence (AMMI)](https://aimsammi.org/) is a master's programme offered by the African Institute for Mathematical Sciences, sponsored by Facebook and Google, with campuses currently in Rwanda and Ghana.
 
@@ -16,7 +16,7 @@ Check out a subsection:
 
 ## Introduction
 
-Congratulations! You have been admitted into the AMMI programme. This is just the beginning of the hurdle ahead and may be full of uncertainties for you as it was for everyone of us. You just have to take a leap of faith and begin the journey. You may wonder how you will be able to cope with the programme; what the courses will look like; how you will adjust to the new environment; how you will get better at programming. Well, everyone of us had some or all of those fears, but we were able to overcome them with support.
+Congratulations! You have been admitted into the AMMI programme. This is just the beginning of the hurdle ahead and may be full of uncertainties for you as it was for every one of us. You just have to take a leap of faith and begin the journey. You may wonder how you will be able to cope with the programme; what the courses will look like; how you will adjust to the new environment; how you will get better at programming. Well, every one of us had some or all of those fears, but we were able to overcome them with support.
 
 We will dive deep into these advice in a second as I believe you are eager to read them. You are free to bookmark or revisit this page during your days at AMMI for inspiration on what to do next. Let's dive in.
 
@@ -24,7 +24,7 @@ We will dive deep into these advice in a second as I believe you are eager to re
 
 ### DO NOT QUIT! I repeat DO NOT QUIT!!
 
-Well, this might sound funny but it is still the best advice to give. A lot of us faced trying times with deadlines of assignments and presentations approaching, struggling with the basics and needing time to absolve them. All I can say is hang on there friend and don't contemplate dropping the baton. You will be faced with this decision at some point too and I hope you will decide not to quit on yourself, instead put in the hardwork and reap the rewards.
+Well, this might sound funny but it is still the best advice to give. A lot of us faced trying times with deadlines of assignments and presentations approaching, struggling with the basics and needing time to absorb them. All I can say is hang on there friend and don't contemplate dropping the baton. You will be faced with this decision at some point too and I hope you will decide not to quit on yourself, instead put in the hard work and reap the rewards.
 
 Also, remember you submitted a statement of purpose where you wrote beautiful things about your passion for AI, solving societal problems with machine learning, becoming a world-renowned researcher etc. Well, now is the time to show that passion and let your goals drive you to keep working hard and pushing forward.
 
@@ -35,7 +35,7 @@ Every field including machine intelligence requires a solid foundation in the ma
 1. [Linear Algebra by Gilbert Strang, MIT](https://www.youtube.com/watch?v=7UJ4CFRGd-U&list=PL221E2BBF13BECF6C) or if you want a recent course, you may prefer [Matrix Methods in Data Analysis, Signal Processing, and Machine Learning by Gilbert Strang, MIT](https://www.youtube.com/watch?v=Cx5Z-OslNWE&list=PLUl4u3cNGP63oMNUHXqIUcrkS2PivhN3k). These will help with your LA basics
 1. [Engineering Probability by Rich Radke](https://www.youtube.com/watch?v=sa_ibR7Cqug&list=PLuh62Q4Sv7BU1dN2G6ncyiMbML7OXh_Jx) for your statistics and probability basics
 
-If you prefer written text, [Mathematics for Machine Learning](https://mml-book.github.io/) co-authored by Marc Peter Deisenroth, is your go to text. There is also a coursera course with the same title which you can review.
+If you prefer written text, [Mathematics for Machine Learning](https://mml-book.github.io/) co-authored by Marc Peter Deisenroth, is your go-to text. There is also a Coursera course with the same title which you can review.
 
 ### Learn by intuition
 
@@ -45,7 +45,7 @@ It is also a good idea to explain these concepts to other colleagues. This will 
 
 ### Learn to code properly
 
-The most important skill required to excel in your AI journey is programming. You will be required to convert mathematics to codes. No running away from it my friend. It is in your best interest to have a good background in Python. Other major libraries you will require are Numpy (for vectorized computations), Pytorch (for running code no GPU) and some others which you can easily acquire competence in if you already know Python. If you already know a programming language such as Javascript or C++, it will be easy to catch up with learning Python.
+The most important skill required to excel in your AI journey is programming. You will be required to convert mathematics to codes. No running away from it my friend. It is in your best interest to have a good background in Python. Other major libraries you will require are NumPy (for vectorized computations), PyTorch (for running code on GPU) and some others which you can easily acquire competence in if you already know Python. If you already know a programming language such as JavaScript or C++, it will be easy to catch up with learning Python.
 
 Apart from just programming, you need to develop algorithmic thinking. This will be useful in implementing ideas and turning mathematics into reality. As a hint, be rest assured that you will be required to code ML algorithms from scratch.
 
@@ -55,7 +55,7 @@ There are lots of online platforms such as [Leetcode](https://leetcode.com/) or 
 
 Small sized discussion groups are a great way to share ideas, help one another and collaborate. You can set up a permanent discussion group with your friends to work on assignments and review lectures. Members of your discussion group can also serve as your go-to when you need a clearer explanation of concepts you have read about.
 
-It is a great idea to form groups with members having strength in different areas of ML. For instance, a group can consist of a mathematics major, computer scientist, a statistician etc. It balances the group and ensures everyone can contribute to each others' development. Join or form a group
+It is a great idea to form groups with members having strength in different areas of ML. For instance, a group can consist of a mathematics major, computer scientist, a statistician etc. It balances the group and ensures everyone can contribute to each others' development. Join or form a group.
 
 Furthermore, there is a large space of research in AI such as Natural Language Processing, Computer Vision, Optimization, Multimodal Learning, Self-supervised learning etc. To form a deeper knowledge of these fields, you can form groups where you read and summarize papers, implement ideas and discuss further research directions concentrated on these specific fields.
 
@@ -77,7 +77,7 @@ Also, your colleagues will be your life-long partners and friends. They will be 
 
 ### Utilize your network of AMMI lecturers
 
-Okay, I don't know if I have to say this again but, hey friend! You are lucky to be here. AIMS instructors and lecturers are world-standard. You have a lot to learn from them. Check out the AMMI website for a peek of some of your instructors. Well, it is up to you t0 utilize this opportunity, listen to instructions, do your labs and show them you are committed.
+Okay, I don't know if I have to say this again but, hey friend! You are lucky to be here. AIMS instructors and lecturers are world-standard. You have a lot to learn from them. Check out the AMMI website for a peek of some of your instructors. Well, it is up to you to utilize this opportunity, listen to instructions, do your labs and show them you are committed.
 
 As most of the lecturers will be on campus with you, you have the freedom to approach them for discussions, ask questions on the course and discuss possible research directions with them. Your lecturers are always excited to interact with students and provide insight from their wealth of experience.
 

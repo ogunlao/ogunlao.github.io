@@ -3,7 +3,9 @@
 - year: Preprint
   title: An Exhaustive Evaluation of TTS- and VC-based Data Augmentation for ASR
   authors: Ogun, S., Colotte, V., Vincent, E.
-  venue: Preprint
+  venue: arXiv preprint arXiv:2503.08954, 2025
+  links:
+    - { name: paper, url: "https://arxiv.org/abs/2503.08954" }
 
 - year: 2026
   title: "Sometin Beta Pass Notin: Improving Multilingual ASR for Nigerian Languages via Knowledge Distillation"
@@ -45,7 +47,7 @@
   authors: Guillaume Coiffier, Sewade Ogun, Leo Valque, Priyansh Trivedi
   venue: 2024, ISBN 978-2-9591975-0-5, hal-04509255
   links:
-    - { name: paper, url: "https://hal.univ-lorraine.fr/hal-04509255v1/document" }
+    - { name: paper, url: "https://hal.univ-lorraine.fr/hal-04509255v1" }
 
 - year: 2023
   title: Stochastic Pitch Prediction Improves the Diversity and Naturalness of Speech in Glow-TTS
