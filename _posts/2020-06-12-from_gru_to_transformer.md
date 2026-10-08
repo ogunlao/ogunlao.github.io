@@ -54,7 +54,7 @@ An interpretation of the additive updates is that they help to create linear sho
 
 ### What are these shortcut connections
 
-If we begin to unroll the hidden vector equation, moving step by step backwards, to extract the computations done to arrive there, we notice that it forms a weighted combination of all previous hidden vectors.
+If we begin to unroll the hidden vector equation, moving step by step backwards, to extract the computations done to arrive there, we notice that it forms a weighted combination of all previous candidate vectors.
 
 $$
 \begin{aligned}
@@ -62,11 +62,11 @@ h_t &= u_t \odot h_{t-1} + (1 - u_t) \odot \tilde{h}_t \\
     &= u_t \odot \left(u_{t-1} \odot h_{t-2} + (1-u_{t-1}) \odot \tilde{h}_{t-1}\right) + (1-u_t) \odot \tilde{h}_t \\
     &= u_t \odot \left(u_{t-1} \odot \left(u_{t-2} \odot h_{t-3} + (1-u_{t-2}) \odot \tilde{h}_{t-2} \right) + (1-u_{t-1}) \odot \tilde{h}_{t-1} \right) + (1-u_t) \odot \tilde{h}_t \\
     &\;\;\vdots \\
-    &= \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} u_j \right) \left(\prod_{k=1}^{i-1} (1-u_k) \right) \tilde{h}_i
+    &= \sum_{i=1}^t \left(\prod_{j=i+1}^{t} u_j \right) \odot (1-u_i) \odot \tilde{h}_i + \left(\prod_{j=1}^{t} u_j \right) \odot h_0
 \end{aligned}
 $$
 
-for $$t$$ steps of GRU update. The breakdown of $$h_t$$ shows the computation involving weighted combinations of all GRU's previous states.
+for $$t$$ steps of GRU update, where $$h_0$$ is the initial hidden vector (often zero) and the products are element-wise (an empty product, such as $$\prod_{j=t+1}^{t} u_j$$, equals 1). The breakdown of $$h_t$$ shows the computation involving weighted combinations of all GRU's previous candidate vectors.
 
 ## Gated Recurrent Units to Causal Attention
 
@@ -75,7 +75,7 @@ In causal attention as in GRUs, we will only have access or look at previous hid
 Looking at the expanded version of the GRU update, we see dependencies between a lot of parameters and components. We will attempt to free these dependencies one-by-one giving rise to a disentangled unit.
 
 $$
-h_t = \sum_{i=1}^t \left(\prod_{j=1}^{t-i+1} u_j \right) \left(\prod_{k=1}^{i-1} (1-u_k) \right) \tilde{h}_i
+h_t = \sum_{i=1}^t \left(\prod_{j=i+1}^{t} u_j \right) \odot (1-u_i) \odot \tilde{h}_i + \left(\prod_{j=1}^{t} u_j \right) \odot h_0
 $$
 
 ### Let's free the dependent weights
@@ -84,14 +84,14 @@ Recall that the update gate, $$u_t$$ is calculated thus in GRUs;
 
 $$
 \begin{aligned}
-u_t &= \sigma(W_x x_{t-1} + U_h h_{t-1} + b_u) \\
-h_t &= f(h_{t-1}, x_{t-1}) = u_t \odot \tilde{h}_t + (1-u_t)\odot h_{t-1}
+u_t &= \sigma(W_x x_t + U_h h_{t-1} + b_u) \\
+h_t &= f(h_{t-1}, x_t) = u_t \odot h_{t-1} + (1-u_t) \odot \tilde{h}_t
 \end{aligned}
 $$
 
 where $$W_x$$, $$U_h$$ are weight matrices of the Update gate computation, $$b_u$$ is a bias vector and $$h_t$$, $$x_t$$ are hidden and input vectors respectively.
 
-From both equations, we can observe that $$u_t$$, the current update gate is dependent on $$h_{t-1}$$, the previous hidden vector and vice-versa. To disentangle $$u_t$$ from $$h_{t-1}$$, we can learn the current hidden context, $$h_t$$ as a weighted combination of candidate vectors, $$h_i$$.
+From both equations, we can observe that $$u_t$$, the current update gate is dependent on $$h_{t-1}$$, the previous hidden vector and vice-versa. To disentangle $$u_t$$ from $$h_{t-1}$$, we can learn the current hidden context, $$h_t$$ as a weighted combination of candidate vectors, $$\tilde{h}_i$$.
 
 $$
 h_t = \sum_{i=1}^t \alpha_i \tilde{h}_i
@@ -101,13 +101,13 @@ where $$\alpha_i \propto \exp\left(\operatorname{ATT}\left(\tilde{h}_i, x_t\righ
 
 ### Let's free up candidate vectors
 
-Recall that $$\tilde{h} = f(x_t, h_{t-1})$$
+Recall that $$\tilde{h}_t = f(x_t, h_{t-1})$$
 
 where $$\tilde{h}_t$$ depends on $$h_{t-1}$$; $$h_{t-1}$$ depends on $$\tilde{h}_{t-1}$$ and $$h_{t-2}$$ and so on - check unrolled $$h_t$$ above.
 
 This implies that $$\tilde{h}_t$$ still depends on all the previous $$\tilde{h}_{t-N}$$ candidate vectors.
 
-To break these dependencies in candidate vectors, $$h$$,
+To break these dependencies in candidate vectors, $$\tilde{h}$$,
 Recall that;
 
 $$
@@ -208,9 +208,9 @@ $$
 h_t^n = \sum_{i=1}^T \alpha_i^n V^n(f(x_i) + p(i))
 $$
 
-and $$\alpha_i^n \propto \exp(\operatorname{ATT}(K^n(f(x_i)), Q^n(f(x_t) + p(i))))$$
+and $$\alpha_i^n \propto \exp(\operatorname{ATT}(K^n(f(x_i) + p(i)), Q^n(f(x_t) + p(t))))$$
 
-$$p(i)$$ is the position encoded vector for position $$i$$ from positional embedding $$p$$.
+$$p(i)$$ is the position encoded vector for position $$i$$ from positional embedding $$p$$, and $$p(t)$$ the one for the current position $$t$$.
 
 Learned positional embedding and function-based positional embedding (such as sinusoidal positional embedding) are the common positional embeddings. The Transformer uses the sinusoidal positional embedding due to the property that it can generalize to lengths not seen during training.
 
@@ -273,7 +273,7 @@ In summary,
 - then, the attention weights are calculated using the Key and Query vectors as well as positional encoding for the input
 
   $$
-  \alpha_i^n \propto \exp(\operatorname{ATT}(K^n(f(x_i) + p(i)), Q^n(f(x_t) + p(i))))
+  \alpha_i^n \propto \exp(\operatorname{ATT}(K^n(f(x_i) + p(i)), Q^n(f(x_t) + p(t))))
   $$
 
 ## Conclusion

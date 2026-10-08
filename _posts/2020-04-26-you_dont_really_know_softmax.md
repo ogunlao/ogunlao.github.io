@@ -21,7 +21,7 @@ $$
 $$
 
 where d is the number of classes.  
-The sum of all the exponentiated values, $$\sum_{j=1}^{d} e^{x_j}$$ is a normalizing constant which helps to ensure that it maintains the properties of a probability distribution i.e., (a) the values must sum to 1 (b) they must be between 0 and 1 inclusive $$[0, 1]$$.
+The sum of all the exponentiated values, $$\sum_{j=1}^{d} e^{x_j}$$ is a normalizing constant which helps to ensure that it maintains the properties of a probability distribution i.e., (a) the values must sum to 1 (b) they must be between 0 and 1.
 
 ![Softmax classifier](/images/softmax.png "source: ljvmiranda921.github.io")
 
@@ -74,10 +74,10 @@ print(softmax(x))
 # RuntimeWarning: invalid value encountered in divide
 # [ 0.  0. nan  0.]
 ```
-'nan' stands for not-a-number and occurs when there is an overflow or underflow. But, why the $$0$$s and $$\text{nan}$$? Are we implying we cannot get a probability distribution from the vector? 
+'nan' stands for not-a-number. Here, it comes from an overflow: $$e^{10000}$$ becomes infinity, and infinity divided by infinity is undefined. But, why the $$0$$s and $$\text{nan}$$? Are we implying we cannot get a probability distribution from the vector? 
 - Question: Can you find out what caused the overflow?
 
-Exponentiating a large number like $$10000$$ leads to a very, very large number. This is approximately $$2^{10000}$$. This causes overflow.
+Exponentiating a large number like $$10000$$ leads to a very, very large number, about $$10^{4343}$$. The largest 64-bit float is about $$1.8 \times 10^{308}$$, so $$e^x$$ already overflows for $$x > 709.78$$.
 
 - Can we do better? Well, we can.
 Taking our original equation,
@@ -180,7 +180,7 @@ $$
 Well, we can exponentiate and normalize the log softmax or log probability values.
 
 $$
-\operatorname{sm}(x_i) = \dfrac{e^{\log \text{probs}}}{\sum_{j=1}^{d} e^{\log \text{probs}}}
+\operatorname{sm}(x_i) = \dfrac{e^{\log \operatorname{sm}(x_i)}}{\sum_{j=1}^{d} e^{\log \operatorname{sm}(x_j)}}
 $$
 
 Let's make this concrete via code.
@@ -236,7 +236,7 @@ e^{\frac{x_i - c}{\tau}}
 }
 $$
 
-where $$\tau$$ is in $$(0, \infty]$$.
+where $$\tau$$ is in $$(0, \infty)$$.
 The temperature parameter increases the sensitivity to low probability candidates and has to be tuned for optimal results. Let's examine different cases of $$\tau$$
 
 case a: $$\tau \to 0$$ say $$\tau = 0.001$$
